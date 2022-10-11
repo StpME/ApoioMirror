@@ -2,16 +2,19 @@ html {
     padding-left: 5%;
     padding-right: 5%;
     padding-top: 2%;
+    color-scheme: dark;
 }
 
 body {
-    font-family: "Segoe UI";
+    font-family: 'Merriweather';
+    line-height: 1.6;
 
 }
 
 h1 {
     font-weight: 1000;
-    text-align: center;
+    font-size: 3rem;
+
 }
 
 h2 {
