@@ -1,5 +1,12 @@
+html {
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 2%;
+}
+
 body {
-    font-family: Garamond;
+    font-family: "Segoe UI";
+
 }
 
 h1 {
@@ -9,4 +16,9 @@ h1 {
 
 h2 {
     font-weight: 500;
+}
+
+hr {
+    border-color: #94E3FA;
+    border-style: dashed;
 }
