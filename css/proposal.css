@@ -3,12 +3,11 @@ html {
     padding-right: 5%;
     padding-top: 2%;
     color-scheme: dark;
+    font-family: 'Merriweather';
 }
 
 body {
-    font-family: 'Merriweather';
     line-height: 1.6;
-
 }
 
 h1 {
@@ -22,6 +21,5 @@ h2 {
 }
 
 hr {
-    border-color: #94E3FA;
-    border-style: dashed;
+    border: 2px solid #94E3FA;
 }
