@@ -6,6 +6,19 @@
     height: 100%;
   }
   /* Use navbar and main page template to style instead */
+  .navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+    color: green;
+  }
+
+  .d-flex {
+    margin-left:auto;
+  }
+
+
+
+
   body {
     display: flex;
     flex-direction: column;
@@ -13,22 +26,14 @@
     margin: 0;  
     height: inherit;
   }
-  
-  main {
-    flex: 1;
-  }
-  
+
   .container {
     display: flex;
   }
   
-  .col {
-    padding: 1em;
-    flex: 1
-  }
-  
   .flex-container {
     height: 100%;
+    flex: 1;
   }
   
   .flex-container-inner {
@@ -43,13 +48,21 @@
   .flex-item1 {
     flex: 1;
     background-color: #eee;
-    
   }
   
-  .flex-item2 {
-    flex-grow: 1;
+  h1 {
+    padding: 1em;
+  }
+
+  .flex-item2 h1 {
+    text-align: center;
   }
   
+ .flex-item2 {
+  flex-basis: 180px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  }
   
   .card {
     flex: 0 0 250px;
