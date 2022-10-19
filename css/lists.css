@@ -1,0 +1,68 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  :root {
+    height: 100%;
+  }
+  /* Use navbar and main page template to style instead */
+  body {
+    display: flex;
+    flex-direction: column;
+    font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+    margin: 0;  
+    height: inherit;
+  }
+  
+  main {
+    flex: 1;
+  }
+  
+  .container {
+    display: flex;
+  }
+  
+  .col {
+    padding: 1em;
+    flex: 1
+  }
+  
+  .flex-container {
+    height: 100%;
+  }
+  
+  .flex-container-inner {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .flex-container-bd {
+    flex: 1;
+  }
+  
+  .flex-item1 {
+    flex: 1;
+    background-color: #eee;
+    
+  }
+  
+  .flex-item2 {
+    flex-grow: 1;
+  }
+  
+  
+  .card {
+    flex: 0 0 250px;
+    background-color: white;
+    margin: .5rem;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.16),0 1px 3px rgba(0,0,0,0.23);
+  }
+  
+  .card img {
+    border-radius: 10px 10px 0 0;
+  }
+  
+  .card p {
+    padding: .5rem 1rem;
+  }
