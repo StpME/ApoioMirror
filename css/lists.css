@@ -5,6 +5,10 @@
   :root {
     height: 100%;
   }
+
+
+
+
   /* Use navbar and main page template to style instead */
   .navbar-brand {
     font-size: 24px;
@@ -12,12 +16,16 @@
     color: green;
   }
 
-  .d-flex {
-    margin-left:auto;
+  .nav-item {
+    font-weight: bold;
   }
 
 
 
+
+  .d-flex {
+    margin-left: auto;
+  }
 
   body {
     display: flex;
@@ -41,13 +49,11 @@
     justify-content: center;
   }
   
-  .flex-container-bd {
-    flex: 1;
-  }
-  
   .flex-item1 {
-    flex: 1;
-    background-color: #eee;
+    /* Column divider line */
+    border-right: solid .2rem black;
+    height: 100%;
+    background-color: #CDFCD9 /*eee*/
   }
   
   h1 {
@@ -57,23 +63,29 @@
   .flex-item2 h1 {
     text-align: center;
   }
+
+  .flex-item2 p {
+    flex-wrap: wrap;
+  }
   
  .flex-item2 {
-  flex-basis: 180px;
-  flex-grow: 0;
-  flex-shrink: 0;
+  background-color: #eee;
+  flex: 180px 1 1;
   }
   
   .card {
-    flex: 0 0 250px;
+    flex: 1 1 250px;
     background-color: white;
     margin: .5rem;
     border-radius: 10px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.16),0 1px 3px rgba(0,0,0,0.23);
+    box-shadow: 0 2px 3px rgba(0,0,0,0.16),0 1px 3px rgba(0,0,0,0.23);
   }
   
   .card img {
-    border-radius: 10px 10px 0 0;
+    max-height: 75px;
+    max-width: 75px;
+    background-size: cover;
+    border-radius: 10px;
   }
   
   .card p {
