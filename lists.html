@@ -2,10 +2,15 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Apoio</title>
-    <link rel="stylesheet" href="css/lists.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.css">
+  <meta charset="UTF-8">
+  <title>Apoio</title>
+  <meta name="author" content="Mitchell Stapelman">
+  <meta name="description" content="Page for user lists and displaying its content">
+  
+  <link rel="stylesheet" 
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 
 <body>
@@ -13,7 +18,7 @@
     <!-- placeholder -->
     <nav class="navbar navbar-expand-lg bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Apoio</a>
+          <a class="navbar-brand" href="#">APOIO</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -49,36 +54,36 @@
 
 
 
-    <div class="flex-container-bd">
+    
         <main>
             <div class="row flex-container">
-                <section class="col-3 flex-item1">
-                    <h1>My Lists</h1>
-                    <div class="container flex-container-inner">
-                        <!-- Card 1 -->
+                <section class="col-3 list-sidebar">
+                    <h1 class="heading">My Lists</h1>
+                    <div class="container flex-inner">
+                        <!-- Card 1/New List -->
                         <div class="card">
-                            <img src="pics/food_pic.jpg" alt="list">
-                            <p>Food</p>
+                            <img src="pics/add_list_icon.png" alt="Add a list">
+                            <p>New List</p>
                         </div>
-                        <!-- Card 2 -->
+                        <!-- Card 2/Food -->
                         <div class="card">
-                            <img src="" alt="list">
-                            <p>Local Eats</p>
+                            <img src="pics/food_pic.jpg" alt="food">
+                            
                         </div>
-                        <!-- Card 3 -->
+                        <!-- Card 3/Groceries -->
                         <div class="card">
-                            <img src="" alt="list">
-                            <p>Thrifting</p>
-                        </div>
-                        <!-- Card 4 -->
-                        <div class="card">
-                            <img src="" alt="list">
+                            <img src="pics/groceries_icon.png" alt="groceries">
                             <p>Groceries</p>
+                        </div>
+                        <!-- Card 4/Clothing -->
+                        <div class="card">
+                            <img src="pics/clothing_icon.png" alt="thrifting">
+                            <p>Thrifting</p>
                         </div>
                     </div>
                 </section>
                 
-                <section class="col flex-item2">
+                <section class="col flex-display">
                     <h1>List Content - Display</h1>
                     <ul>
                         <li>Lorem, ipsum dolor.</li>
@@ -94,7 +99,50 @@
                 </section>
             </div>
         </main> 
-    </div>
+        
+
+  <footer>   
+    <div class="footer-apoio">
+      <footer>
+          <div class="container">
+              <div class="row">
+                  <div class="col-sm-6 col-md-3 item">
+                      <h3>Company</h3>
+                      <ul>
+                          <li><a href="#">Login</a></li>
+                          <li><a href="#">Register</a></li>
+                      </ul>
+                  </div>
+                  <div class="col-sm-6 col-md-3 item">
+                      <h3>Quick Links</h3>
+                      <ul>
+                          <li><a href="#">Home</a></li>
+                          <li><a href="#">Profile</a></li>
+                          <li><a href="#">My Lists</a></li>
+                      </ul>
+                  </div>
+                  <div class="col-md-6 item text">
+                      <h3>About us</h3>
+                      <p>
+                        We aim to address rising gentrification across King County and the greater Seattle region by providing resources for affordable housing and increasing the discoverability of local businesses in the area. 
+                      </p>
+                  </div>
+                  <div class="col item socials">
+                    <a href="#"><i class="icon ion-social-1"></i></a>
+                    <a href="#"><i class="icon ion-social-2"></i></a>
+                    <a href="#"><i class="icon ion-social-3"></i></a>
+                  </div>
+              </div>
+              <p class="copyright">Apoio &copy;2022</p>
+          </div>
+      </footer>
+  </div>
+
+
+  </footer>
+
+        
+    
 </body>
 
 
