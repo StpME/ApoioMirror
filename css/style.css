@@ -21,7 +21,7 @@
     margin-right: .5rem;
   }
 
-  /* temp navbar css */
+  /* navbar css */
   .navbar-brand img {
     filter: drop-shadow(2px 2px 2px rgba(0,0,0, 30%));
   }
@@ -29,14 +29,9 @@
   .nav-item {
     font-weight: bold;
   }
-  
 
 
 
-
-  .d-flex {
-    margin-left: auto;
-  }
 
   body {
     flex-direction: column;
@@ -46,8 +41,20 @@
     background-color: #DEDEDE;
   }
 
-  h1 {
+  h2 {
     padding: 1em;
+  }
+
+  .d-flex {
+    margin-left: auto;
+  }
+
+  .card-body {
+    margin: auto;
+  }
+
+  .card-title {
+    text-align: center;
   }
 
   .container {
