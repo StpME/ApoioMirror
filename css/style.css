@@ -25,7 +25,6 @@
   }
 
   body {
-    display: flex;
     flex-direction: column;
     font-family: "Rufina";
     margin: 0;  
@@ -40,11 +39,6 @@
     display: flex;
   }
   
-  .flex-container {
-    height: 100%;
-    flex: 1;
-  }
-  
   .flex-inner {
     flex-wrap: wrap;
     justify-content: center;
@@ -54,12 +48,11 @@
   .list-sidebar {
     /* Column divider line */
     border-right: solid .2rem black;
+    flex: 0 2 200px;
     height: 100%;
+    padding-bottom: 7.5em;
     background-color: #CDFCD9; /*eee*/
-    
   }
-
-  
 
   .flex-display h1 {
     text-align: center;
@@ -75,7 +68,6 @@
   }
   
   .card {
-    
     flex: 0 1 175px;
     background-color: white;
     margin: .5rem;
@@ -138,8 +130,6 @@
     margin-bottom: 36px;
   }
   
-  
-  
   .footer-apoio .item.text p {
     opacity:0.6;
     margin-bottom:0;
@@ -169,5 +159,9 @@
     opacity:0.3;
     font-size:13px;
     margin-bottom:0;
+    position: fixed; left: 50%; bottom: 0px;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+
   }
   
