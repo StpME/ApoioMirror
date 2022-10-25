@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    font-family: 'Red Hat Display', "Lato", "Helvetica Neue", "Helvetica", sans-serif;
   }
   
   :root {
@@ -7,13 +8,22 @@
   }
 
 
+  /* navbar css */
+  nav {
+    background-color: #5B8F52;
+  }
 
+  .form-control, .btn, .navbar-toggler {
+    border-radius: 15px;
+  }
+
+  form {
+    margin-right: .5rem;
+  }
 
   /* temp navbar css */
-  .navbar-brand {
-    font-size: 24px;
-    font-weight: bold;
-    color: green;
+  .navbar-brand img {
+    filter: drop-shadow(2px 2px 2px rgba(0,0,0, 30%));
   }
 
 
