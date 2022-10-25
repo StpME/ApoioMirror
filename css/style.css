@@ -41,6 +41,10 @@
     background-color: #DEDEDE;
   }
 
+  .banner {
+    display: none;
+  }
+
   .d-flex {
     margin-left: auto;
   }
@@ -197,4 +201,10 @@
     margin:0 8px;
     color: #fff;
     opacity: .75;
+  }
+
+  @media (min-width: 768px) {
+    .banner {
+      display: block;
+    }
   }
