@@ -49,11 +49,11 @@ body {
   margin-left: auto;
   }
 
-  .card-body {
+  .categories .card-body {
     margin: auto;
   }
 
-  .card-title {
+  .categories .card-title {
     text-align: center;
 }
 
