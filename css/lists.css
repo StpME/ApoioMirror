@@ -1,94 +1,102 @@
 * {
-    box-sizing: border-box;
-    font-family: 'Red Hat Display';
-  }
-  
-  :root {
-    height: 100%;
-  }
+  box-sizing: border-box;
+}
+
+:root {
+  height: 100%;
+}
+
+
+/* Use navbar and main page template to style instead */
+.navbar-brand {
+  font-size: 24px;
+  font-weight: bold;
+  color: green;
+}
+
+.nav-item {
+  font-weight: bold;
+}
 
 
 
 
-  /* Use navbar and main page template to style instead */
-  .navbar-brand {
-    font-size: 24px;
-    font-weight: bold;
-    color: green;
-  }
+.d-flex {
+  margin-left: auto;
+}
 
-  .nav-item {
-    font-weight: bold;
-  }
+.about-body {
+  margin-left: 7rem;
+  margin-right: 7rem;
+}
 
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Red Hat Display', "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+  margin: 0;
+  height: inherit;
+  background-color: #D0F9DB;
+}
 
+.container {
+  display: flex;
+}
 
+.flex-container {
+  height: 100%;
+  flex: 1;
+}
 
-  .d-flex {
-    margin-left: auto;
-  }
+.flex-container-inner {
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
-  body {
-    display: flex;
-    flex-direction: column;
-    font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
-    margin: 0;  
-    height: inherit;
-  }
+.flex-item1 {
+  /* Column divider line */
+  border-right: solid .2rem black;
+  height: 100%;
+  background-color: #CDFCD9
+    /*eee*/
+}
 
-  .container {
-    display: flex;
-  }
-  
-  .flex-container {
-    height: 100%;
-    flex: 1;
-  }
-  
-  .flex-container-inner {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .flex-item1 {
-    /* Column divider line */
-    border-right: solid .2rem black;
-    height: 100%;
-    background-color: #CDFCD9 /*eee*/
-  }
-  
-  h1 {
-    padding: 1em;
-  }
+h1 {
+  padding: 1em;
+}
 
-  .flex-item2 h1 {
-    text-align: center;
-  }
+.flex-item2 h1 {
+  text-align: center;
+}
 
-  .flex-item2 p {
-    flex-wrap: wrap;
-  }
-  
- .flex-item2 {
+.flex-item2 p {
+  flex-wrap: wrap;
+}
+
+.flex-item2 {
   background-color: #eee;
   flex: 180px 1 1;
-  }
-  
-  .card {
-    flex: 1 1 250px;
-    background-color: white;
-    margin: .5rem;
-    border-radius: 10px;
-    box-shadow: 0 2px 3px rgba(0,0,0,0.16),0 1px 3px rgba(0,0,0,0.23);
-  }
-  
-  .card img {
-    max-height: 75px;
-    max-width: 75px;
-    background-size: cover;
-    border-radius: 10px;
-  }
-  
-  .card p {
-    padding: .5rem 1rem;
-  }
+}
+
+.card {
+  flex: 1 1 250px;
+  background-color: white;
+  margin: .5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
+}
+
+.card img {
+  max-height: 75px;
+  max-width: 75px;
+  background-size: cover;
+  border-radius: 10px;
+}
+
+.card p {
+  padding: .5rem 1rem;
+}
+
+#social-links {
+  font-size: 2rem;
+}
