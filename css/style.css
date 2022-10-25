@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    font-family: 'Red Hat Display', "Lato", "Helvetica Neue", "Helvetica", sans-serif;
   }
   
   :root {
@@ -7,13 +8,22 @@
   }
 
 
+  /* navbar css */
+  nav {
+    background-color: #5B8F52;
+  }
 
+  .form-control, .btn, .navbar-toggler {
+    border-radius: 15px;
+  }
+
+  form {
+    margin-right: .5rem;
+  }
 
   /* temp navbar css */
-  .navbar-brand {
-    font-size: 24px;
-    font-weight: bold;
-    color: green;
+  .navbar-brand img {
+    filter: drop-shadow(2px 2px 2px rgba(0,0,0, 30%));
   }
 
   .nav-item {
@@ -81,7 +91,6 @@
   }
   
   .card img {
-    opacity: 50%;
     object-fit: cover;
     border-radius: 10px;
   }
@@ -132,7 +141,7 @@
     color:#FFFFFF;
     text-shadow:1px 0 0 rgb(187, 187, 187);
     font-weight: bold;
-    background-color:#89BC81;
+    background-color:#5B8F52;
   }
   
   .footer-apoio h3 {
