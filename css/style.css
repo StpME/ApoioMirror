@@ -16,6 +16,10 @@
     color: green;
   }
 
+  .nav-item {
+    font-weight: bold;
+  }
+  
 
 
 
@@ -26,9 +30,10 @@
 
   body {
     flex-direction: column;
-    font-family: "Rufina";
+    font-family: 'Red Hat Display', "Lato", "Helvetica Neue", "Helvetica", sans-serif;
     margin: 0;  
     height: inherit;
+    background-color: #DEDEDE;
   }
 
   h1 {
@@ -88,7 +93,36 @@
   }
 
 
+/* results page */
 
+#social-links {
+  font-size: 2rem;
+}
+
+.results-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 5px 0 0 5px;
+}
+
+.company-heading {
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.company-heading:hover{
+  text-decoration: solid #000 2px;
+}
+
+
+.address-text {
+  font-size: 12px;
+}
+
+.result-container {
+  border-radius: 5px;
+  background-color: #eee;
+}
 
 
   /* Footer */
