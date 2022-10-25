@@ -1,0 +1,167 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  :root {
+    height: 100%;
+  }
+
+
+
+
+  /* temp navbar css */
+  .navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+    color: green;
+  }
+
+
+
+
+
+  .d-flex {
+    margin-left: auto;
+  }
+
+  body {
+    flex-direction: column;
+    font-family: "Rufina";
+    margin: 0;  
+    height: inherit;
+  }
+
+  h1 {
+    padding: 1em;
+  }
+
+  .container {
+    display: flex;
+  }
+  
+  .flex-inner {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 1rem;
+  }
+  
+  .list-sidebar {
+    /* Column divider line */
+    border-right: solid .2rem black;
+    flex: 0 2 200px;
+    height: 100%;
+    padding-bottom: 7.5em;
+    background-color: #CDFCD9; /*eee*/
+  }
+
+  .flex-display h1 {
+    text-align: center;
+  }
+
+  .flex-display p {
+    flex-wrap: wrap;
+  }
+  
+ .flex-display {
+  background-color: #eee;
+  flex: 180px 1 1;
+  }
+  
+  .card {
+    flex: 0 1 175px;
+    background-color: white;
+    margin: .5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.16),0 1px 3px rgba(0,0,0,0.23);
+  }
+  
+  .card img {
+    opacity: 50%;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  .card p {
+    font-size:100%;
+    font-weight: bold;
+    padding: .5rem 1rem;
+  }
+
+
+
+
+
+  /* Footer */
+
+  .footer-apoio {
+    padding:50px 0;
+    color:#FFFFFF;
+    text-shadow:1px 0 0 rgb(187, 187, 187);
+    font-weight: bold;
+    background-color:#89BC81;
+  }
+  
+  .footer-apoio h3 {
+    margin-top:0;
+    margin-bottom:12px;
+    font-weight:bold;
+    font-size:16px;
+  }
+  
+  .footer-apoio ul {
+    padding:0;
+    list-style:none;
+    line-height:1.6;
+    font-size:14px;
+    margin-bottom:0;
+  }
+  
+  .footer-apoio ul a {
+    color: inherit;
+    text-decoration:none;
+    opacity:0.6;
+  }
+  
+  .footer-apoio ul a:hover {
+    opacity: 0.8;
+  }
+  
+  .footer-apoio .item.text {
+    margin-bottom: 36px;
+  }
+  
+  .footer-apoio .item.text p {
+    opacity:0.6;
+    margin-bottom:0;
+  }
+  
+  .footer-apoio .item.socials {
+    text-align: center;
+  }
+  
+  .footer-apoio .item.socials > a {
+    font-size: 20px;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.4);
+    margin:0 8px;
+    color: #fff;
+    opacity: .75;
+  }
+  
+   .footer-apoio .copyright {
+    text-align:center;
+    padding-top:24px;
+    opacity:0.3;
+    font-size:13px;
+    margin-bottom:0;
+    position: fixed; left: 50%; bottom: 0px;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+
+  }
+  
