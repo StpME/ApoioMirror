@@ -45,8 +45,16 @@ body {
   background-color: #DEDEDE;
 }
 
-h1 {
-  padding: 1em;
+.d-flex {
+  margin-left: auto;
+  }
+
+  .card-body {
+    margin: auto;
+  }
+
+  .card-title {
+    text-align: center;
 }
 
 .container {
