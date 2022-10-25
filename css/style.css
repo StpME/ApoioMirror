@@ -86,7 +86,7 @@
     border-radius: 10px;
   }
   
-  .card p {
+  .list-name {
     font-size:100%;
     font-weight: bold;
     padding: .5rem 1rem;
@@ -186,16 +186,3 @@
     color: #fff;
     opacity: .75;
   }
-  
-   .footer-apoio .copyright {
-    text-align:center;
-    padding-top:24px;
-    opacity:0.3;
-    font-size:13px;
-    margin-bottom:0;
-    position: fixed; left: 50%; bottom: 0px;
-    transform: translate(-50%, -50%);
-    margin: 0 auto;
-
-  }
-  
