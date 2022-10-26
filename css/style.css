@@ -156,7 +156,7 @@ body {
 .footer-apoio {
   padding: 50px 0;
   color: #FFFFFF;
-  text-shadow: 1px 0 0 rgb(187, 187, 187);
+  /* text-shadow: 1px 0 0 rgb(187, 187, 187); */
   font-weight: bold;
   background-color: #5B8F52;
 }
@@ -172,7 +172,7 @@ body {
   padding: 0;
   list-style: none;
   line-height: 1.6;
-  font-size: 14px;
+  font-size: 16px;
   margin-bottom: 0;
 }
 
