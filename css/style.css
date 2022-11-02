@@ -266,8 +266,17 @@ body {
 
   }
 
+  @media (min-width: 576px) {
+    .profile-img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+
   @media (min-width: 768px) {
     .banner {
       display: block;
     }
+
+    
   }
