@@ -7,7 +7,6 @@
   height: 100%;
 }
 
-
 /* navbar css */
 nav {
   background-color: #5B8F52;
@@ -32,8 +31,6 @@ form {
   font-weight: bold;
 }
 
-
-
 body {
   flex-direction: column;
   font-family: 'Red Hat Display', "Lato", "Helvetica Neue", "Helvetica", sans-serif;
@@ -50,19 +47,19 @@ body {
   background-color: #DEDEDE;
 }
 
-  .banner {
+.banner {
     display: none;
-  }
+}
 
 .d-flex {
   margin-left: auto;
-  }
+}
 
-  .categories .card-body {
+.categories .card-body {
     margin: auto;
-  }
+}
 
-  .categories .card-title {
+.categories .card-title {
     text-align: center;
 }
 
@@ -118,9 +115,7 @@ body {
   padding: .5rem 1rem;
 }
 
-
 /* results page */
-
 #social-links {
   font-size: 2rem;
 }
@@ -140,7 +135,6 @@ body {
   text-decoration: solid #000 2px;
 }
 
-
 .address-text {
   font-size: 12px;
 }
@@ -150,9 +144,7 @@ body {
   background-color: #eee;
 }
 
-
 /* Footer */
-
 .footer-apoio {
   padding: 50px 0;
   color: #FFFFFF;
@@ -262,8 +254,7 @@ body {
     margin:0 8px;
     color: #fff;
     opacity: .75;
-  }
-
+    }
   }
 
   @media (min-width: 768px) {
