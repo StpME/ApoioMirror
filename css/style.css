@@ -22,7 +22,6 @@ form {
   margin-right: .5rem;
 }
 
-/* temp navbar css */
 .navbar-brand img {
   filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 30%));
 }
@@ -31,6 +30,7 @@ form {
   font-weight: bold;
 }
 
+/* main content */
 body {
   flex-direction: column;
   font-family: 'Red Hat Display', "Lato", "Helvetica Neue", "Helvetica", sans-serif;
