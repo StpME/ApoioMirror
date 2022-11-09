@@ -78,7 +78,12 @@ body {
 }
 
 #list_card {
-  padding: 0em;
+  padding: 1.5rem;
+}
+
+#edit_btn {
+  /* make padding match the rest of the elements on page */
+  /* padding:  */
 }
 
 .flex-display h1 {
@@ -102,9 +107,15 @@ body {
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
 }
 
-.card img {
+.card-img {
   object-fit: cover;
   border-radius: 10px;
+  background-size:contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 200px;
+  width: auto;
+ 
 }
 
 /* results page */
