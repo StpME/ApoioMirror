@@ -73,14 +73,12 @@ body {
   padding-bottom: 1rem;
 }
 
-.list-sidebar {
-  /* Column divider line */
-  border-right: solid .2rem black;
-  flex: 0 2 200px;
-  height: 100%;
-  padding-bottom: 7.5em;
-  background-color: #CDFCD9;
-  /*eee*/
+#list_name {
+  font-weight:600;
+}
+
+#list_card {
+  padding: 0em;
 }
 
 .flex-display h1 {
@@ -107,12 +105,6 @@ body {
 .card img {
   object-fit: cover;
   border-radius: 10px;
-}
-
-.list-name {
-  font-size: 100%;
-  font-weight: bold;
-  padding: .5rem 1rem;
 }
 
 /* results page */

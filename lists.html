@@ -57,92 +57,72 @@
 
 
     
-      <main>
-        <div class="row">
-          <section class="col-3 list-sidebar">
-            <h1 class="heading">My Lists</h1>
-            <div class="container flex-inner">
-                <!-- Card 1/New List -->
-                <div class="card">
-                  <img src="pics/add_list_icon.png" alt="Add a list">
-                  <a href="#"><p class="list-name">New List</p></a>
-                </div>
-                <!-- Card 2/Food -->
-                <div class="card">
-                  <img src="pics/food_pic.jpg" alt="food">
-                  <p class="list-name">Food</p>
-                </div>
-                <!-- Card 3/Groceries -->
-                <div class="card">
-                  <img src="pics/groceries_icon.png" alt="groceries">
-                  <p class="list-name">Groceries</p>
-                </div>
-                <!-- Card 4/Clothing -->
-                <div class="card">
-                  <img src="pics/clothing_icon.png" alt="thrifting">
-                  <p class="list-name">Thrifting</p>
-                </div>
-            </div>
-          </section>
-            
-          <section class="col flex-display">
+    <main>
+        <section class="col flex-display">
             <div class="col-lg-12 d-block">
-              <div class="card">
-                  <div class="card-body">
-                      <ul class="list-group list-group-flush">
-                        
-                          <li class="list-group-item py-3">
-                            <div class="row d-flex justify-content-center">
-                              <div class="col  text-center">
-                                <strong><h2>My Food List</h2></strong>
-                              </div>
-                            </div>
-                          </li>
+                <div class="card">
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <!-- List title FAVORITES-->
+                            <li class="list-group-item py-3">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col">
+                                    <strong><h2 id="list_name">My Favorites</h2></strong>
+                                    
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            
+                            <div class="row">
 
-                          <li class="list-group-item py-3">
-                            <div class="d-flex flex-row m-2 result-container">
-                              <a href=""><img src="pics/food_pic.jpg" class="results-image"
-                                alt="company example food image"></a>
-                              <div class="row">
-                                <div class="col mx-3">
-                                  <a class="company-heading mb-0 mt-1" href="">Small Company #1</a>
-                                  <p class="text-muted address-text">308 Negra Arroyo Lane, Albuquerque, New Mexico. 87104</p>
-                                  <p>We sell amazing pizza!</p>
+                                <div class="col-sm-3">
+                                    <div class="card" id="list_card" style="width: 18rem; height: 18rem;">
+                                        <div class="card-body">
+                                            <h4 class="card-title">List 1</h4>
+                                           
+                                            <a href="#" class="btn stretched-link"></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3">
+                                    <div class="card" id="list_card" style="width: 18rem; height: 18rem;">
+                                        <div class="card-body">
+                                            <h4 class="card-title">List 2</h4>
+                                            <p>With supporting text below as a natural lead-in to additional content.</p>
+                                            <a href="#" class="btn stretched-link"></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3">
+                                    <div class="card" id="list_card" style="width: 18rem; height: 18rem;">
+                                        <div class="card-body">
+                                            <h4 class="card-title">List 3</h4>
+                                            <img src="pics/groceries_icon.png" alt="groceries">
+                                           
+                                            <a href="#" class="btn stretched-link"></a>
+                                        </div>
+                                    </div>
                                 </div>
                               </div>
-                          </div>
-                          </li>
-
-                          <li class="list-group-item py-3">
-                            <div class="d-flex flex-row m-2 result-container">
-                              <a href=""><img src="pics/food_icon.png" class="results-image"
-                                alt="company example filler food image"></a>
-                              <div class="row">
-                                <div class="col mx-3">
-                                  <a class="company-heading mb-0 mt-1" href="">Small Company #2</a>
-                                  <p class="text-muted address-text">Address here</p>
-                                  <p>some description here</p>
+                            <!-- List title FOOD-->
+                            <li class="list-group-item py-3">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col">
+                                    <strong><h2 id="list_name">My Food List</h2></strong>
+                                    </div>
                                 </div>
-                              </div>
-                          </div>
-                          </li>
-                          <li class="list-group-item py-3">
-                              <div class="row d-flex justify-content-between">
-                                  <div class="col">
-                                      <strong>Notes:</strong>
-                                  </div>
-                                  <div class="text-muted">
-                                      Remember to check out this place after work tomorrow!
-                                  </div>
-                              </div>
-                          </li>
-                      </ul>
-                      <button type="button" class="btn btn-success mt-3">Edit</button>
-                  </div>
-              </div>
-          </section>
+                            </li>
+                        </ul>
+                        <!--Edit Button-->
+                        <button type="button" id="edit_btn" class="btn btn-success mt-3">Edit</button>
+                    </div>
+                </div>
+            </section>
         </div>
-      </main> 
+    </main> 
         
 
         
