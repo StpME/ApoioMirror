@@ -64,17 +64,17 @@
                     <div class="card-body">
                         <ul class="list-group list-group-flush">
                             <!-- List title FAVORITES-->
+                            <div id='list_header' class="row p-4 mt-4">
+                                <li class="list-group-item">
+                                    <!--Edit Button-->
+                                    <button type="button" id="edit_btn" class="btn btn-success pull-right me-3">Edit</button>
+                                    <!--List Name-->
+                                    <strong><h2 class="ms-3" id="list_name">My Favorites</h2></strong>
+                                </li>
+                            </div>
                             
-                            <li class="list-group-item pt-3">
-                                <!--Edit Button-->
-                                <button type="button" id="edit_btn" class="btn btn-success pull-right me-3">Edit</button>
-                                <!--List Name-->
-                                <strong><h2 class="ms-3" id="list_name">My Favorites</h2></strong>
-                            </li>
                             
-                            
-                            <div class="row">
-
+                            <div class="row p-4">
                                 <div class="col-sm-3" id="list_card">
                                     <div class="card" style="width: 18rem; height: 18rem;">
                                         <div class="card-body">
@@ -107,32 +107,34 @@
                                     </div>
                                 </div>
 
-                              </div>
-                            <!-- List title FOOD-->
-                            <div class="row p-3">
-                            <li class="list-group-item pt-3">
-                                <!--Edit Button-->
-                                <button type="button" id="edit_btn" class="btn btn-success pull-right me-3">Edit</button>
-                                <!--List Name-->
-                                <strong><h2 class="ms-3" id="list_name">My Food List</h2></strong>
-                            </li>
+                            </div>
 
-                            <div class="col-sm-3" id="list_card">
-                                <div class="card" style="width: 18rem; height: 18rem;">
-                                    <div class="card-body">
-                                        <h4 class="card-title">List 1</h4>
-                                        <p>TEXT CONTENT</p>
-                                        <a href="#" class="btn stretched-link"></a>
+                            
+                            <!-- List title FOOD-->
+                            <div id='list_header' class="row p-4">
+                                <li class="list-group-item">
+                                    <!--Edit Button-->
+                                    <button type="button" id="edit_btn" class="btn btn-success pull-right me-3">Edit</button>
+                                    <!--List Name-->
+                                    <strong><h2 class="ms-3" id="list_name">My Food List</h2></strong>
+                                </li>
+                            
+                                <div class="col-sm-3" id="list_card">
+                                    <div class="card" style="width: 18rem; height: 18rem;">
+                                        <div class="card-body">
+                                            <h4 class="card-title">List 1</h4>
+                                            <p>TEXT CONTENT</p>
+                                            <a href="#" class="btn stretched-link"></a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        
 
                         </ul>
                         
                         
                     </div>
-                <!-- </div> -->
             </section>
         </div>
     </main> 

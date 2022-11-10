@@ -81,6 +81,10 @@ body {
   padding: 1.5rem;
 }
 
+#list_header {
+  border-radius: 10px;
+}
+
 /* #edit_btn { */
   /* padding:  */
 /* } */
