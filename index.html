@@ -8,7 +8,7 @@
     <title>Apoio</title>
     <meta name="authors" content="Ayata Bernhardt, Mitchell Stapelman, Justin Tham">
     <meta name="description" content="Homepage for APOIO.">
-    <link rel="icon" type="image/png" href="pics/favicon_green.png">
+    <link rel="icon" type="image/png" href="app/public/pics/favicon_green.png">
     <!-- stylesheets -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -21,10 +21,48 @@
 </head>
 
 <body>
+
     <nav class="navbar navbar-dark navbar-expand-lg">
         <div class="container">
+            <a href="index.html" class="navbar-brand">
+                <img src="app/public/pics/logo.png" alt="Apoio logo">
+            </a>
+  
+            <div class="ms-auto me-auto">
+                <form class="d-flex" role="search">
+                    <div class="input-group">
+                        <input class="form-control " type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-dark" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </div>
+                </form>
+            </div>
+            
+  
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+  
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="d-flex justify-content-end  navbar-nav justify-content-end mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="lists.html" class="nav-link">My Lists</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="account.html" class="nav-link">My Account</a>
+                    </li>
+                </ul>
+                
+            </div>
+        </div>
+    </nav>
+
+    <!-- <nav class="navbar navbar-dark navbar-expand-lg">
+        <div class="container">
             <a href="#" class="navbar-brand">
-                <img src="pics/logo.png" alt="Apoio logo">
+                <img src="app/public/pics/logo.png" alt="Apoio logo">
             </a>
   
             <div class="ms-auto me-auto">
@@ -56,11 +94,11 @@
                 
             </div>
         </div>
-    </nav>
+    </nav> -->
 
     <main>
         <div class="banner row">
-            <img src="pics/restaurant.png" alt="The front of the restuarant Sizzle and Crunch"/>
+            <img src="app/public/pics/restaurant.png" alt="The front of the restuarant Sizzle and Crunch"/>
         </div>
         <div class="row">
             <h2 class="text-center p-3">Browse by category</h2>
@@ -68,7 +106,7 @@
         <div class="row categories justify-content-center">
             <div class="card">
                 <div class="card-body">
-                    <img src="pics/hamburger.png" alt="Food category">
+                    <img src="app/public/pics/hamburger.png" alt="Food category">
                 </div>
                 <div class="card-title">
                     <a href="results.html" class="btn stretched-link">Food</a>
@@ -76,7 +114,7 @@
             </div>
             <div class="card">
                 <div class="card-body">
-                    <img src="pics/shirt.png" alt="Clothing category">
+                    <img src="app/public/pics/shirt.png" alt="Clothing category">
                 </div>
                 <div class="card-title">
                     <a href="results.html" class="btn stretched-link">Clothing</a>
@@ -84,7 +122,7 @@
             </div>
             <div class="card">
                 <div class="card-body">
-                    <img src="pics/basket.png" alt="Groceries category">
+                    <img src="app/public/pics/basket.png" alt="Groceries category">
                 </div>
                 <div class="card-title">
                     <a href="results.html" class="btn stretched-link">Groceries</a>
@@ -124,7 +162,9 @@
           </footer>
         </div>
     </footer>
-    <script src="js/script.js"></script>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
 
 </html>

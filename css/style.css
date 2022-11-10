@@ -81,10 +81,13 @@ body {
   padding: 1.5rem;
 }
 
-#edit_btn {
-  /* make padding match the rest of the elements on page */
-  /* padding:  */
+#list_header {
+  border-radius: 10px;
 }
+
+/* #edit_btn { */
+  /* padding:  */
+/* } */
 
 .flex-display h1 {
   text-align: center;
