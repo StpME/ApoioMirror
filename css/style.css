@@ -147,6 +147,16 @@ body {
   background-color: #eee;
 }
 
+/* search item */
+.search-item-div {
+  overflow: hidden;
+  max-height: 400px;
+}
+
+.search-item-img {
+  width: 100%;
+}
+
 /* Footer */
 .footer-apoio {
   padding: 50px 0;
