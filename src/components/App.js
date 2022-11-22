@@ -1,11 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Navbar from './Navbar.js';
 import Footer from './Footer.js';
 import {ListCard} from './List.js';
 
 
-function App() {
-    let hi = "d";
+function App(props) {
     return (
         <div>
             <Navbar />

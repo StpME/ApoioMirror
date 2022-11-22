@@ -98,6 +98,9 @@ body {
   flex: 180px 1 1;
 }
 
+.btn:hover {
+  box-shadow: 0 0 0 2em transparent;
+}
 .card {
   flex: 0 1 175px;
   background-color: white;
