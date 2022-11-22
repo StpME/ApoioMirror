@@ -1,19 +1,16 @@
 import React from 'react';
 
-function listCard(props) {
-    const [something, set] = useState(null);
-
-    const card = (
-        <div className="col-sm-3" id="list_card">
-            <div className="card" style="width: 18rem; height: 18rem;">
-                <div className="card-body">
-                    <h4 className="card-title">Place 1</h4>
-                    <div className="card-img" style="background-image:url('app/public/pics/food_pic.jpg')"></div>
-                    <p>TEXT CONTENT</p>
-                    <a href="#" class="btn stretched-link"></a>
-                </div>
-            </div>
+export function ListCard(props) {
+    //const [something, set] = useState(null);
+    //create list button
+    //on click, pass to createnewlist
+    console.log('List card');
+    return (
+        <div id='list_header' className="row p-4 mt-4">
+            <li className="list-group-item btn btn-success stretched-link">
+                <strong><h2 className="ms-3" id="list_name">Create New List</h2></strong>
+            </li>
         </div>
     );
-    return card;
 }
+
