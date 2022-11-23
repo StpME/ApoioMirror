@@ -6,7 +6,9 @@ export function ListCard(props) {
     const [lists, setList] = useState(null);
     const [click, setC] = useState(false);
 
-
+    const {placeName, location, description, placeThumbnail} = props.resultData;
+    
+    console.log();
 
     
     const handleClick = (event) => {

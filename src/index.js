@@ -2,17 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/App.js';
 import ResultPage from './components/ResultPage.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 
-//--static data source :D--
-//import data from 'hi.json';
+//--static data source--
+import STORE_DATA from './data/store_data.json';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  // pass in the data as a prop
   <React.StrictMode>
-    <ResultPage />
-    {/* <App /> */}
+    {/*<ResultPage />*/}
+    <App stores={STORE_DATA}/>
   </React.StrictMode>
 );
 

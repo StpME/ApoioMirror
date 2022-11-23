@@ -1,15 +1,20 @@
 import React, {useState} from 'react';
 import Navbar from './Navbar.js';
 import Footer from './Footer.js';
-import {ListCard} from './List.js';
-import {CreateList} from './List.js';
+import {ListCard} from './ListPage.js';
+import {CreateList} from './ListPage.js';
+import Home from './Home.js';
 
-// props is data source 
 function App(props) {
+    const stores = props.stores;
+
     return (
         <div>
             <Navbar />
-            <ListCard />
+            <Home />
+            {/* <ListCard stores={stores}/> */}
+            
+
             <Footer />
         </div>
     );
