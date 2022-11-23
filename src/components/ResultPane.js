@@ -29,10 +29,10 @@ function ResultItem(props) {
     }
 
     let favoritedText = "Favorite this place!";
-    let favoritedStyle = "btn btn-outline-danger text-danger";
+    let favoritedStyle = "btn btn-outline-danger text-danger d-sm-none";
     if (isFavorited) {
         favoritedText = "Unfavorite this place!";
-        favoritedStyle = "btn btn-danger text-white"
+        favoritedStyle = "btn btn-danger text-white d-md-none"
     }
 
     return (
