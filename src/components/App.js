@@ -3,7 +3,8 @@ import Navbar from './Navbar.js';
 import Footer from './Footer.js';
 import {ListCard} from './ListPage.js';
 import {CreateList} from './ListPage.js';
-import {ResultPane} from './ResultPane.js'
+import Home from './Home.js';
+
 function App(props) {
     const stores = props.stores;
     //console.log(props);
@@ -11,8 +12,9 @@ function App(props) {
     return (
         <div>
             <Navbar />
-            <ListCard stores={stores}/>
-           
+            <Home />
+            {/* <ListCard stores={stores}/> */}
+            
 
             <Footer />
         </div>
