@@ -1,26 +1,20 @@
 import React, {useState} from 'react';
 
-
-export function ListCard(props) {
-    // pass this component a prop from the data source, being the place/item being put into te card, then map these properties to an object and pass that object into rendered element
-
-    
-    // const currentFilter = '';
-    // filter by type later
-    //console.log(props.stores);
+export function ListPage(props) {
+    // Create components
     const stores = props.stores.map((item, index) => {
         return (
-        <CreateCard key={index} store={item} />
+            <CreateCard key={index} store={item} type={item.type}/>
         ); 
     });
 
-    const storeTypes = props.stores.map((item, index) => {
-        //console.log(item.type);
+    const storeTypes = props.types.map((item, index) => {
         return (
-            <CreateList key={index} store={item} />
+            <CreateList key={index} type={item} cards={stores}/>
         ); 
     });
-    //console.log(storeTypes);
+
+    
 
     return (
         <section className="col flex-display">
@@ -35,11 +29,8 @@ export function ListCard(props) {
                                 </li>
                             </div>*/}
 
-                            {storeTypes}
-
-
                             <div className="row px-3">
-                                {stores}
+                                {storeTypes}
                             </div>
                             
                         </ul>
@@ -53,55 +44,62 @@ export function ListCard(props) {
 
 
 export function CreateList(props) {
-    const type = props.store.type;
-    
-    //const types = [props];
-    //console.log(props);
-    
-    //console.log(typeof arr);
-    
-    
-    
-    const [text, setText] = useState(type);
+    const type = props.type;
+    //List name defaults to store types
+    const [text, setText] = useState(type.substring(0,1).toUpperCase() + type.substring(1));
 
     // Prompts user for list name and changes it
     const changeText = () => {
         const input = prompt('Enter List Name');
         setText(input);
-        
     }
+    
+    const card = props.cards.map((item) => {
+        if (type === item.props.type) {
+            return (item)}
+    });
+    
 
     return (
         <div id='list_header' className="row p-4" onClick={() => changeText()}>
             <li className="list-group-item">
                 <button type="button" id="edit_btn" className="btn btn-success pull-right me-3">Edit</button>
                 <strong><h2 className="ms-3" id="list_name">{text}</h2></strong>
+                
             </li>
+            {card}
         </div>
     )
 }
 
-//function called when user favorites a store
+//Function called when user favorites a store
 export function CreateCard(props) {
-    //console.log(props);
     const store = props.store;
+    
     //unstar to remove from the list?
     const handleClick = (event) => {
-        console.log('clicked');
+        //console.log('clicked');
     }
+
+    
     const card = (
         <div className="col-sm-3" id="list_card" onClick={handleClick}>
             <div className="card" style={{width:"18rem", height: "18rem"}}>
                 <div className="card-body">
                     <h4 className="card-title">{store.placeName}</h4>
                     <img className="img-fluid" src={store.placeThumbnail}/>
-                    <p>{store.description}</p>
+                    {/*<p>{store.description}</p>*/}
                     <a href="#" className="btn stretched-link"></a>
                 </div>
             </div>
         </div>
     );
     return card;
+
+
+
+    
+    
 }
 
 
