@@ -4,7 +4,7 @@ export function ResultItem(props) {
     return (
         <div class="d-flex flex-row m-2 result-container">
             <a href="">
-                <img src="./public/pics/food_pic.jpg" class="results-image" alt="company food image"></img>
+                <img src="/pics/food_pic.jpg" class="results-image" alt="company food image"></img>
             </a>
             <div class="row">
                 <div class="col mx-3">

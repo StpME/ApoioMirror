@@ -2,7 +2,7 @@ import React from 'react';
 
 export function ResultFilter(props) {
     return (
-        <div class="card">
+        <div class="card shadow-none border">
             <div class="card-body">
                 <div class="mb-3"><strong>Filters:</strong></div>
                 <div class="my-2">Owner Status:</div>
