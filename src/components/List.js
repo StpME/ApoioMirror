@@ -17,7 +17,6 @@ export function ListCard(props) {
     }
     //create list button
     //on click, pass to create list
-    //console.log('List card');
     const potato = function helper() {
         if (click === true) {
             console.log("helper")
@@ -29,7 +28,7 @@ export function ListCard(props) {
 
 
 
-    
+
     return (
         <section className="col flex-display">
             <div className="col-lg-12 d-block">
@@ -44,6 +43,7 @@ export function ListCard(props) {
                                 </li>
                             </div>
                             <CreateList />
+                            <CreateCard />
                             
                         </ul>
                     </div>
@@ -65,6 +65,7 @@ export function CreateList() {
         //console.log('change text');
         const input = prompt('Enter List Name');
         setText(input);
+        
     }
 
     return (
@@ -78,8 +79,8 @@ export function CreateList() {
 }
 
 //function should be called when user wants to add a place from the search bar ?
-export function createCard(props) {
-    console.log('create card props: ' + props);
+export function CreateCard(props) {
+    //console.log('create card props: ' + props);
     //see pinned pic for what to work on lol
     const testName = "Place 1";
     const testText = "TEXT CONTENT";
@@ -87,15 +88,16 @@ export function createCard(props) {
         console.log('clicked');
     }
     
-    //change card image url to the item data source
+    //styling needs to be changed for jsx
+    //change card image url to the item prop
     const card = (
         <div className="col-sm-3" id="list_card" onClick={handleClick}>
-            <div className="card" style="width: 18rem; height: 18rem;">
+            <div className="card" style={{width:"18rem", height: "18rem"}}>
                 <div className="card-body">
                     <h4 className="card-title">{testName}</h4>
-                    <div className="card-img" style="background-image:url('app/public/pics/food_pic.jpg')"></div>
+                    <img className="card-img" src='pics/food_pic.jpg'/>
                     <p>{testText}</p>
-                    <a href="#" class="btn stretched-link"></a>
+                    <a href="#" className="btn stretched-link"></a>
                 </div>
             </div>
         </div>
