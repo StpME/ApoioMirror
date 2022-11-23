@@ -12,6 +12,7 @@ root.render(
   // pass in the data as a prop
   <React.StrictMode>
     <ResultPage />
+    {/* <App /> */}
   </React.StrictMode>
 );
 

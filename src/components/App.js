@@ -10,10 +10,7 @@ function App(props) {
         <div>
             <Navbar />
             <ListCard />
-            
-
             <Footer />
-            
         </div>
     );
 }

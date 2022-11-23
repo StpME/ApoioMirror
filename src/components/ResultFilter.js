@@ -33,6 +33,7 @@ export function ResultFilter(props) {
                         Mediterranean
                     </label>
                 </div>
+                <button className='mt-2 btn btn-outline-secondary'>Filter</button>
             </div>
         </div>
     );
