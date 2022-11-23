@@ -1,0 +1,9 @@
+[
+    {
+        "name": "Katsu Burger",
+        "type": "restaurant",
+        "location": "12700 SE 38th St, Bellevue",
+        "description": "Come here for some delicious Japanese fusion burgers!",
+        "img": "./public/pics/food_pic.jpg"
+    }
+]

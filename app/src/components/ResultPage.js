@@ -9,7 +9,7 @@ export default function ResultPage(props) {
                 <div className="col-md-4 col-lg-3">
                     <ResultFilter />
                 </div>
-                <div className="col-md-6 col-lg-9 flex-column">
+                 <div className="col-md-6 col-lg-9 flex-column">
                     <ResultItem />
                 </div>
             </div>
