@@ -1,0 +1,37 @@
+[
+    {
+        "placeName": "Katsu Burger",
+        "location": "12700 SE 38th St, Bellevue",
+        "description": "Come here for some delicious Japanese fusion burgers!",
+        "placeThumbnail": "/pics/kb_item.jpg",
+        "type": "restaurant"
+    },
+    {
+        "placeName": "Ono Authentic Hawaiian Poke",
+        "location": "10016 Edmonds Way, Edmonds",
+        "description": "Come eat the highest quality Poke in Seattle!",
+        "placeThumbnail": "/pics/food_pic.jpg",
+        "type": "restaurant"
+    },
+    {
+        "placeName": "Cafe Juanita",
+        "location": "702 NE 120th Pl, Kirkland",
+        "description": "Looking for a sleek and fancy Italian place? This is the place.",
+        "placeThumbnail": "/pics/food_pic.jpg",
+        "type": "restaurant"
+    },
+    {
+        "placeName": "Katsu Burger",
+        "location": "12700 SE 38th St, Bellevue",
+        "description": "Come here for some delicious Japanese fusion burgers!",
+        "placeThumbnail": "/pics/food_pic.jpg",
+        "type": "restaurant"
+    },
+    {
+        "placeName": "Katsu Burger",
+        "location": "12700 SE 38th St, Bellevue",
+        "description": "Come here for some delicious Japanese fusion burgers!",
+        "placeThumbnail": "/pics/food_pic.jpg",
+        "type": "restaurant"
+    }
+]
