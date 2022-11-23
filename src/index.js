@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './components/App.js';
 import './style.css';
 
-//static data source
+//--static data source :D--
 //import data from 'hi.json';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

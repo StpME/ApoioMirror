@@ -25,7 +25,7 @@ export default function Footer() {
                         <div className="col-md-6 item text">
                             <h3>About us</h3>
                             <p>
-                                We aim to address rising gentrification across King County and the greater Seattle region through increasing the discoverability of local businesses by providing resources for users to interact with and support their communities with small-business centered tools.
+                                We aim to address rising gentrification across King County and the greater Seattle region by increasing the discoverability of local businesses through providing resources for users to interact with and support their communities with small-business centered tools.
                             </p>
                         </div>
                     </div>

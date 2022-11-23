@@ -83,6 +83,7 @@ body {
 
 #list_header {
   border-radius: 10px;
+  
 }
 
 .flex-display h1 {
@@ -100,6 +101,9 @@ body {
 
 .btn:hover {
   box-shadow: 0 0 0 2em transparent;
+}
+.btn-success {
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
 }
 .card {
   flex: 0 1 175px;
