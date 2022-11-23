@@ -1,35 +1,26 @@
 import React, {useState} from 'react';
 
+
 export function ListCard(props) {
     // pass this component a prop from the data source, being the place/item being put into te card, then map these properties to an object and pass that object into rendered element
-    const [cards, setCard] = useState(null);
-    const [lists, setList] = useState(null);
-    const [click, setC] = useState(false);
-
-    const {placeName, location, description, placeThumbnail} = props.resultData;
-    
-    console.log();
 
     
-    const handleClick = (event) => {
-        console.log('clicked');
-        setC(true);
-        console.log(click);
-        //setC(true);
-    }
-    //create list button
-    //on click, pass to create list
-    const potato = function helper() {
-        if (click === true) {
-            console.log("helper")
-            setC(false);
-            return <CreateList />
-        }
-    }
+    // const currentFilter = '';
+    // filter by type later
+    //console.log(props.stores);
+    const stores = props.stores.map((item, index) => {
+        return (
+        <CreateCard key={index} store={item} />
+        ); 
+    });
 
-
-
-
+    const storeTypes = props.stores.map((item, index) => {
+        //console.log(item.type);
+        return (
+            <CreateList key={index} store={item} />
+        ); 
+    });
+    //console.log(storeTypes);
 
     return (
         <section className="col flex-display">
@@ -38,14 +29,18 @@ export function ListCard(props) {
                     <div className="card-body">
                         <ul className="list-group list-group-flush">
 
-                            <div id='list_header' className="row p-4 mt-4">
+                            {/*<div id='list_header' className="row p-4 mt-4">
                                 <li className="btn btn-success" onClick={handleClick}>
                                     <strong><h2 className="ms-3" id="list_name">Create New List</h2></strong>
-                                    <div></div>
                                 </li>
+                            </div>*/}
+
+                            {storeTypes}
+
+
+                            <div className="row px-3">
+                                {stores}
                             </div>
-                            <CreateList />
-                            <CreateCard />
                             
                         </ul>
                     </div>
@@ -57,14 +52,20 @@ export function ListCard(props) {
 
 
 
-export function CreateList() {
-    //console.log('create list');
-    const testName = "My Food List";
-    const [text, setText] = useState(testName);
+export function CreateList(props) {
+    const type = props.store.type;
+    
+    //const types = [props];
+    //console.log(props);
+    
+    //console.log(typeof arr);
+    
+    
+    
+    const [text, setText] = useState(type);
 
     // Prompts user for list name and changes it
     const changeText = () => {
-        //console.log('change text');
         const input = prompt('Enter List Name');
         setText(input);
         
@@ -80,25 +81,21 @@ export function CreateList() {
     )
 }
 
-//function should be called when user wants to add a place from the search bar ?
+//function called when user favorites a store
 export function CreateCard(props) {
-    //console.log('create card props: ' + props);
-    //see pinned pic for what to work on lol
-    const testName = "Place 1";
-    const testText = "TEXT CONTENT";
+    //console.log(props);
+    const store = props.store;
+    //unstar to remove from the list?
     const handleClick = (event) => {
         console.log('clicked');
     }
-    
-    //styling needs to be changed for jsx
-    //change card image url to the item prop
     const card = (
         <div className="col-sm-3" id="list_card" onClick={handleClick}>
             <div className="card" style={{width:"18rem", height: "18rem"}}>
                 <div className="card-body">
-                    <h4 className="card-title">{testName}</h4>
-                    <img className="card-img" src='pics/food_pic.jpg'/>
-                    <p>{testText}</p>
+                    <h4 className="card-title">{store.placeName}</h4>
+                    <img className="img-fluid" src={store.placeThumbnail}/>
+                    <p>{store.description}</p>
                     <a href="#" className="btn stretched-link"></a>
                 </div>
             </div>

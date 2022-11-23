@@ -101,9 +101,12 @@ body {
 
 .btn:hover {
   box-shadow: 0 0 0 2em transparent;
+  
 }
 .btn-success {
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
+  background-color: #5B8F52;
+  
 }
 .card {
   flex: 0 1 175px;
@@ -113,14 +116,13 @@ body {
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
 }
 
-.card-img {
-  object-fit: cover;
+.img-fluid {
   border-radius: 10px;
-  background-size:contain;
+  object-fit: cover;
+  
   background-repeat: no-repeat;
   background-position: center;
-  height: 200px;
-  width: auto;
+  max-width: 100%; height: 10vw;
  
 }
 
