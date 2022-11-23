@@ -5,8 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Search Results</title>
-    <link rel="icon" type="image/png" href="app/public/pics/favicon_green.png">
+    <title>Apoio</title>
+    <meta name="authors" content="Ayata Bernhardt, Mitchell Stapelman, Justin Tham">
+    <meta name="description" content="Homepage for APOIO.">
+    <link rel="icon" type="image/png" href="pics/favicon_green.png">
     <!-- stylesheets -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -14,17 +16,16 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"
-    >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+
     <nav class="navbar navbar-dark navbar-expand-lg">
         <div class="container">
             <a href="index.html" class="navbar-brand">
-                <img src="app/public/pics/logo.png" alt="Apoio logo">
+                <img src="pics/logo.png" alt="Apoio logo">
             </a>
   
             <div class="ms-auto me-auto">
@@ -43,7 +44,7 @@
   
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="d-flex justify-content-end  navbar-nav justify-content-end mb-2 mb-lg-0">
-                    <li class="nav-item ">
+                    <li class="nav-item">
                         <a href="index.html" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
@@ -58,14 +59,76 @@
         </div>
     </nav>
 
-    <main>
-        <div class="search-item-div">
-            <img class="search-item-img" src="./pics/kb_item.jpg" alt="katsu burger large content image">
+    <!-- <nav class="navbar navbar-dark navbar-expand-lg">
+        <div class="container">
+            <a href="#" class="navbar-brand">
+                <img src="pics/logo.png" alt="Apoio logo">
+            </a>
+  
+            <div class="ms-auto me-auto">
+                <form class="d-flex" role="search">
+                    <div class="input-group">
+                        <input class="form-control " type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-dark" type="submit"><a href="results.html" class=""><i class="fa fa-search" aria-hidden="true"></i></a></button>
+                    </div>
+                </form>
+            </div>
+            
+  
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+  
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="d-flex justify-content-end  navbar-nav justify-content-end mb-2 mb-lg-0">
+                    <li class="nav-item ">
+                        <a href="index.html" class="nav-link active">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="lists.html" class="nav-link">My Lists</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="account.html" class="nav-link">My Account</a>
+                    </li>
+                </ul>
+                
+            </div>
         </div>
-        <h1 class="p-4">Katsu Burger</h1>
-        
-        <h1 class="p-4">Location via Google Maps</h1>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2691.5393814631484!2d-122.17258248452757!3d47.57674987918264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54906eaaac5fc89f%3A0xc19dbcdad1040ad3!2sKatsu%20Burger!5e0!3m2!1sen!2sus!4v1668031908779!5m2!1sen!2sus" class="ps-4" width="400" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </nav> -->
+
+    <main>
+        <div class="banner row">
+            <img src="pics/restaurant.png" alt="The front of the restuarant Sizzle and Crunch"/>
+        </div>
+        <div class="row">
+            <h2 class="text-center p-3">Browse by category</h2>
+        </div>
+        <div class="row categories justify-content-center">
+            <div class="card">
+                <div class="card-body">
+                    <img src="pics/hamburger.png" alt="Food category">
+                </div>
+                <div class="card-title">
+                    <a href="results.html" class="btn stretched-link">Food</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <img src="pics/shirt.png" alt="Clothing category">
+                </div>
+                <div class="card-title">
+                    <a href="results.html" class="btn stretched-link">Clothing</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <img src="pics/basket.png" alt="Groceries category">
+                </div>
+                <div class="card-title">
+                    <a href="results.html" class="btn stretched-link">Groceries</a>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer>   
@@ -98,8 +161,10 @@
               </div>
           </footer>
         </div>
-      </footer>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    </footer>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
 
 </html>
