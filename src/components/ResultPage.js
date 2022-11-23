@@ -1,6 +1,6 @@
 import React from 'react';
 import { ResultFilter } from './ResultFilter';
-import { ResultItem } from './ResultItem';
+import { ResultPane } from './ResultPane';
 
 export default function ResultPage(props) {
     return (
@@ -10,7 +10,7 @@ export default function ResultPage(props) {
                     <ResultFilter />
                 </div>
                  <div className="col-md-6 col-lg-9 flex-column">
-                    <ResultItem />
+                    <ResultPane />
                 </div>
             </div>
         </div>
