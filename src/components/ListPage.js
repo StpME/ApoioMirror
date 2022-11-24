@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import Collapsible from 'react-collapsible';
+import MediaQuery from 'react-responsive';
 
 export function ListPage(props) {
 
@@ -27,7 +28,7 @@ export function ListPage(props) {
                                 </li>
                             </div>*/}
                             <div id='list_header' className="row pt-4 mt-2">
-                                    <strong><h2 className="title">My Lists</h2></strong>
+                                <strong><h2 className="title">My Lists</h2></strong>
                             </div>
 
                             <div className="row px-3">
@@ -61,21 +62,29 @@ export function CreateList(props) {
         return (
             <li className="list-group-item">
                 <button className="btn btn-success pull-right me-3" onClick={() => changeText()}>Edit</button>
-                <strong><h2 className="ms-3" id="list_name" style={{height: "2rem"}}>{text}</h2></strong>
+                <strong><h2 className="ms-3" id="list_name">{text}</h2></strong>
             </li>
         )
     }
     
     return (
-        <div className="p">
             <div id="list_header collapsible" className="row p-4 mt-4">
-                <Collapsible className="collapsible pe-3" trigger={listHeader()}>
-                    <div className="row">
-                        {card}
-                    </div>
-                </Collapsible>
+                <MediaQuery minWidth={768}>
+                    <Collapsible className="collapsible" open trigger={listHeader()}>
+                        <div className="row">
+                            {card}
+                        </div>
+                    </Collapsible>
+                </MediaQuery>
+                <MediaQuery maxWidth={768}>
+                    <Collapsible className="collapsible" trigger={listHeader()}>
+                        <div className="row">
+                            {card}
+                        </div>
+                    </Collapsible>
+                </MediaQuery>
             </div>
-        </div>
+        
     )
 }
 
@@ -89,8 +98,8 @@ export function CreateCard(props) {
     }
 
     const card = (
-        <div className="col-sm-3" id="list_card" onClick={handleClick}>
-            <div className="card" style={{width:"18rem", height: "18rem"}}>
+        <div className="col" id="list_card" onClick={handleClick}>
+            <div className="card" id="list_card">
             <img className="img-fluid h-100" src={store.placeThumbnail}/>
             <div className="card-block text-center darken">
                 <h4 className="center" id="store_name">{store.placeName}</h4>
