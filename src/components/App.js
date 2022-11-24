@@ -21,7 +21,7 @@ function App(props) {
     const unique = [...(new Set(list))];
 
     const changeFavorited = (favBool) => {
-        console.log(favBool + " param");
+        // console.log(favBool + " param");
         setisFavorited(favBool);
     }
 
@@ -31,8 +31,8 @@ function App(props) {
     const favList = (storeName) => {
         const storesCopy = storeState.map((storeObj) => {
             if(storeObj.placeName === storeName) {
-                console.log(isFavorited);
-                storeObj.favorited = isFavorited;
+                console.log(!isFavorited);
+                storeObj.favorited = !isFavorited;
             }
 
             return storeObj;
@@ -40,7 +40,7 @@ function App(props) {
 
         setStoreState(storesCopy);
     }
-    // console.log(storeState);
+    console.log(storeState);
 
     return (
         <div>

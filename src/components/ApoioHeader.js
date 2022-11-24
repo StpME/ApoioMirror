@@ -59,7 +59,7 @@ export default function ApoioHeader() {
                             placeholder="Search"
                             aria-label="Search"
                         />
-                        <Button variant="dark"><i class="fa fa-search" aria-hidden="true"></i></Button>
+                        <Button variant="dark"><i className="fa fa-search" aria-hidden="true"></i></Button>
                     </div>
                 </Form>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
