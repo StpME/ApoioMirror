@@ -28,16 +28,24 @@
         "type": "restaurant"
     },
     {
-        "placeName": "testname",
-        "location": "12700 SE 38th St, Bellevue",
-        "description": "Come here for some delicious Japanese fusion burgers!",
+        "placeName": "Fremont Vintage Mall",
+        "location": "3419 Fremong Pl, North Seattle",
+        "description": "Want to spice up your house with cool, vintage deco?",
         "placeThumbnail": "/pics/food_pic.jpg",
-        "type": "test"
+        "type": "shop"
     },
-
     {
-        "placeName": "testname2",
+        "placeName": "The Seattle Barkery",
+        "location": "2225 8th Ave, Seattle",
+        "description": "Seattle treats for dogs! Food Truck vibes!",
         "placeThumbnail": "/pics/food_pic.jpg",
-        "type": "test"
+        "type": "shop"
+    },
+    {
+        "placeName": "Butter Home",
+        "location": "1531 Melrose Ave, Seattle",
+        "description": "Get decoration for your home from this brick + mortar shop!",
+        "placeThumbnail": "/pics/food_pic.jpg",
+        "type": "shop"
     }
 ]

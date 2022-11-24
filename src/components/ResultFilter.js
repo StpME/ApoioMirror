@@ -2,34 +2,34 @@ import React from 'react';
 
 export function ResultFilter(props) {
     return (
-        <div class="card shadow-none border">
-            <div class="card-body">
-                <div class="mb-3"><strong>Filters:</strong></div>
-                <div class="my-2">Owner Status:</div>
+        <div className="card shadow-none border">
+            <div className="card-body">
+                <div className="mb-3"><strong>Filters:</strong></div>
+                <div className="my-2">Owner Status:</div>
                 <div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></input>
-                        <label class="form-check-label" for="flexCheckDefault">
+                    <div className="form-check">
+                        <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"></input>
+                        <label className="form-check-label">
                             Female-owned
                         </label>
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></input>
-                        <label class="form-check-label" for="flexCheckDefault">
+                    <div className="form-check">
+                        <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"></input>
+                        <label className="form-check-label">
                             LGBTQ+-owned
                         </label>
                     </div>
                 </div>
-                <div class="my-2">Type of Food</div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></input>
-                    <label class="form-check-label" for="flexCheckDefault">
+                <div className="my-2">Type of Food</div>
+                <div className="form-check">
+                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"></input>
+                    <label className="form-check-label">
                         Asian
                     </label>
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></input>
-                    <label class="form-check-label" for="flexCheckDefault">
+                <div className="form-check">
+                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"></input>
+                    <label className="form-check-label">
                         Mediterranean
                     </label>
                 </div>
