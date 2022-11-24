@@ -49,6 +49,7 @@ function App(props) {
                 <Route index element={<Home />} />
                 <Route path="/lists" element={<ListPage stores={stores} types={unique} test={true} />} />
                 <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/results" element={<ResultPage storeCallback={favList} favCallback={changeFavorited}/>} />
             </Routes>         
 
             <Footer />
