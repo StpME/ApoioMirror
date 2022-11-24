@@ -108,9 +108,7 @@ body {
 
 .card#list_card {
   width:18rem; height: 18rem;
-  margin: 0 auto; /* Added */
-        float: none; /* Added */
-        margin-bottom: 10px; /* Added */
+  
 }
 
 #collapsible {
@@ -362,11 +360,16 @@ body {
   @media (max-width: 576px) {
     .card#list_card {
       width: 12rem; height: 12rem;
+      margin: 0 auto;
+      float: none; 
+      margin-bottom: 10px; 
     }
   }
   @media (min-width: 576px) and (max-width: 768px) {
-    
     .card#list_card {
       width: 15rem; height: 15rem;
+      margin: 0 auto;
+      float: none; 
+      margin-bottom: 10px; 
     }
   }

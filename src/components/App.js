@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-// import ApoioHeader from './ApoioHeader.js';
+import ApoioHeader from './ApoioHeader.js';
 import Footer from './Footer.js';
 import {ListPage} from './ListPage.js';
 import {CreateList} from './ListPage.js';
@@ -35,16 +35,17 @@ function App(props) {
 
             return storeObj;
         })
-
+        console.log(storesCopy);
         setStoreState(storesCopy);
     }
+    
     // console.log(storeState);
 
     return (
         <div>
             <ApoioHeader />
             {/*<Home />*/}
-            <ListPage stores={stores} types={unique} test={true} />
+            <ListPage stores={storeState} types={unique} />
             
 
             <Footer />

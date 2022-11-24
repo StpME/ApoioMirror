@@ -3,11 +3,16 @@ import Collapsible from 'react-collapsible';
 import MediaQuery from 'react-responsive';
 
 export function ListPage(props) {
-
+    //console.log(props);
     // Create components
     const stores = props.stores.map((item, index) => {
+        if (item.favorited === true) {
+            return (
+                <CreateCard key={index} store={item} type={item.type}/>
+            ); 
+        }
         return (
-            <CreateCard key={index} store={item} type={item.type}/>
+            <CreateCard key={index} store={null} type={null}/>
         ); 
     });
 
