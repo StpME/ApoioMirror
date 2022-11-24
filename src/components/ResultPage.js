@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from './Navbar';
+import Navbar from './ApoioHeader';
 import { ResultFilter } from './ResultFilter';
 import { ResultPane } from './ResultPane';
 

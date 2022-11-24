@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import Navbar from './Navbar.js';
+import ApoioHeader from './ApoioHeader.js';
 import Footer from './Footer.js';
 import {ListPage} from './ListPage.js';
 import {CreateList} from './ListPage.js';
@@ -17,7 +17,7 @@ function App(props) {
 
     return (
         <div>
-            <Navbar />
+            <ApoioHeader />
             {/*<Home />*/}
             <ListPage stores={stores} types={unique} test={true} />
             
