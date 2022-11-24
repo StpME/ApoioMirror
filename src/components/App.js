@@ -4,7 +4,7 @@ import Footer from './Footer.js';
 import {ListPage} from './ListPage.js';
 import {CreateList} from './ListPage.js';
 import ResultPage from './ResultPage.js';
-//import Home from './Home.js';
+import Home from './Home.js';
 
 function App(props) {
     //set stores to whatever the user passes to add to list
@@ -42,10 +42,10 @@ function App(props) {
 
     return (
         <div>
-            {/* <ApoioHeader /> */}
-            {/*<Home />*/}
+            <ApoioHeader />
+            <Home />
             {/* <ListPage stores={stores} types={unique} test={true} /> */}
-            <ResultPage storeCallback={favList} favCallback={changeFavorited}/>
+            
 
             <Footer />
         </div>
