@@ -41,6 +41,7 @@ form {
 }
 
 /* main content */
+
 body {
   flex-direction: column;
   font-family: 'Red Hat Display', "Lato", "Helvetica Neue", "Helvetica", sans-serif;
@@ -353,6 +354,11 @@ body {
   @media (min-width: 768px) {
     .banner {
       display: block;
+    }
+
+    .banner img {
+      max-height: 768px;
+      min-width: auto;
     }
     
   }
