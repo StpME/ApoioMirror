@@ -41,7 +41,7 @@ function ResultItem(props) {
 
     let favoritedText = "Favorite this place!";
     let favoritedStyle = "btn btn-outline-danger text-danger";
-    if (isFavorited) {
+    if (isFavorited || props.resultData.favorited === true) {
         favoritedText = "Unfavorite this place!";
         favoritedStyle = "btn btn-danger text-white"
     }
