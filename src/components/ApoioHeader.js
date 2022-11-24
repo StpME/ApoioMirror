@@ -49,8 +49,8 @@ export default function ApoioHeader() {
 
         <Navbar className="green" collapseOnSelect expand="lg" variant="dark">
             <Container>
-                <Navbar.Brand href="index.html"><img className="logo-large" src="pics/logo.png" alt="Apoio logo large" /></Navbar.Brand>
-                <Navbar.Brand href="index.html"><img className="logo-small" src="pics/favicon_white.png" alt="Apoio logo small" /></Navbar.Brand>
+                <Navbar.Brand href="index.html"><Link className="nav-link" to="/"><img className="logo-large" src="pics/logo.png" alt="Apoio logo large" /></Link></Navbar.Brand>
+                <Navbar.Brand href="index.html"><Link className="nav-link" to="/"><img className="logo-small" src="pics/favicon_white.png" alt="Apoio logo small" /></Link></Navbar.Brand>
 
                 <Form className="d-flex">
                     <div className="input-group">
@@ -65,29 +65,11 @@ export default function ApoioHeader() {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        {/* <Nav.Link href="#features">Features</Nav.Link>
-                        <Nav.Link href="#pricing">Pricing</Nav.Link> */}
-                        {/* <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">
-                                Another action
-                            </NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.4">
-                                Separated link
-                            </NavDropdown.Item>
-                        </NavDropdown> */}
                     </Nav>
                     <Nav>
-                        {/* <Nav.Link href="index.html">Home</Nav.Link>
-                        <Nav.Link href="lists.html">My Lists</Nav.Link>
-                        <Nav.Link href="account.html">My Account</Nav.Link> */}
-
                         <Link className="nav-link" to="/">Home</Link>
                         <Link className="nav-link" to="/lists">My Lists</Link>
                         <Link className="nav-link" to="/profile">My Account</Link>
-
                     </Nav>
                 </Navbar.Collapse>
             </Container>
