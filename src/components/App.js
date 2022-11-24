@@ -6,8 +6,10 @@ import {CreateList} from './ListPage.js';
 //import Home from './Home.js';
 
 function App(props) {
+    //set stores to whatever the user passes to add to list
     const stores = props.stores;
-    //Generate unique set of store types for listpage
+
+    //Generate unique set of store types for list page
     const list = stores.map((elem) => {
         return elem.type;
       });
@@ -17,7 +19,7 @@ function App(props) {
         <div>
             <Navbar />
             {/*<Home />*/}
-            <ListPage stores={stores} types={unique} />
+            <ListPage stores={stores} types={unique} test={true} />
             
 
             <Footer />
