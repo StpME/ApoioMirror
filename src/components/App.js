@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
-// import ApoioHeader from './ApoioHeader.js';
+import ApoioHeader from './ApoioHeader.js';
 import Footer from './Footer.js';
 import {ListPage} from './ListPage.js';
 import {CreateList} from './ListPage.js';
 import ResultPage from './ResultPage.js';
 import Home from './Home.js';
+import { BrowserRouter, Routes, Route, Link} from 'react-router-dom'
+import { ProfilePage } from './ProfilePage.js';
 
 function App(props) {
     //set stores to whatever the user passes to add to list
@@ -43,9 +45,11 @@ function App(props) {
     return (
         <div>
             <ApoioHeader />
-            {/*<Home />*/}
-            <ListPage stores={stores} types={unique} test={true} />
-            
+            <Routes>
+                <Route index element={<Home />} />
+                <Route path="/lists" element={<ListPage stores={stores} types={unique} test={true} />} />
+                <Route path="/profile" element={<ProfilePage />} />
+            </Routes>         
 
             <Footer />
         </div>

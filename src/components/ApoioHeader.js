@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { Link } from 'react-router-dom';
 
 
 export default function ApoioHeader() {
@@ -79,9 +80,14 @@ export default function ApoioHeader() {
                         </NavDropdown> */}
                     </Nav>
                     <Nav>
-                        <Nav.Link href="index.html">Home</Nav.Link>
+                        {/* <Nav.Link href="index.html">Home</Nav.Link>
                         <Nav.Link href="lists.html">My Lists</Nav.Link>
-                        <Nav.Link href="account.html">My Account</Nav.Link>
+                        <Nav.Link href="account.html">My Account</Nav.Link> */}
+
+                        <Link className="nav-link" to="/">Home</Link>
+                        <Link className="nav-link" to="/lists">My Lists</Link>
+                        <Link className="nav-link" to="/profile">My Account</Link>
+
                     </Nav>
                 </Navbar.Collapse>
             </Container>
