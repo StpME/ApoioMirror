@@ -40,7 +40,7 @@ function App(props) {
         //console.log(storesCopy);
         setStoreState(storesCopy);
     }
-    //console.log(storeState);
+    console.log(storeState);
 
     return (
         <div>

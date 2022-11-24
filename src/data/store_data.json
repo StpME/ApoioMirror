@@ -5,7 +5,7 @@
         "description": "Come here for some delicious Japanese fusion burgers!",
         "placeThumbnail": "/pics/kb_tn.jpg",
         "type": "restaurant",
-        "favorited": true
+        "favorited": false
         
     },
     {
@@ -22,7 +22,7 @@
         "description": "Looking for a sleek and fancy Italian place? This is the place.",
         "placeThumbnail": "/pics/cafe_juanita_tn.jpg",
         "type": "restaurant",
-        "favorited": true
+        "favorited": false
     },
     {
         "placeName": "Hiroshi's Poke",
@@ -30,7 +30,7 @@
         "description": "Looking for lunch near UW Seattle?",
         "placeThumbnail": "/pics/hiroshi_poke_tn.jpg",
         "type": "restaurant",
-        "favorited": true
+        "favorited": false
     },
     {
         "placeName": "Fremont Vintage Mall",
@@ -38,7 +38,7 @@
         "description": "Want to spice up your house with cool, vintage deco?",
         "placeThumbnail": "/pics/fv_mall_tn.jpg",
         "type": "shop",
-        "favorited": true
+        "favorited": false
     },
     {
         "placeName": "The Seattle Barkery",
