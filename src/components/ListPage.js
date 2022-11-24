@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import Collapsible from 'react-collapsible';
 
 export function ListPage(props) {
     // Create components
@@ -28,6 +29,9 @@ export function ListPage(props) {
                                     <strong><h2 className="ms-3" id="list_name">Create New List</h2></strong>
                                 </li>
                             </div>*/}
+                            <div id='list_header' className="row pt-4 mt-2">
+                                    <strong><h2 className="title">My Lists</h2></strong>
+                            </div>
 
                             <div className="row px-3">
                                 {storeTypes}
@@ -59,38 +63,53 @@ export function CreateList(props) {
             return (item)}
     });
     
-
-    return (
-        <div id='list_header' className="row p-4" onClick={() => changeText()}>
+    function listHeader() {
+        return (
             <li className="list-group-item">
-                <button type="button" id="edit_btn" className="btn btn-success pull-right me-3">Edit</button>
+                <button type="button" id="edit_btn" className="btn btn-success pull-right me-3" onClick={() => changeText()}>Edit</button>
                 <strong><h2 className="ms-3" id="list_name">{text}</h2></strong>
-                
+            
             </li>
-            {card}
+        )
+    }
+    
+    return (
+        <div className="p">
+            <div id="list_header collapsible" className="row p-4 mt-4">
+                <Collapsible className="collapsible pe-3" trigger={listHeader()}>
+                    <div className="row">
+                        {card}
+                    </div>
+                </Collapsible>
+            </div>
         </div>
+        
+        
+        
+        
+        
     )
 }
 
-//Function called when user favorites a store
+//Function called when user favorites a store (currently making cards for all data)
 export function CreateCard(props) {
     const store = props.store;
     
     //unstar to remove from the list?
     const handleClick = (event) => {
-        //console.log('clicked');
+        console.log("clicked");
     }
 
     
     const card = (
         <div className="col-sm-3" id="list_card" onClick={handleClick}>
             <div className="card" style={{width:"18rem", height: "18rem"}}>
-                <div className="card-body">
-                    <h4 className="card-title">{store.placeName}</h4>
-                    <img className="img-fluid" src={store.placeThumbnail}/>
-                    {/*<p>{store.description}</p>*/}
-                    <a href="#" className="btn stretched-link"></a>
-                </div>
+            <img className="img-fluid h-100" src={store.placeThumbnail}/>
+            <div className="card-block text-center darken">
+                <h4 className="center" id="store_name">{store.placeName}</h4>
+                {/*<p>{store.description}</p>*/}
+                <a href="#" className="btn stretched-link"></a>
+            </div>
             </div>
         </div>
     );
