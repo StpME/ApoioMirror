@@ -46,6 +46,7 @@ function App(props) {
             {/* <Home /> */}
             {/* <ListPage stores={stores} types={unique} test={true} /> */}
             <ResultPage storeCallback={favList} favCallback={changeFavorited}/>
+            
 
             <Footer />
         </div>
