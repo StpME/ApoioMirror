@@ -30,7 +30,7 @@
         "description": "Looking for lunch near UW Seattle?",
         "placeThumbnail": "/pics/hiroshi_poke_tn.jpg",
         "type": "restaurant",
-        "favorited": false
+        "favorited": true
     },
     {
         "placeName": "Fremont Vintage Mall",
