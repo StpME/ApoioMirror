@@ -32,7 +32,7 @@ export function ListPage(props) {
                                 <strong><h2 className="title">My Lists</h2></strong>
                             </div>
                              
-                                <button className="btn btn-success pull-right me-3" >Collapse All</button>
+                            {/*<button className="btn btn-success pull-right me-3" >Collapse All</button>*/}
                             
                             
                             <div className="row px-3">

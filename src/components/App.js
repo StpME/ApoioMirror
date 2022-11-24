@@ -18,8 +18,8 @@ function App(props) {
     return (
         <div>
             <ApoioHeader />
-            <Home />
-            {/* <ListPage stores={stores} types={unique} test={true} /> */}
+            {/*<Home />*/}
+            <ListPage stores={stores} types={unique} test={true} />
             
 
             <Footer />
