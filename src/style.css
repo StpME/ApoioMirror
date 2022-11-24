@@ -66,6 +66,10 @@ body {
   margin-left: auto;
 }
 
+.categories {
+  margin: 2%;
+}
+
 .categories .card-body {
     margin: auto;
 }
