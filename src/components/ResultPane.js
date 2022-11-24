@@ -25,10 +25,17 @@ function ResultItem(props) {
 
 
     const handleClick = () => {
+        let someBool = isFavorited;
+        if (isFavorited) {
+            someBool = false;
+        } else {
+            someBool = true;
+        }
         setisFavorited(!isFavorited);
-        // console.log(isFavorited);
+        console.log(someBool + " handleclick");
         props.storeCallback(placeName);
-        props.favCallback(isFavorited);
+        props.favCallback(someBool);
+        
 
     }
 
