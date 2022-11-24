@@ -27,10 +27,14 @@ export function ListPage(props) {
                                     <strong><h2 className="ms-3" id="list_name">Create New List</h2></strong>
                                 </li>
                             </div>*/}
+                            
                             <div id='list_header' className="row pt-4 mt-2">
                                 <strong><h2 className="title">My Lists</h2></strong>
                             </div>
-
+                             
+                                <button className="btn btn-success pull-right me-3" >Collapse All</button>
+                            
+                            
                             <div className="row px-3">
                                 {storeTypes}
                             </div>
