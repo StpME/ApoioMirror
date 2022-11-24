@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from './Navbar';
 import { ResultFilter } from './ResultFilter';
 import { ResultPane } from './ResultPane';
 

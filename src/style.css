@@ -8,8 +8,18 @@
 }
 
 /* navbar css */
-nav {
+
+.logo-small {
+  max-height: 2.5em;
+}
+
+.logo-large {
+  display: none;
+}
+
+.green {
   background-color: #5B8F52;
+  font-weight: bold;
 }
 
 .form-control,
@@ -89,10 +99,18 @@ body {
 
 #list_name {
   font-weight:600;
+  height: 2rem;
 }
 
 #list_card {
   padding: 1.5rem;
+}
+
+.card#list_card {
+  width:18rem; height: 18rem;
+  margin: 0 auto; /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
 }
 
 #collapsible {
@@ -158,7 +176,6 @@ body {
   border-radius: 10px;
   object-fit: cover;
   max-width: 100%;
-  opacity: 0.8;
 }
 
 #store_name {
@@ -267,6 +284,8 @@ body {
 }
 
 @media (max-width: 576px) {
+
+  
   .profile-img {
     width: 50px;
     height: 50px;
@@ -323,12 +342,31 @@ body {
       width: 100px;
       height: 100px;
     }
+
+    .logo-large {
+      display: inline;
+    }
+
+    .logo-small {
+      display: none;
+    }
   }
 
   @media (min-width: 768px) {
     .banner {
       display: block;
     }
-
     
+  }
+
+  @media (max-width: 576px) {
+    .card#list_card {
+      width: 12rem; height: 12rem;
+    }
+  }
+  @media (min-width: 576px) and (max-width: 768px) {
+    
+    .card#list_card {
+      width: 15rem; height: 15rem;
+    }
   }
