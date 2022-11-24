@@ -1,10 +1,11 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 
 const CARD_CATEGORIES = [
-    {name:'Food', img:'pics/hamburger.png'},
-    {name:'Clothing', img:'pics/shirt.png'},
-    {name:'Groceries', img:'pics/basket.png'}    
+    { name: 'Food', img: 'pics/hamburger.png' },
+    { name: 'Clothing', img: 'pics/shirt.png' },
+    { name: 'Groceries', img: 'pics/basket.png' }
 ]
 
 export default function Home(props) {
@@ -30,13 +31,14 @@ export default function Home(props) {
 
 function CategoryCard(props) {
     return (
-        <div className="card">
-            <div className="card-body">
-                <img src={props.img} alt={props.name + " category"} />
+            <div className="card">
+                <div className="card-body">
+                    <img src={props.img} alt={props.name + " category"} />
+                </div>
+                <div className="card-title">
+                    <Link className="btn stretched-link nav-link" to="/results">{props.name}</Link>
+                </div>
             </div>
-            <div className="card-title">
-                <a href="results.html" className="btn stretched-link">{props.name}</a>
-            </div>
-        </div>
+        
     );
 }
