@@ -111,42 +111,22 @@ function EditPage(props) {
                 <ul className="list-group list-group-flush">
                     <li className="list-group-item py-3">
                         <div className="row d-flex justify-content-between">
-                            <div className="col">
-                                <strong>Name:</strong>
-                            </div>
-                            <div className="col text-muted">
-                                Ayata
-                            </div>
+                            {/* name */}
                         </div>
                     </li>
                     <li className="list-group-item py-3">
                         <div className="row d-flex justify-content-between">
-                            <div className="col">
-                                <strong>Email:</strong>
-                            </div>
-                            <div className="col text-muted">
-                                ayatab@uw.edu
-                            </div>
+                            {/* email */}
                         </div>
                     </li>
                     <li className="list-group-item py-3">
                         <div className="row d-flex justify-content-between">
-                            <div className="col">
-                                <strong>Phone Number:</strong>
-                            </div>
-                            <div className="col text-muted">
-                                (111) 111-1111
-                            </div>
+                            {/* phone number */}
                         </div>
                     </li>
                     <li className="list-group-item py-3">
                         <div className="row d-flex justify-content-between">
-                            <div className="col">
-                                <strong>Interests:</strong>
-                            </div>
-                            <div className="col text-muted">
-                                Food, Games
-                            </div>
+                            {/* interests/favorite local place */}
                         </div>
                     </li>
                 </ul>
