@@ -31,23 +31,23 @@ function App(props) {
     const favList = (storeName) => {
         const storesCopy = storeState.map((storeObj) => {
             if(storeObj.placeName === storeName) {
-                console.log(!isFavorited);
+                //console.log(!isFavorited);
                 storeObj.favorited = !isFavorited;
             }
 
             return storeObj;
         })
-        console.log(storesCopy);
+        //console.log(storesCopy);
         setStoreState(storesCopy);
     }
-    console.log(storeState);
+    //console.log(storeState);
 
     return (
         <div>
             <ApoioHeader />
             <Routes>
                 <Route index element={<Home />} />
-                <Route path="/lists" element={<ListPage stores={stores} types={unique} test={true} />} />
+                <Route path="/lists" element={<ListPage stores={storeState} types={unique} />} />
                 <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/results" element={<ResultPage storeCallback={favList} favCallback={changeFavorited}/>} />
             </Routes>         
