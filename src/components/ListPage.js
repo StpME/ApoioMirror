@@ -1,106 +1,102 @@
 import React, {useState} from 'react';
+import Collapsible from 'react-collapsible';
 
-export function ListCard(props) {
-    // pass this component a prop from the data source, being the place/item being put into te card, then map these properties to an object and pass that object into rendered element
-    const [cards, setCard] = useState(null);
-    const [lists, setList] = useState(null);
-    const [click, setC] = useState(false);
+export function ListPage(props) {
 
-    const {placeName, location, description, placeThumbnail} = props.resultData;
-    
-    console.log();
+    // Create components
+    const stores = props.stores.map((item, index) => {
+        return (
+            <CreateCard key={index} store={item} type={item.type}/>
+        ); 
+    });
 
-    
-    const handleClick = (event) => {
-        console.log('clicked');
-        setC(true);
-        console.log(click);
-        //setC(true);
-    }
-    //create list button
-    //on click, pass to create list
-    const potato = function helper() {
-        if (click === true) {
-            console.log("helper")
-            setC(false);
-            return <CreateList />
-        }
-    }
-
-
-
-
+    const storeTypes = props.types.map((item, index) => {
+        return (
+            <CreateList key={index} type={item} cards={stores}/>
+        ); 
+    });
 
     return (
         <section className="col flex-display">
             <div className="col-lg-12 d-block">
-                
                     <div className="card-body">
                         <ul className="list-group list-group-flush">
-
-                            <div id='list_header' className="row p-4 mt-4">
+                            {/*<div id='list_header' className="row p-4 mt-4">
                                 <li className="btn btn-success" onClick={handleClick}>
                                     <strong><h2 className="ms-3" id="list_name">Create New List</h2></strong>
-                                    <div></div>
                                 </li>
+                            </div>*/}
+                            <div id='list_header' className="row pt-4 mt-2">
+                                    <strong><h2 className="title">My Lists</h2></strong>
                             </div>
-                            <CreateList />
-                            <CreateCard />
-                            
+
+                            <div className="row px-3">
+                                {storeTypes}
+                            </div>
                         </ul>
                     </div>
-                
             </div>
         </section>
     );
 }
 
+export function CreateList(props) {
+    const type = props.type;
+    //List name defaults to store types
+    const [text, setText] = useState(type.substring(0,1).toUpperCase() + type.substring(1));
 
-
-export function CreateList() {
-    //console.log('create list');
-    const testName = "My Food List";
-    const [text, setText] = useState(testName);
-
-    // Prompts user for list name and changes it
+    //Prompts user for list name and changes it
     const changeText = () => {
-        //console.log('change text');
         const input = prompt('Enter List Name');
         setText(input);
-        
     }
-
-    return (
-        <div id='list_header' className="row p-4" onClick={() => changeText()}>
+    
+    //Matches card type to list type
+    const card = props.cards.map((item) => {
+        if (type === item.props.type) {
+            return (item)}
+    });
+    
+    function listHeader() {
+        return (
             <li className="list-group-item">
-                <button type="button" id="edit_btn" className="btn btn-success pull-right me-3">Edit</button>
-                <strong><h2 className="ms-3" id="list_name">{text}</h2></strong>
+                <button className="btn btn-success pull-right me-3" onClick={() => changeText()}>Edit</button>
+                <strong><h2 className="ms-3" id="list_name" style={{height: "2rem"}}>{text}</h2></strong>
             </li>
+        )
+    }
+    
+    return (
+        <div className="p">
+            <div id="list_header collapsible" className="row p-4 mt-4">
+                <Collapsible className="collapsible pe-3" trigger={listHeader()}>
+                    <div className="row">
+                        {card}
+                    </div>
+                </Collapsible>
+            </div>
         </div>
     )
 }
 
-//function should be called when user wants to add a place from the search bar ?
+//Function called when user favorites a store (currently makes cards for all data)
 export function CreateCard(props) {
-    //console.log('create card props: ' + props);
-    //see pinned pic for what to work on lol
-    const testName = "Place 1";
-    const testText = "TEXT CONTENT";
-    const handleClick = (event) => {
-        console.log('clicked');
-    }
+    const store = props.store;
     
-    //styling needs to be changed for jsx
-    //change card image url to the item prop
+    //unstar to remove from the list?
+    const handleClick = (event) => {
+        console.log("clicked");
+    }
+
     const card = (
         <div className="col-sm-3" id="list_card" onClick={handleClick}>
             <div className="card" style={{width:"18rem", height: "18rem"}}>
-                <div className="card-body">
-                    <h4 className="card-title">{testName}</h4>
-                    <img className="card-img" src='pics/food_pic.jpg'/>
-                    <p>{testText}</p>
-                    <a href="#" className="btn stretched-link"></a>
-                </div>
+            <img className="img-fluid h-100" src={store.placeThumbnail}/>
+            <div className="card-block text-center darken">
+                <h4 className="center" id="store_name">{store.placeName}</h4>
+                {/*<p>{store.description}</p>*/}
+                <a href="#" className="btn stretched-link"></a>
+            </div>
             </div>
         </div>
     );
