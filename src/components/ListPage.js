@@ -25,26 +25,26 @@ export function ListPage(props) {
     return (
         <section className="col flex-display">
             <div className="col-lg-12 d-block">
-                    <div className="card-body">
-                        <ul className="list-group list-group-flush">
-                            {/*<div id='list_header' className="row p-4 mt-4">
-                                <li className="btn btn-success" onClick={handleClick}>
-                                    <strong><h2 className="ms-3" id="list_name">Create New List</h2></strong>
-                                </li>
-                            </div>*/}
+                <div className="card-body">
+                    <ul className="list-group list-group-flush">
+                        {/*<div id='list_header' className="row p-4 mt-4">
+                            <li className="btn btn-success" onClick={handleClick}>
+                                <strong><h2 className="ms-3" id="list_name">Create New List</h2></strong>
+                            </li>
+                        </div>*/}
+                        
+                        <div id='list_header' className="row pt-4 mt-2">
+                            <strong><header className="title">My Lists</header></strong>
+                        </div>
                             
-                            <div id='list_header' className="row pt-4 mt-2">
-                                <strong><h2 className="title">My Lists</h2></strong>
-                            </div>
-                             
-                            {/*<button className="btn btn-success pull-right me-3" >Collapse All</button>*/}
-                            
-                            
-                            <div className="row px-3">
-                                {storeTypes}
-                            </div>
-                        </ul>
-                    </div>
+                        {/*<button className="btn btn-success pull-right me-3" >Collapse All</button>*/}
+                        
+                        
+                        <div className="row px-3">
+                            {storeTypes}
+                        </div>
+                    </ul>
+                </div>
             </div>
         </section>
     );
@@ -77,22 +77,22 @@ export function CreateList(props) {
     }
     
     return (
-            <div id="list_header collapsible" className="row p-4 mt-4">
-                <MediaQuery minWidth={768}>
-                    <Collapsible className="collapsible" open trigger={listHeader()}>
-                        <div className="row">
-                            {card}
-                        </div>
-                    </Collapsible>
-                </MediaQuery>
-                <MediaQuery maxWidth={768}>
-                    <Collapsible className="collapsible" trigger={listHeader()}>
-                        <div className="row">
-                            {card}
-                        </div>
-                    </Collapsible>
-                </MediaQuery>
-            </div>
+        <div id="list_header collapsible" className="row p-4 mt-4">
+            <MediaQuery minWidth={768}>
+                <Collapsible className="collapsible" open trigger={listHeader()}>
+                    <div className="row">
+                        {card}
+                    </div>
+                </Collapsible>
+            </MediaQuery>
+            <MediaQuery maxWidth={768}>
+                <Collapsible className="collapsible" trigger={listHeader()}>
+                    <div className="row">
+                        {card}
+                    </div>
+                </Collapsible>
+            </MediaQuery>
+        </div>
         
     )
 }
@@ -102,6 +102,7 @@ export function CreateCard(props) {
     const store = props.store;
     
     //unstar to remove from the list?
+    //click to go to store information?
     const handleClick = (event) => {
         console.log("clicked");
     }

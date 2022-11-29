@@ -79,6 +79,10 @@ body {
     justify-content: center;
 }
 
+#header {
+  font-size:xx-large;
+}
+
 .center {
   position: absolute;
   top: 50%;

@@ -11,8 +11,8 @@ const CARD_CATEGORIES = [
 
 export default function Home(props) {
 
-    const categoryCards = CARD_CATEGORIES.map((element) => {
-        return <CategoryCard img={element.img} name={element.name} />
+    const categoryCards = CARD_CATEGORIES.map((element, index) => {
+        return <CategoryCard key={index} img={element.img} name={element.name} />
     })
 
     return (
@@ -44,7 +44,7 @@ export default function Home(props) {
                 </Carousel>
             </div>
             <div className="row">
-                <h2 className="text-center p-3">Browse by category</h2>
+                <strong><header className="text-center p-3" id="header">Browse by category</header></strong>
             </div>
             <div className="row categories justify-content-center">
                 {categoryCards}
