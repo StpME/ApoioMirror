@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import STORE_DATA from '../data/store_data.json';
+// import STORE_DATA from '../data/store_data.json';
 
 export function ResultPane(props) {
     // const currentFilter = '';
     // filter by type later
+    const stores = props.stores;
+    console.log(stores)
 
-    const resultsArray = STORE_DATA.map((resultObj, index) => {
+    const resultsArray = stores.map((resultObj, index) => {
         const element = (
             <ResultItem resultData={resultObj} key={index + 1} storeCallback={props.storeCallback} favCallback={props.favCallback}/>
         )
@@ -25,24 +27,21 @@ function ResultItem(props) {
 
 
     const handleClick = () => {
-        let someBool = isFavorited;
-        if (isFavorited) {
-            someBool = false;
-        } else {
-            someBool = true;
-        }
+        
+        // console.log(placeName);
+
+        // addToMyList = !isFavorited;
+        props.storeCallback(placeName, !isFavorited);
         setisFavorited(!isFavorited);
-        console.log(someBool + " handleclick");
-        props.storeCallback(placeName);
-        props.favCallback(someBool);
+        // props.favCallback(isFavorited);
         
 
     }
 
-    let favoritedText = "Favorite this place!";
+    let favoritedText = "Add to My Lists!";
     let favoritedStyle = "btn btn-outline-danger text-danger";
     if (isFavorited || (props.resultData.favorited === true)) {
-        favoritedText = "Unfavorite this place!";
+        favoritedText = "Remove from my Lists!";
         favoritedStyle = "btn btn-danger text-white"
     }
 
