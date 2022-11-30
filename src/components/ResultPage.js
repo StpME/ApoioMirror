@@ -10,7 +10,7 @@ export default function ResultPage(props) {
                     <div className="col-md-4 col-lg-3">
                         <ResultFilter />
                     </div>
-                    <ResultPane storeCallback={props.storeCallback} favCallback={props.favCallback}/>
+                    <ResultPane storeCallback={props.storeCallback} favCallback={props.favCallback} stores={props.stores}/>
                 </div>
             </div>
         </div>
