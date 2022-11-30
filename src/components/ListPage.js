@@ -25,7 +25,7 @@ export function ListPage(props) {
     
 
     return (
-        <section className="col flex-display">
+        <section className="col p-5 flex-display">
             <div className="col-lg-12 d-block">
                 <div className="card-body">
                     <ul className="list-group list-group-flush">
