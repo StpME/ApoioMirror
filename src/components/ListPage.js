@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Collapsible from 'react-collapsible';
 import MediaQuery from 'react-responsive';
+import { Link } from 'react-router-dom';
 
 export function ListPage(props) {
     //console.log(props);
@@ -12,7 +13,7 @@ export function ListPage(props) {
             ); 
         }
         return (
-            <CreateCard key={index} store={null} type={null}/>
+            <CreateCard key={null} store={null} type={null}/>
         ); 
     });
 
@@ -21,6 +22,7 @@ export function ListPage(props) {
             <CreateList key={index} type={item} cards={stores}/>
         ); 
     });
+    
 
     return (
         <section className="col flex-display">
@@ -36,9 +38,6 @@ export function ListPage(props) {
                         <div id='list_header' className="row pt-4 mt-2">
                             <strong><header className="title">My Lists</header></strong>
                         </div>
-                            
-                        {/*<button className="btn btn-success pull-right me-3" >Collapse All</button>*/}
-                        
                         
                         <div className="row px-3">
                             {storeTypes}
@@ -52,29 +51,35 @@ export function ListPage(props) {
 
 export function CreateList(props) {
     const type = props.type;
-    //List name defaults to store types
+    //List names defaults to store types
     const [text, setText] = useState(type.substring(0,1).toUpperCase() + type.substring(1));
+    
+    
 
     //Prompts user for list name and changes it
     const changeText = () => {
         const input = prompt('Enter List Name');
-        setText(input);
+        if (input != null && input != "") {setText(input);} 
+        else {return} 
     }
     
     //Matches card type to list type
+    const listCount = [];
     const card = props.cards.map((item) => {
         if (type === item.props.type) {
+            listCount.push(type);
             return (item)}
     });
-    
+
     function listHeader() {
         return (
             <li className="list-group-item">
                 <button className="btn btn-success pull-right me-3" onClick={() => changeText()}>Edit</button>
-                <strong><h2 className="ms-3" id="list_name">{text}</h2></strong>
+                <strong><h2 className="ms-3" id="list_name">{text + " (" + listCount.length + ")"}</h2></strong>
             </li>
         )
     }
+
     
     return (
         <div id="list_header collapsible" className="row p-4 mt-4">
@@ -92,22 +97,20 @@ export function CreateList(props) {
                     </div>
                 </Collapsible>
             </MediaQuery>
-        </div>
-        
+        </div> 
     )
 }
 
-//Function called when user favorites a store (currently makes cards for all data)
-export function CreateCard(props) {
+//Function called when user favorites a store
+export function CreateCard(props) { 
     const store = props.store;
-    
     //unstar to remove from the list?
-    //click to go to store information?
+    //click to go to store information (when info is implemented)?
     const handleClick = (event) => {
         console.log("clicked");
     }
 
-    const card = (
+    return (
         <div className="col" id="list_card" onClick={handleClick}>
             <div className="card" id="list_card">
             <img className="img-fluid h-100" src={store.placeThumbnail}/>
@@ -119,7 +122,6 @@ export function CreateCard(props) {
             </div>
         </div>
     );
-    return card;
 }
 
 

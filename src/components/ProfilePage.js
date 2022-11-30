@@ -2,7 +2,7 @@ import React from 'react';
 
 export function ProfilePage(props) {
     return (
-        <div className="container mt-5">
+        <div className="container mt-5 p-5">
             <div className="row m-auto">
                 <div className="col-lg-4 flex-column">
                     <div className="card">

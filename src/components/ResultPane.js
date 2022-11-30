@@ -35,8 +35,6 @@ function ResultItem(props) {
         console.log(someBool + " handleclick");
         props.storeCallback(placeName);
         props.favCallback(someBool);
-        
-
     }
 
     let favoritedText = "Favorite this place!";
