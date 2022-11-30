@@ -34,8 +34,7 @@ function App(props) {
         //console.log(storesCopy);
         setStoreState(storesCopy);
     }
-    // console.log(storeState);
-    console.log(stores);
+    //console.log(storeState);
 
     return (
         <div>

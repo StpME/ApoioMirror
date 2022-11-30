@@ -66,6 +66,10 @@ body {
   margin-left: auto;
 }
 
+.categories {
+  margin: 2%;
+}
+
 .categories .card-body {
     margin: auto;
 }
@@ -73,6 +77,10 @@ body {
 .categories .card-title {
     text-align: center;
     justify-content: center;
+}
+
+#header {
+  font-size:xx-large;
 }
 
 .center {
