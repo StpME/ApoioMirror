@@ -25,9 +25,9 @@ export function ListPage(props) {
     
 
     return (
-        <section className="col p-5 flex-display">
+        <section className="col p-5">
             <div className="col-lg-12 d-block">
-                <div className="card-body">
+                <div className="card">
                     <ul className="list-group list-group-flush">
                         {/*<div id='list_header' className="row p-4 mt-4">
                             <li className="btn btn-success" onClick={handleClick}>
