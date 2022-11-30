@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import Collapsible from 'react-collapsible';
 import MediaQuery from 'react-responsive';
 import { Link } from 'react-router-dom';
-
+//import { ReactComponent as Logo } from './shirt.png';
+const elem = <img id="arrow" src="pics/collapse_arrow.png"/>
 export function ListPage(props) {
     //console.log(props);
     // Create components
@@ -27,7 +28,7 @@ export function ListPage(props) {
     return (
         <section className="col p-5">
             <div className="col-lg-12 d-block">
-                <div className="card">
+                <div className="card pb-3">
                     <ul className="list-group list-group-flush">
                         {/*<div id='list_header' className="row p-4 mt-4">
                             <li className="btn btn-success" onClick={handleClick}>
@@ -75,12 +76,10 @@ export function CreateList(props) {
         return (
             <li className="list-group-item">
                 <button className="btn btn-success pull-right me-3" onClick={() => changeText()}>Edit</button>
-                <strong><h2 className="ms-3" id="list_name">{text + " (" + listCount.length + ")"}</h2></strong>
+                <strong><h2 className="ms-3" id="list_name">{text + " (" + listCount.length + ")"} {elem}</h2></strong>
             </li>
         )
     }
-
-    
     return (
         <div id="list_header collapsible" className="row p-4 mt-4">
             <MediaQuery minWidth={768}>
