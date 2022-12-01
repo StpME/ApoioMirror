@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Collapsible from 'react-collapsible';
 import MediaQuery from 'react-responsive';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 //import { ReactComponent as Logo } from './shirt.png';
 const elem = <img id="arrow" src="pics/collapse_arrow.png"/>
 export function ListPage(props) {
@@ -52,19 +52,17 @@ export function ListPage(props) {
 
 export function CreateList(props) {
     const type = props.type;
-    //List names defaults to store types
-    const [text, setText] = useState(type.substring(0,1).toUpperCase() + type.substring(1));
-    
-    
+    // List names defaults to store types
+    const [text, setText] = useState(type.substring(0,1).toUpperCase() + type.substring(1));    
 
-    //Prompts user for list name and changes it
+    // Prompts user for list name and changes it
     const changeText = () => {
         const input = prompt('Enter List Name');
         if (input != null && input != "") {setText(input);} 
         else {return} 
     }
     
-    //Matches card type to list type
+    // Matches card type to list type
     const listCount = [];
     const card = props.cards.map((item) => {
         if (type === item.props.type) {
@@ -100,21 +98,39 @@ export function CreateList(props) {
     )
 }
 
-//Function called when user favorites a store
+// Function called when user favorites a store
 export function CreateCard(props) { 
     const store = props.store;
+    let nav = useNavigate();
     //unstar to remove from the list?
     //click to go to store information (when info is implemented)?
     const handleClick = (event) => {
-        console.log("clicked");
+        nav('/results');
+    }
+    
+    function thumbnailCheck() {
+        if (store.placeThumbnail === undefined) {
+        // Filler image if passed no thumbnail from data
+            store.placeThumbnail = "/pics/shirt.png";
+        }
+        return store.placeThumbnail;
     }
 
+    function nameCheck() {
+        if (store.placeName === undefined || store.placeName === null) {
+        // Filler name if passed no store name from data
+            store.placeName = "Store Name";
+        }
+        return store.placeName;
+    }
+
+    
     return (
         <div className="col" id="list_card" onClick={handleClick}>
             <div className="card" id="list_card">
-            <img className="img-fluid h-100" src={store.placeThumbnail}/>
+            <img className="img-fluid h-100" src={thumbnailCheck()}/>
             <div className="card-block text-center darken">
-                <h4 className="center" id="store_name">{store.placeName}</h4>
+                <h4 className="center" id="store_name">{nameCheck()}</h4>
                 {/*<p>{store.description}</p>*/}
                 <a href="#" className="btn stretched-link"></a>
             </div>

@@ -147,11 +147,10 @@ body {
   
 }
 
-.list-group-item:hover {
+/* .list-group-item:hover { */
   /* border-radius: 10px; */
   /* box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23); */
-  
-}
+/* } */
 
 
 .flex-display h1 {
@@ -182,7 +181,7 @@ body {
 
 .card {
   flex: 0 1 175px;
-  background-color: eee;
+  background-color: white;
   margin: .5rem;
   border-radius: 10px;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);

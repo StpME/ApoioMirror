@@ -22,7 +22,7 @@ export function ProfilePage(props) {
                                 <li className="list-group-item">
                                     <div className="row">
                                         <div className="col">
-                                            <a href="#"><i id="social-links" className="fa fa-instagram" aria-label="instagram"></i></a>
+                                            <a href="https://www.instagram.com/accounts/login/" target="blank"><i id="social-links" className="fa fa-instagram" aria-label="instagram"></i></a>
                                         </div>
                                         <div className="col">
                                             Instagram: ayataeats
@@ -32,7 +32,7 @@ export function ProfilePage(props) {
                                 <li className="list-group-item">
                                     <div className="row">
                                         <div className="col">
-                                            <a href="#"><i id="social-links" className="fa fa-twitter" aria-label="twitter"></i></a>
+                                            <a href="https://twitter.com/i/flow/login" target="blank"><i id="social-links" className="fa fa-twitter" aria-label="twitter"></i></a>
                                         </div>
                                         <div className="col">
                                             Twitter: ayataeats

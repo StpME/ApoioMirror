@@ -5,7 +5,7 @@ export function ResultPane(props) {
     // const currentFilter = '';
     // filter by type later
     const stores = props.stores;
-    console.log(stores)
+    //console.log(stores)
 
     const resultsArray = stores.map((resultObj, index) => {
         const element = (
@@ -38,10 +38,10 @@ function ResultItem(props) {
 
     }
 
-    let favoritedText = "Add to My Lists!";
+    let favoritedText = "Add to Lists!";
     let favoritedStyle = "btn btn-outline-danger text-danger";
     if (isFavorited || (props.resultData.favorited === true)) {
-        favoritedText = "Remove from my Lists!";
+        favoritedText = "Remove from Lists!";
         favoritedStyle = "btn btn-danger text-white"
     }
 
