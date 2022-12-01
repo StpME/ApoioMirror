@@ -72,10 +72,20 @@ export function CreateList(props) {
 
     function listHeader() {
         return (
-            <li className="list-group-item">
-                <button className="btn btn-success pull-right me-3" onClick={() => changeText()}>Edit</button>
-                <strong><h2 className="ms-3" id="list_name">{text + " (" + listCount.length + ")"} {elem}</h2></strong>
-            </li>
+            <div>
+                <MediaQuery minWidth={768}>
+                    <li className="list-group-item">
+                        <button className="btn btn-success pull-right me-3" onClick={() => changeText()}>Edit Name</button>
+                        <h2 className="ms-3" id="list_name"> {elem} {text + " (" + listCount.length + ")"} </h2>
+                    </li>
+                </MediaQuery>
+                <MediaQuery maxWidth={768}>
+                <li className="list-group-item">
+                    <button className="btn btn-success pull-right me-3" onClick={() => changeText()}>Edit</button>
+                    <h2 className="ms-3" id="list_name">{elem} {text  + " (" + listCount.length + ")"} </h2>
+                </li>
+                </MediaQuery>
+            </div>
         )
     }
     return (
