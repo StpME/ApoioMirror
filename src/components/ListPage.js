@@ -53,7 +53,7 @@ export function ListPage(props) {
 export function CreateList(props) {
     const type = props.type;
     // List names defaults to store types
-    const [text, setText] = useState(type.substring(0,1).toUpperCase() + type.substring(1));    
+    const [text, setText] = useState(type.substring(0,1).toUpperCase() + type.substring(1));
 
     // Prompts user for list name and changes it
     const changeText = () => {
@@ -70,35 +70,27 @@ export function CreateList(props) {
             return (item)}
     });
 
-    function listHeader() {
+    function listHeader(button_name) {
         return (
             <div>
-                <MediaQuery minWidth={768}>
-                    <li className="list-group-item">
-                        <button className="btn btn-success pull-right me-3" onClick={() => changeText()}>Edit Name</button>
-                        <h2 className="ms-3" id="list_name"> {elem} {text + " (" + listCount.length + ")"} </h2>
-                    </li>
-                </MediaQuery>
-                <MediaQuery maxWidth={768}>
                 <li className="list-group-item">
-                    <button className="btn btn-success pull-right me-3" onClick={() => changeText()}>Edit</button>
-                    <h2 className="ms-3" id="list_name">{elem} {text  + " (" + listCount.length + ")"} </h2>
+                    <button className="btn btn-success pull-right me-3" onClick={() => changeText()}>{button_name}</button>
+                    <h2 className="ms-3" id="list_name"> {elem} {text + " (" + listCount.length + ")"} </h2>
                 </li>
-                </MediaQuery>
             </div>
         )
     }
     return (
         <div id="list_header collapsible" className="row p-4 mt-4">
             <MediaQuery minWidth={768}>
-                <Collapsible className="collapsible" open trigger={listHeader()}>
+                <Collapsible className="collapsible" open trigger={listHeader("Edit Name")}>
                     <div className="row">
                         {card}
                     </div>
                 </Collapsible>
             </MediaQuery>
             <MediaQuery maxWidth={768}>
-                <Collapsible className="collapsible" trigger={listHeader()}>
+                <Collapsible className="collapsible" close trigger={listHeader("Edit")}>
                     <div className="row">
                         {card}
                     </div>

@@ -46,7 +46,7 @@ export default function Home(props) {
             <div className="row">
                 <strong><header className="text-center p-3" id="header">Browse by category</header></strong>
             </div>
-            <div className="row categories justify-content-center">
+            <div className="row pb-5 categories justify-content-center">
                 {categoryCards}
             </div>
         </main>
