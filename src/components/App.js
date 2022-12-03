@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import ApoioHeader from './ApoioHeader.js';
 import Footer from './Footer.js';
 import {ListPage} from './ListPage.js';
-import {CreateList} from './ListPage.js';
 import ResultPage from './ResultPage.js';
 import Home from './Home.js';
 import { BrowserRouter, Routes, Route, Link} from 'react-router-dom'

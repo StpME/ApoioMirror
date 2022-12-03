@@ -249,6 +249,11 @@ body {
   width: 100%;
 }
 
+#empty {
+  font-size: 28px;
+  text-align: center;
+}
+
 /* Footer */
 .footer-apoio {
   padding: 50px 0;
