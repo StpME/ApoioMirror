@@ -87,7 +87,7 @@ export function ListPage(props) {
                 return (
                     <div>
                         <li className="list-group-item">
-                            <button className="btn btn-success pull-right me-3" onClick={() => changeText()}>{button_name}</button>
+                            <button className="btn btn-success pull-right me-2" onClick={() => changeText()}>{button_name}</button>
                             <h2 className="ms-3" id="list_name"> {elem} {text + " (" + listCount.length + ")"} </h2>
                         </li>
                     </div>
@@ -144,13 +144,13 @@ export function ListPage(props) {
     
         
         return (
-            <div className="col" id="list_card" onClick={handleClick}>
+            <div className="col" id="list_card">
                 <div className="card" id="list_card">
                 <img className="img-fluid h-100" src={thumbnailCheck()}/>
-                <div className="card-block text-center darken">
+                <div className="card-block text-center darken" onClick={handleClick}>
                     <h4 className="center" id="store_name">{nameCheck()}</h4>
                     {/*<p>{store.description}</p>*/}
-                    <a href="#" className="btn stretched-link"></a>
+                    {/*<a href="#" className="btn stretched-link"></a>*/}
                 </div>
                 </div>
             </div>

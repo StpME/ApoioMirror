@@ -408,6 +408,10 @@ body {
       max-width: 24px;
       max-height: 24px;
     }
+
+    #list_name {
+      font-size: 20px;
+    }
   }
   @media (min-width: 576px) and (max-width: 768px) {
     .card#list_card {
