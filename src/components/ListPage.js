@@ -29,13 +29,11 @@ export function ListPage(props) {
         else if (count === 1) {
             count += 1;
             return (
-                <div id="empty" className="p-4 mt-4">{"Add Some Places!"}</div>
+                <div key={index} id="empty" className="p-4 mt-4">{"Add Some Places!"}</div>
             );
         }
         
     });
-    
-    
         
     return (
         <section className="col p-5">
@@ -94,6 +92,7 @@ export function ListPage(props) {
                 )
             }
         }
+
         if (listCount.length != 0) {
             return (
                 <div id="list_header collapsible" className="row p-4 mt-4">
@@ -141,25 +140,18 @@ export function ListPage(props) {
             }
             return store.placeName;
         }
-    
         
         return (
             <div className="col" id="list_card">
                 <div className="card" id="list_card">
-                <img className="img-fluid h-100" src={thumbnailCheck()}/>
-                <div className="card-block text-center darken" onClick={handleClick}>
-                    <h4 className="center" id="store_name">{nameCheck()}</h4>
-                    {/*<p>{store.description}</p>*/}
-                    {/*<a href="#" className="btn stretched-link"></a>*/}
-                </div>
+                    <img className="img-fluid h-100" src={thumbnailCheck()}/>
+                    <div className="card-block text-center darken justify-content-center" onClick={handleClick}>
+                        <h4 className="center" id="store_name">{nameCheck()}</h4>
+                        {/*<p>{store.description}</p>*/}
+                        {/*<a href="#" className="btn stretched-link"></a>*/}
+                    </div>
                 </div>
             </div>
         );
     }  
 }
-
-
-
-
-
-

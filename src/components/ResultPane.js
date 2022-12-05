@@ -39,7 +39,7 @@ function ResultItem(props) {
     }
 
     let favoritedText = "Add to Lists!";
-    let favoritedStyle = "btn btn-outline-danger text-danger";
+    let favoritedStyle = "btn btn-outline-danger";
     if (isFavorited || (props.resultData.favorited === true)) {
         favoritedText = "Remove from Lists!";
         favoritedStyle = "btn btn-danger text-white"
