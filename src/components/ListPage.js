@@ -122,7 +122,7 @@ export function ListPage(props) {
         //unstar to remove from the list?
         //click to go to store information (when info is implemented)?
         const handleClick = (event) => {
-            nav('/results');
+            nav('/test');
         }
         
         function thumbnailCheck() {
@@ -145,7 +145,7 @@ export function ListPage(props) {
             <div className="col" id="list_card">
                 <div className="card" id="list_card">
                     <img className="img-fluid h-100" src={thumbnailCheck()}/>
-                    <div className="card-block text-center darken justify-content-center" onClick={handleClick}>
+                    <div className="card-block text-center darken" onClick={handleClick}>
                         <h4 className="center" id="store_name">{nameCheck()}</h4>
                         {/*<p>{store.description}</p>*/}
                         {/*<a href="#" className="btn stretched-link"></a>*/}

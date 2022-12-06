@@ -44,7 +44,7 @@ export function ProfilePage(props) {
                     </div>
 
                 </div>
-                <div className="col-lg-8 d-block ">
+                <div className="col-lg-8 d-block">
                     <div className="card">
                         <div className="card-body">
                             <ul className="list-group list-group-flush">

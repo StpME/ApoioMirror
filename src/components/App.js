@@ -6,6 +6,7 @@ import ResultPage from './ResultPage.js';
 import Home from './Home.js';
 import { BrowserRouter, Routes, Route, Link} from 'react-router-dom'
 import { ProfilePage } from './ProfilePage.js';
+import {Test} from './Test.js';
 
 function App(props) {
     //set stores to whatever the user passes to add to list
@@ -43,6 +44,7 @@ function App(props) {
                 <Route path="/lists" element={<ListPage stores={storeState} types={unique} />} />
                 <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/results" element={<ResultPage stores={stores} storeCallback={favList} />} />
+                <Route path="/test" element={<Test />} />
             </Routes>         
 
             <Footer />
