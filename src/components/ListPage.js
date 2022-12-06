@@ -34,20 +34,30 @@ export function ListPage(props) {
         }
         
     });
-        
+
+    
+    //TEMP FUNCTION FOR NEW ITEM BUTTON TO NAV TO CREATE PAGE
+    let nav = useNavigate();
+    const handleClick = (event) => {
+        nav('/new_item');
+    }
+
+
     return (
         <section className="col p-5">
             <div className="col-lg-12 d-block">
                 <div className="card pb-5">
+                    
                     <ul className="list-group list-group-flush">
                         {/*<div id='list_header' className="row p-4 mt-4">
                             <li className="btn btn-success" onClick={handleClick}>
                                 <strong><h2 className="ms-3" id="list_name">Create New List</h2></strong>
                             </li>
                         </div>*/}
-                        
+                        <button className="btn btn-success pull-right me-2" onClick={() => handleClick()}>NEW ITEM PAGE (TEMP)</button>
                         <div id='list_header' className="row pt-4 mt-2">
                             <strong><header className="title">My Lists</header></strong>
+                            
                         </div>
                         
                         <div className="row px-3">
@@ -122,7 +132,7 @@ export function ListPage(props) {
         //unstar to remove from the list?
         //click to go to store information (when info is implemented)?
         const handleClick = (event) => {
-            nav('/test');
+            nav('/new_item');
         }
         
         function thumbnailCheck() {
