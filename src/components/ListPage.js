@@ -11,9 +11,8 @@ export function ListPage(props) {
 //TEMP FUNCTION FOR NEW ITEM BUTTON TO NAV TO CREATE PAGE
     let nav = useNavigate();
     const temp = (event) => {
-        //TESTING PAGES
+        //TESTING PAGE
         nav('/item');
-        //nav('/new_item');
     }
 
     // Create card components from data if favorited by user.
@@ -39,7 +38,7 @@ export function ListPage(props) {
         else if (count === 1) {
             count += 1;
             return (
-                <Link to="../" key={index} id="empty" className="p-4 mt-4">{"Add Some Places!"}</Link>
+                <Link to="../new_item" style={{textDecoration:'inherit', color: 'inherit'}} key={index} id="empty" className="p-4 mt-4">{"Add Some Places!"}</Link>
             );
         }
         
@@ -59,7 +58,7 @@ export function ListPage(props) {
                                 <strong><h2 className="ms-3" id="list_name">Create New List</h2></strong>
                             </li>
                         </div>*/}
-                        <button className="btn btn-success pull-right me-2" onClick={() => test()}>NEW ITEM PAGE (TEMP)</button>
+                        <button className="btn btn-success pull-right me-2" onClick={() => temp()}>ITEM/STORE PAGE (TEMP)</button>
                         <div id='list_header' className="row pt-4 mt-2">
                             <strong><header className="title">My Lists</header></strong>
                             
