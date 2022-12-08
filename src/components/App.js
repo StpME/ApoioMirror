@@ -9,6 +9,7 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import { CreateNewItem } from './CreateNewItem.js';
 import { ProfilePage } from './newProfilePage.js';
 import { EditProfile } from './EditProfile.js'
+import { ItemPage } from './ItemPage.js'
 
 function App(props) {
     //set stores to whatever the user passes to add to list
@@ -16,6 +17,10 @@ function App(props) {
     const [storeState, setStoreState] = useState(stores);
     const [currentUser, setCurrentUser] = useState(null);
 
+    // This is the updated dataset after user adds new item (TESTING)
+    const [newStores, setStore] = useState([]);
+    //console.log(newStores);
+    
     //Generate unique set of store types for list page
     const list = stores.map((elem) => {
         return elem.type;
@@ -49,8 +54,9 @@ function App(props) {
                 <Route path="/profile/edit" element={<EditProfile />} />
 
                 <Route path="/results" element={<ResultPage stores={stores} storeCallback={favList} />} />
-                <Route path="/new_item" element={<CreateNewItem stores={stores} />} />
-            </Routes>
+                <Route path="/item" element={<ItemPage store={stores[0]} />} />
+                <Route path="/new_item" element={<CreateNewItem stores={stores} passback={setStore}/>} />
+            </Routes>         
 
             <Footer />
         </div>

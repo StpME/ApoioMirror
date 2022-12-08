@@ -7,6 +7,14 @@ const elem = <img id="arrow" src="pics/collapse_arrow.png"/>
 
 
 export function ListPage(props) {
+
+//TEMP FUNCTION FOR NEW ITEM BUTTON TO NAV TO CREATE PAGE
+    let nav = useNavigate();
+    const temp = (event) => {
+        //TESTING PAGE
+        nav('/item');
+    }
+
     // Create card components from data if favorited by user.
     const stores = props.stores.map((item, index) => {
         if (item.favorited === true) {
@@ -20,7 +28,7 @@ export function ListPage(props) {
       });
     const boolSet = new Set(bools);
     let count = 1;
-    let storeTypes = props.types.map((type, index) => {
+    const storeTypes = props.types.map((type, index) => {
         if (type != null && boolSet.has(true) === true) {
             return (
                 <CreateList key={index} type={type} cards={stores}/>
@@ -30,18 +38,13 @@ export function ListPage(props) {
         else if (count === 1) {
             count += 1;
             return (
-                <div key={index} id="empty" className="p-4 mt-4">{"Add Some Places!"}</div>
+                <Link to="../new_item" style={{textDecoration:'inherit', color: 'inherit'}} key={index} id="empty" className="p-4 mt-4">{"Add Some Places!"}</Link>
             );
         }
         
     });
 
-    //TEMP FUNCTION FOR NEW ITEM BUTTON TO NAV TO CREATE PAGE
-    let nav = useNavigate();
-    const handleClick = (event) => {
-        nav('/new_item');
-    }
-   
+    
 
 
     return (
@@ -55,7 +58,7 @@ export function ListPage(props) {
                                 <strong><h2 className="ms-3" id="list_name">Create New List</h2></strong>
                             </li>
                         </div>*/}
-                        <button className="btn btn-success pull-right me-2" onClick={() => handleClick()}>NEW ITEM PAGE (TEMP)</button>
+                        <button className="btn btn-success pull-right me-2" onClick={() => temp()}>ITEM/STORE PAGE (TEMP)</button>
                         <div id='list_header' className="row pt-4 mt-2">
                             <strong><header className="title">My Lists</header></strong>
                             
@@ -133,7 +136,7 @@ export function ListPage(props) {
         //unstar to remove from the list?
         //click to go to store information (when info is implemented)?
         const handleClick = (event) => {
-            nav('/results');
+            nav('/item');
         }
         
         function thumbnailCheck() {

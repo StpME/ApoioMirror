@@ -1,33 +1,38 @@
 import React, {useState} from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
-//import DropdownButton from 'react-bootstrap/DropdownButton';
 import { Alert } from 'react-bootstrap';
 
-
 export function CreateNewItem(props) {
-    console.log(props);
-	//const [user, setUser] = useState({name: "", type: ""});
     const [name, setName] = useState("");
     const [type, setType] = useState("");
+    const [loc, setLoc] = useState("");
+    const [desc, setDesc] = useState("");
     const [typeBtn, setTypeBtn] = useState("Location Type");
-    const [data, setData]=useState([]);
+    const [data, setData] = useState([]);
     const [alertMessage, setAlertMessage] = useState(null);
-
+    
+    function passData() {
+        props.passback(data);
+    }
 	// Submits inputted name when user clicks out of input
 	const handleNameChange = (event) => {
         setName(event.target.value);
-        //setUser({...user, [event.target.element]: event.target.value});
+    };
+    const handleLocChange = (event) => {
+        setLoc(event.target.value);
+    };
+    const handleDescChange = (event) => {
+        setDesc(event.target.value);
     };
     const handleTypeChange = (event) => {
         setType(event.target.name);
         setTypeBtn(event.target.name);
-        //setUser({...user, [event.target.element]: event.target.value});
     };
 
-    // HOW TO USE LOCAL DATA IN A LOCAL SERVER BRO
-    const loadData = () => JSON.parse(JSON.stringify(data));
-    const getData=()=>{
-        fetch('./data/store_data.json')
+    // CANT USE LOCAL DATA IN A LOCAL SERVER
+    //const loadData = () => JSON.parse(JSON.stringify(data));
+    /*const getData=()=>{
+        fetch("./store_data.json") // doesnt do anything, use real data
           .then(function(response){
             console.log(response)
             return response.json();
@@ -39,15 +44,29 @@ export function CreateNewItem(props) {
           .catch(function(err) {
             setAlertMessage(err.message);
           })
-      };
+      }; */
 
     const handleSubmit = (event) => {
-        // object to write into json file?
-        const potato = {
-            placeName: name
+        // New object to write into json file
+        const obj = {
+            placeName: name,
+            type: type,
+            location: loc,
+            description: desc,
+            favorited: true
         }
-        getData();
-        console.log("SUBMITTED: Location Name: {"+name+"}" + " Location Type: {"+type+"}");
+        
+        setData([...props.stores, obj]);
+        passData();
+
+        console.log("SUBMITTED: Name: {"+name+"}" + " Location: {"+loc+"}" + " Description: {"+desc+"}" + " Type: {"+type+"}" );
+        
+        setName("");
+        setType("");
+        setLoc("");
+        setDesc("");
+        setTypeBtn("Location Type");
+        console.log(data);
         event.preventDefault();
     }
 
@@ -64,19 +83,38 @@ export function CreateNewItem(props) {
                             <div className="col">
                                 <strong>Location Name:</strong>
                             </div>
+                            <div className="col text-muted">
+                                <div className="form-group">
+                                    <input type="text" className="form-control" placeholder="Location Name..." onBlur={(event) => {handleNameChange(event)}} />
+                                </div>
+                            </div>
+                        </div>  
+                        <div className="row py-3 d-flex justify-content-between">
+                            <div className="col">
+                                <strong>Address:</strong>
+                            </div>
                             
                             <div className="col text-muted">
                                 <div className="form-group">
-                                    <input type="text" className="form-control" id="formGroupExampleInput" placeholder="Location Name..." onBlur={(event) => {handleNameChange(event)}} />
+                                    <input type="text" className="form-control" placeholder="Address..." onBlur={(event) => {handleLocChange(event)}} />
                                 </div>
                             </div>
-                        </div>                      
-                    
-                        <div className="row py-5 d-flex justify-content-between">
+                        </div>  
+                        <div className="row d-flex justify-content-between">
+                            <div className="col">
+                                <strong>Description:</strong>
+                            </div>
+                            
+                            <div className="col text-muted">
+                                <div className="form-group">
+                                    <input type="text" className="form-control" placeholder="Add Text Here..." onBlur={(event) => {handleDescChange(event)}} />
+                                </div>
+                            </div>
+                        </div>  
+                        <div className="row py-3 d-flex justify-content-between">
                             <div className="col">
                                 <strong>Type:</strong>
                             </div>
-                            
                             <Dropdown className="col">
                                 <Dropdown.Toggle variant="success">
                                 {typeBtn}
@@ -89,7 +127,7 @@ export function CreateNewItem(props) {
                                 </Dropdown.Menu>
                             </Dropdown>
                         </div>
-                        <input className="m-2" type="submit" value="Submit" onClick={(event) => handleSubmit(event)}/>
+                        <input className="m-2" type="submit" value="Add to List" onClick={(event) => handleSubmit(event)}/>
                     </form>
                 </div>
             </div>
