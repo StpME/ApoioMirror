@@ -7,7 +7,8 @@ import Home from './Home.js';
 import { BrowserRouter, Routes, Route, Link} from 'react-router-dom'
 // import { ProfilePage } from './ProfilePage.js';
 import {CreateNewItem} from './CreateNewItem.js';
-import { ProfilePage } from './newProfilePage.js';
+// import { ProfilePage } from './newProfilePage.js';
+import { EditProfile } from './EditProfile.js'
 
 function App(props) {
     //set stores to whatever the user passes to add to list
@@ -44,7 +45,7 @@ function App(props) {
             <Routes>
                 <Route index element={<Home />} />
                 <Route path="/lists" element={<ListPage stores={storeState} types={unique} />} />
-                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/profile" element={<EditProfile />} />
                 <Route path="/results" element={<ResultPage stores={stores} storeCallback={favList} />} />
                 <Route path="/new_item" element={<CreateNewItem stores={stores} />} />
             </Routes>         
