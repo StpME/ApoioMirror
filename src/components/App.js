@@ -5,13 +5,15 @@ import {ListPage} from './ListPage.js';
 import ResultPage from './ResultPage.js';
 import Home from './Home.js';
 import { BrowserRouter, Routes, Route, Link} from 'react-router-dom'
-import { ProfilePage } from './ProfilePage.js';
+// import { ProfilePage } from './ProfilePage.js';
 import {CreateNewItem} from './CreateNewItem.js';
+import { ProfilePage } from './newProfilePage.js';
 
 function App(props) {
     //set stores to whatever the user passes to add to list
     const stores = props.stores;
     const [storeState, setStoreState] = useState(stores);
+    const [currentUser, setCurrentUser] = useState(null);
 
     //Generate unique set of store types for list page
     const list = stores.map((elem) => {
