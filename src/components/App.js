@@ -13,6 +13,7 @@ function App(props) {
     //set stores to whatever the user passes to add to list
     const stores = props.stores;
     const [storeState, setStoreState] = useState(stores);
+    const [currentUser, setCurrentUser] = useState(null);
 
     //Generate unique set of store types for list page
     const list = stores.map((elem) => {
