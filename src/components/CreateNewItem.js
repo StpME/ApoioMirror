@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { Alert } from 'react-bootstrap';
-const elem = <img id="arrow" src="pics/collapse_arrow.png"/>
 
 export function CreateNewItem(props) {
     const [name, setName] = useState("");
