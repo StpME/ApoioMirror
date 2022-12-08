@@ -4,8 +4,8 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import { Alert } from 'react-bootstrap';
 
 
-export function CreateNewItem() {
-    
+export function CreateNewItem(props) {
+    console.log(props);
 	//const [user, setUser] = useState({name: "", type: ""});
     const [name, setName] = useState("");
     const [type, setType] = useState("");
@@ -85,7 +85,7 @@ export function CreateNewItem() {
                                     <Dropdown.Item href="#/action-1" name={"Restaurant"} onClick={(event) => handleTypeChange(event)}>Restaurant</Dropdown.Item>
                                     <Dropdown.Item href="#/action-2" name={"Store"} onClick={(event) => handleTypeChange(event)}>Store</Dropdown.Item>
                                     <Dropdown.Divider />
-                                    <Dropdown.Item href="#/action-3" name={"Custom"} onClick={(event) => handleTypeChange(event)}>Custom</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-3" name={"Other"} onClick={(event) => handleTypeChange(event)}>Other</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                         </div>

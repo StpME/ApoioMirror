@@ -26,6 +26,7 @@ export function ListPage(props) {
                 <CreateList key={index} type={type} cards={stores}/>
             ); 
         }
+        // Only prints message once instead of once per type in data source
         else if (count === 1) {
             count += 1;
             return (
@@ -35,12 +36,12 @@ export function ListPage(props) {
         
     });
 
-    
     //TEMP FUNCTION FOR NEW ITEM BUTTON TO NAV TO CREATE PAGE
     let nav = useNavigate();
     const handleClick = (event) => {
         nav('/new_item');
     }
+   
 
 
     return (
@@ -132,7 +133,7 @@ export function ListPage(props) {
         //unstar to remove from the list?
         //click to go to store information (when info is implemented)?
         const handleClick = (event) => {
-            nav('/new_item');
+            nav('/results');
         }
         
         function thumbnailCheck() {

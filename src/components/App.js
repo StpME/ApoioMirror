@@ -46,7 +46,7 @@ function App(props) {
                 <Route path="/lists" element={<ListPage stores={storeState} types={unique} />} />
                 <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/results" element={<ResultPage stores={stores} storeCallback={favList} />} />
-                <Route path="/new_item" element={<CreateNewItem />} />
+                <Route path="/new_item" element={<CreateNewItem stores={stores} />} />
             </Routes>         
 
             <Footer />
