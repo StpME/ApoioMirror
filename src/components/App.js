@@ -1,13 +1,13 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import ApoioHeader from './ApoioHeader.js';
 import Footer from './Footer.js';
-import {ListPage} from './ListPage.js';
+import { ListPage } from './ListPage.js';
 import ResultPage from './ResultPage.js';
 import Home from './Home.js';
-import { BrowserRouter, Routes, Route, Link} from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 // import { ProfilePage } from './ProfilePage.js';
-import {CreateNewItem} from './CreateNewItem.js';
-// import { ProfilePage } from './newProfilePage.js';
+import { CreateNewItem } from './CreateNewItem.js';
+import { ProfilePage } from './newProfilePage.js';
 import { EditProfile } from './EditProfile.js'
 
 function App(props) {
@@ -19,7 +19,7 @@ function App(props) {
     //Generate unique set of store types for list page
     const list = stores.map((elem) => {
         return elem.type;
-      });
+    });
     const unique = [...(new Set(list))];
 
     //list of stores that have a favorited value on them
@@ -27,7 +27,7 @@ function App(props) {
     //the list page
     const favList = (storeName, isFavorited) => {
         const storesCopy = storeState.map((storeObj) => {
-            if(storeObj.placeName === storeName) {
+            if (storeObj.placeName === storeName) {
                 //console.log(!isFavorited);
                 storeObj.favorited = isFavorited;
             }
@@ -45,10 +45,12 @@ function App(props) {
             <Routes>
                 <Route index element={<Home />} />
                 <Route path="/lists" element={<ListPage stores={storeState} types={unique} />} />
-                <Route path="/profile" element={<EditProfile />} />
+                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/profile/edit" element={<EditProfile />} />
+
                 <Route path="/results" element={<ResultPage stores={stores} storeCallback={favList} />} />
                 <Route path="/new_item" element={<CreateNewItem stores={stores} />} />
-            </Routes>         
+            </Routes>
 
             <Footer />
         </div>

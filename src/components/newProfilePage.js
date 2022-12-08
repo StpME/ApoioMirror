@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export function ProfilePage(props) {
     const profileObj = {
@@ -12,8 +13,13 @@ export function ProfilePage(props) {
 
     }
 
+    const navigateTo = useNavigate();
     const [profileData, setProfileData] = useState(profileObj);
     const emailHref = "mailto:" + profileData.email
+
+    const handleClick = (event) => {
+        navigateTo("/profile/edit");
+    }
 
     return (
         <div className="container mt-5 p-5">
@@ -31,7 +37,7 @@ export function ProfilePage(props) {
 
                         </div>
                         <div>
-                            <button type="button" className="btn btn-success">Edit Profile</button>
+                            <button type="button" className="btn btn-success" onClick={handleClick}>Edit Profile</button>
                         </div>
                     </div>
 
@@ -79,5 +85,6 @@ export function ProfilePage(props) {
                 </div>
             </div>
         </div>
+
     )
 }
