@@ -15,6 +15,10 @@ function App(props) {
     const [storeState, setStoreState] = useState(stores);
     const [currentUser, setCurrentUser] = useState(null);
 
+    // This is the updated dataset after user adds new item (TESTING)
+    const [store, setStore] = useState("stores");
+    //console.log(store);
+    
     //Generate unique set of store types for list page
     const list = stores.map((elem) => {
         return elem.type;
@@ -46,7 +50,7 @@ function App(props) {
                 <Route path="/lists" element={<ListPage stores={storeState} types={unique} />} />
                 <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/results" element={<ResultPage stores={stores} storeCallback={favList} />} />
-                <Route path="/new_item" element={<CreateNewItem stores={stores} />} />
+                <Route path="/new_item" element={<CreateNewItem stores={stores} passback={setStore}/>} />
             </Routes>         
 
             <Footer />

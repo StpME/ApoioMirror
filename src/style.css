@@ -129,10 +129,6 @@ body {
   border-radius: 10px;
 }
 
-.Collapsible__trigger.is-open img {
-  transform: rotate(180deg);
-}
-
 #arrow {
   max-width: 48px;
   max-height: 48px;
