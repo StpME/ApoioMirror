@@ -2,19 +2,24 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export function ProfilePage(props) {
-    const profileObj = {
-        name: "Ayata Bernhardt",
-        location: "Bellevue, Washington",
-        occupation: "Student at UW",
-        email: "help@uw.edu",
-        socialInsta: "ayataeatsIG",
-        socialTwitter: "ayataeats",
-        aboutMessage: "Hello I am Ayata! Thank you for looking at my page with multiple things of interest on it. Please enjoy your stay.",
 
-    }
+    
 
     const navigateTo = useNavigate();
-    const [profileData, setProfileData] = useState(profileObj);
+    // const [profileData, setProfileData] = useState({
+    //     name: "Ayata Bernhardt",
+    //     location: "Bellevue, Washington",
+    //     occupation: "Student at UW",
+    //     email: "help@uw.edu",
+    //     socialInsta: "ayataeatsIG",
+    //     socialTwitter: "ayataeats",
+    //     aboutMessage: "Hello I am Ayata! Thank you for looking at my page with multiple things of interest on it. Please enjoy your stay.",
+
+    // });
+
+    const profileData = props.profile;
+    console.log(profileData);
+
     const emailHref = "mailto:" + profileData.email
 
     const handleClick = (event) => {

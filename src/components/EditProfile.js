@@ -5,16 +5,7 @@ export function EditProfile(props) {
     // has to have a prop object and we'll change that object and give it back with callback
     const navigateTo = useNavigate()
 
-    const [profileData, setProfileData] = useState({
-        name: "Ayata Bernhardt",
-        location: "Bellevue, Washington",
-        occupation: "Student at UW",
-        email: "help@uw.edu",
-        socialInsta: "ayataeatsIG",
-        socialTwitter: "ayataeats",
-        aboutMessage: "Hello I am Ayata! Thank you for looking at my page with multiple things of interest on it. Please enjoy your stay.",
-
-    });
+    const [profileData, setProfileData] = useState(props.profile);
     // const [test, setTest] = useState('meow');
 
     const handleProfileData = (event) => {
@@ -24,6 +15,7 @@ export function EditProfile(props) {
 
     const handleClick = (event) => {
         navigateTo('/profile');
+        props.profileCallback(profileData);
     }
 
     return (
