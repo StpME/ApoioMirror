@@ -65,6 +65,7 @@ function App(props) {
                 <Route path="/profile/edit" element={<EditProfile profile={profileData} profileCallback={changeProfileData}/>}/>
 
                 <Route path="/results" element={<ResultPage stores={stores} storeCallback={favList} />} />
+                {/*This component needs to be passed a single store, link to it instead of Route here  */}
                 <Route path="/item" element={<ItemPage store={stores[0]} />} />
                 <Route path="/new_item" element={<CreateNewItem stores={stores} passback={setStore}/>} />
             </Routes>         
