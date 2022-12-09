@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 export function ProfilePage(props) {
 
-    
+
 
     const navigateTo = useNavigate();
     // const [profileData, setProfileData] = useState({
@@ -32,11 +32,11 @@ export function ProfilePage(props) {
                 <div className="col-lg-10 flex-column bg-white rounded">
                     <div>
                         <div>
-                            <img alt="profile picture" src="/pics/brows.png" className="rounded img-thumbnail d-block mx-auto profile-img" />
+                            <img alt="profile picture" src={profileData.profileImage} className="rounded img-thumbnail d-block mx-auto profile-img" />
                         </div>
                     </div>
                     <div className="d-flex profile-negative-margins justify-content-between mx-3">
-                        <div className="d-block justify-content-center bg-light text-center">
+                        <div className="d-block justify-content-center text-center">
                             <p className="page-view-count mb-0">3</p>
                             <p className="text-muted">Pages Viewed</p>
 
@@ -71,10 +71,10 @@ export function ProfilePage(props) {
                                 </a>
                             </div>
                         </div>
-                        <hr className='line-break my-5' />
+                        <hr className='line-break my-5 mx-3' />
                         <h2 className="mb-3">A little about me</h2>
                         <p className="px-10">{profileData.aboutMessage}</p>
-                        <hr className='line-break my-5' />
+                        <hr className='line-break my-5 mx-3' />
 
                         <h2>My Favorite Places to Go</h2>
 

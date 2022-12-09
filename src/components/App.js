@@ -24,6 +24,7 @@ function App(props) {
         socialInsta: "ayataeatsIG",
         socialTwitter: "ayataeats",
         aboutMessage: "Hello I am Ayata! Thank you for looking at my page with multiple things of interest on it. Please enjoy your stay.",
+        profileImage: "/pics/brows.png"
 
     });
 
