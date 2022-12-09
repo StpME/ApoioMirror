@@ -1,26 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export function EditProfile(props) {
     // has to have a prop object and we'll change that object and give it back with callback
-    const profileObj = {
-        name: "Ayata Bernhardt",
-        location: "Bellevue, Washington",
-        occupation: "Student at UW",
-        email: "help@uw.edu",
-        socialInsta: "ayataeatsIG",
-        socialTwitter: "ayataeats",
-        aboutMessage: "Hello I am Ayata! Thank you for looking at my page with multiple things of interest on it. Please enjoy your stay.",
+    const navigateTo = useNavigate()
 
+    const [profileData, setProfileData] = useState(props.profile);
+    // const [test, setTest] = useState('meow');
+
+    const handleProfileData = (event) => {
+        setProfileData({...profileData, [event.target.name]: event.target.value});
+        console.log(profileData);
     }
 
-    const handleNameChange = (nameString) => {
-        profileObj.name = nameString;
+    const handleClick = (event) => {
+        navigateTo('/profile');
+        props.profileCallback(profileData);
     }
-
-    const handleLocationChange = (locationString) => {
-        profileObj.location = locationString;
-    }
-
 
     return (
         <div className="container mt-5 p-5">
@@ -38,41 +34,41 @@ export function EditProfile(props) {
 
                         </div>
                         <div>
-                            <button type="button" className="btn btn-info">Save</button>
+                            <button type="button" className="btn btn-info" onClick={handleClick}>Save</button>
                         </div>
                     </div>
 
 
                     <div className="d-flex row justify-content-center mt-3 mb-5">
                         <div className="col-8">
-                            <div className="mb-3">
-                                <label for="nameInput" class="form-label">Name:</label>
-                                <input id="nameInput" type="text" value={profileObj.name} onChange={handleNameChange} className="form-control" />
+                            <div className="form-group mb-3">
+                                <label htmlFor="nameInput" className="form-label">Name:</label>
+                                <input name="name" className="form-control" id="nameInput" type="text" value={profileData.name} onChange={handleProfileData}  />
                             </div>
                             <div className="mb-3">
-                                <label for="locationInput" class="form-label">Location:</label>
-                                <input id="locationInput" type="text" value={profileObj.location} onChange={handleLocationChange} className="form-control" />
+                                <label htmlFor="locationInput" className="form-label">Location:</label>
+                                <input name="location" id="locationInput" type="text" value={profileData.location} onChange={handleProfileData} className="form-control" />
                                 
                             </div>
                             <div className="mb-3">
-                                <label for="occuInput" class="form-label">Occupation:</label>
-                                <input id="occuInput" type="text" value={profileObj.occupation} onChange={handleLocationChange} className="form-control" />
+                                <label htmlFor="occuInput" className="form-label">Occupation:</label>
+                                <input name="occupation" id="occuInput" type="text" value={profileData.occupation} onChange={handleProfileData} className="form-control" />
                                 
                             </div>
                             <div className="mb-3">
-                                <label for="instaInput" class="form-label">Instagram:</label>
-                                <input id="instaInput" type="text" value={profileObj.socialInsta} onChange={handleLocationChange} className="form-control" />
+                                <label htmlFor="instaInput" className="form-label">Instagram:</label>
+                                <input name="socialInsta" id="instaInput" type="text" value={profileData.socialInsta} onChange={handleProfileData} className="form-control" />
                                 
                             </div>
                             <div className="mb-3">
-                                <label for="twitterInput" class="form-label">Twitter:</label>
-                                <input id="twitterInput" type="text" value={profileObj.socialTwitter} onChange={handleLocationChange} className="form-control" />
+                                <label htmlFor="twitterInput" className="form-label">Twitter:</label>
+                                <input name="socialTwitter" id="twitterInput" type="text" value={profileData.socialTwitter} onChange={handleProfileData} className="form-control" />
                                 
                             </div>
                             <div>
-                                <label for="aboutInput" class="form-label">About:</label>
+                                <label htmlFor="aboutInput" className="form-label">About:</label>
                                 {/* <input id="aboutInput" type="text" value={profileObj.aboutMessage} onChange={handleLocationChange} className="form-control py-5 text-wrap" /> */}
-                                <textarea className="form-control" id="aboutInput" rows="3" value={profileObj.aboutMessage} onChange={handleLocationChange}></textarea>
+                                <textarea name="aboutMessage" className="form-control" id="aboutInput" rows="3" value={profileData.aboutMessage} onChange={handleProfileData}></textarea>
                             </div>
 
 

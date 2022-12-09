@@ -1,19 +1,30 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export function ProfilePage(props) {
-    const profileObj = {
-        name: "Ayata Bernhardt",
-        location: "Bellevue, Washington",
-        occupation: "Student at UW",
-        email: "help@uw.edu",
-        socialInsta: "ayataeatsIG",
-        socialTwitter: "ayataeats",
-        aboutMessage: "Hello I am Ayata! Thank you for looking at my page with multiple things of interest on it. Please enjoy your stay.",
 
-    }
+    
 
-    const [profileData, setProfileData] = useState(profileObj);
+    const navigateTo = useNavigate();
+    // const [profileData, setProfileData] = useState({
+    //     name: "Ayata Bernhardt",
+    //     location: "Bellevue, Washington",
+    //     occupation: "Student at UW",
+    //     email: "help@uw.edu",
+    //     socialInsta: "ayataeatsIG",
+    //     socialTwitter: "ayataeats",
+    //     aboutMessage: "Hello I am Ayata! Thank you for looking at my page with multiple things of interest on it. Please enjoy your stay.",
+
+    // });
+
+    const profileData = props.profile;
+    console.log(profileData);
+
     const emailHref = "mailto:" + profileData.email
+
+    const handleClick = (event) => {
+        navigateTo("/profile/edit");
+    }
 
     return (
         <div className="container mt-5 p-5">
@@ -31,7 +42,7 @@ export function ProfilePage(props) {
 
                         </div>
                         <div>
-                            <button type="button" className="btn btn-success">Edit Profile</button>
+                            <button type="button" className="btn btn-success" onClick={handleClick}>Edit Profile</button>
                         </div>
                     </div>
 
@@ -79,5 +90,6 @@ export function ProfilePage(props) {
                 </div>
             </div>
         </div>
+
     )
 }
