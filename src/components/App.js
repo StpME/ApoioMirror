@@ -33,16 +33,13 @@ function App(props) {
     const favList = (storeName, isFavorited) => {
         const storesCopy = storeState.map((storeObj) => {
             if(storeObj.placeName === storeName) {
-                //console.log(!isFavorited);
                 storeObj.favorited = isFavorited;
             }
 
             return storeObj;
         })
-        //console.log(storesCopy);
         setStoreState(storesCopy);
     }
-    //console.log(storeState);
 
     return (
         <div>

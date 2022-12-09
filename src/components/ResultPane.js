@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 // import STORE_DATA from '../data/store_data.json';
 
 export function ResultPane(props) {
@@ -52,7 +53,7 @@ function ResultItem(props) {
             </a>
             <div className="row">
                 <div className="col mx-3">
-                    <a className="company-heading mb-0 mt-1" href="">{placeName}</a>
+                    <Link className="company-heading mb-0 mt-1" to="../item">{placeName}</Link>
                     <p className="text-muted address-text">{location}</p>
                     <p>{description}</p>
                     <button className={favoritedStyle} onClick={handleClick}>
