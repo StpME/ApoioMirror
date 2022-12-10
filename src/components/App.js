@@ -14,6 +14,7 @@ import { ItemPage } from './ItemPage.js'
 function App(props) {
     //set stores to whatever the user passes to add to list
     const stores = props.stores;
+    const filtersList = ["LGBTQ", "Minority"];
     const [storeState, setStoreState] = useState(stores);
     const [currentUser, setCurrentUser] = useState(null);
     const [profileData, setProfileData] = useState({
@@ -28,8 +29,9 @@ function App(props) {
 
     });
 
-    // This is the updated dataset after user adds new item (TESTING)
+    // This is the updated FULL dataset after user adds new item (TESTING)
     const [newStores, setStore] = useState([]);
+    //console.log(newStores);
     
     //Generate unique set of store types for list page
     const list = stores.map((elem) => {
@@ -45,16 +47,13 @@ function App(props) {
             if(storeObj.placeName === storeName) {
                 storeObj.favorited = isFavorited;
             }
-
             return storeObj;
         })
         setStoreState(storesCopy);
     }
-
     const changeProfileData = (profileObj) => {
         setProfileData(profileObj);
     }
-
     return (
         <div>
             <ApoioHeader />
@@ -65,9 +64,9 @@ function App(props) {
                 <Route path="/profile/edit" element={<EditProfile profile={profileData} profileCallback={changeProfileData}/>}/>
 
                 <Route path="/results" element={<ResultPage stores={stores} storeCallback={favList} />} />
-                {/*This component needs to be passed a single store, link to it instead of Route here  */}
+                {/*This component needs to be passed a single store, create in results page instead of a Route here  */}
                 <Route path="/item" element={<ItemPage store={stores[0]} />} />
-                <Route path="/new_item" element={<CreateNewItem stores={stores} passback={setStore}/>} />
+                <Route path="/new_item" element={<CreateNewItem stores={stores} filters={filtersList} dataset={setStore}/>} />
             </Routes>         
 
             <Footer />
