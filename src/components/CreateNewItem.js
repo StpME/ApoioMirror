@@ -1,10 +1,8 @@
 import React, {useState} from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { Alert } from 'react-bootstrap';
-import {Checkbox} from './Checkbox.js';
 
 export function CreateNewItem(props) {
-    //console.log(props.filters);
     const [name, setName] = useState("");
     const [type, setType] = useState("");
     const [loc, setLoc] = useState("");
@@ -15,7 +13,6 @@ export function CreateNewItem(props) {
     let initialURL = '/pics/brows.png';
     const [imageUrl, setImageUrl] = useState(initialURL);
     const [alertMessage, setAlertMessage] = useState(null);
-    const [filter, setFilters] = useState(null);
     const [checkedList, setCheckedList] = useState([]);
     // Callback function to add updated data to database
     function passData() {
@@ -63,7 +60,7 @@ export function CreateNewItem(props) {
         }
         setData([...props.stores, obj]);
         passData();
-        //Validation check for image file
+        // Validation check for image file
         function imageNameValidation(){
             if (imageFile === undefined) {
                 return "invalid";
@@ -72,7 +69,7 @@ export function CreateNewItem(props) {
         }
         console.log("SUBMITTED: \n Name: {"+obj.placeName+"}\n" + " Location: {"+obj.location+"}\n" + " Description: {"+obj.description+"}\n" + " Type: {"+obj.type+"}\n" + " Image Name: ",
         imageNameValidation() + "\n Image Url: " + obj.placeThumbnail + "\n Filter Tags: {" + checkedList + "}");
-        //Reset states
+        // Reset states
         setName("");
         setType("");
         setLoc("");
@@ -158,15 +155,18 @@ export function CreateNewItem(props) {
                         <div className="row py-3 d-flex justify-content-between">
                             <div className="col m-auto">
                                 <strong>Store Tags:</strong>
+                                <div className="col">
+                                    {checkedList.map((item, index) => {
+                                        return (
+                                            <div className="btn btn-success m-1" key={index}>
+                                                {item}
+                                            </div>
+                                        );
+                                    })}
+                                </div>
                             </div>
-                            <div className="col container">
-                                {checkedList.map((item, index) => {
-                                    return (
-                                        <div className="btn btn-success" key={index}>
-                                            {item}
-                                        </div>
-                                    );
-                                })}
+                            <div className="col">
+                               
                                 {props.filters.map((item, index) => {
                                     return (
                                         <div key={index} className="col checkbox-container">
