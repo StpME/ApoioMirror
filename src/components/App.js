@@ -56,6 +56,7 @@ function App(props) {
                 <Route path="/results" element={<ResultPage stores={stores} storeCallback={favList} />} />
                 <Route path="/item" element={<ItemPage store={stores[0]} />} />
                 <Route path="/new_item" element={<CreateNewItem stores={stores} passback={setStore}/>} />
+                {/* <Route path="/signin" element={<SignInPage currentUser={currentUser} loginCallback={loginUser} />} /> */}
             </Routes>         
 
             <Footer />
