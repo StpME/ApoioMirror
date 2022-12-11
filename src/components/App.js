@@ -14,10 +14,22 @@ import { ItemPage } from './ItemPage.js'
 function App(props) {
     //set stores to whatever the user passes to add to list
     const stores = props.stores;
+    const filtersList = ["LGBTQ", "Minority"];
     const [storeState, setStoreState] = useState(stores);
     const [currentUser, setCurrentUser] = useState(null);
+    const [profileData, setProfileData] = useState({
+        name: "Ayata Bernhardt",
+        location: "Bellevue, Washington",
+        occupation: "Student at UW",
+        email: "help@uw.edu",
+        socialInsta: "ayataeatsIG",
+        socialTwitter: "ayataeats",
+        aboutMessage: "Hello I am Ayata! Thank you for looking at my page with multiple things of interest on it. Please enjoy your stay.",
+        profileImage: "/pics/brows.png"
 
-    // This is the updated dataset after user adds new item (TESTING)
+    });
+
+    // This is the updated FULL dataset after user adds new item (TESTING)
     const [newStores, setStore] = useState([]);
     //console.log(newStores);
     
@@ -32,30 +44,29 @@ function App(props) {
     //the list page
     const favList = (storeName, isFavorited) => {
         const storesCopy = storeState.map((storeObj) => {
-            if (storeObj.placeName === storeName) {
-                //console.log(!isFavorited);
+            if(storeObj.placeName === storeName) {
                 storeObj.favorited = isFavorited;
             }
-
             return storeObj;
         })
-        //console.log(storesCopy);
         setStoreState(storesCopy);
     }
-    //console.log(storeState);
-
+    const changeProfileData = (profileObj) => {
+        setProfileData(profileObj);
+    }
     return (
         <div>
             <ApoioHeader />
             <Routes>
                 <Route index element={<Home />} />
                 <Route path="/lists" element={<ListPage stores={storeState} types={unique} />} />
-                <Route path="/profile" element={<ProfilePage />} />
-                <Route path="/profile/edit" element={<EditProfile />} />
+                <Route path="/profile" element={<ProfilePage profile={profileData} />} />
+                <Route path="/profile/edit" element={<EditProfile profile={profileData} profileCallback={changeProfileData}/>}/>
 
                 <Route path="/results" element={<ResultPage stores={stores} storeCallback={favList} />} />
+                {/*This component needs to be passed a single store, create in results page instead of a Route here  */}
                 <Route path="/item" element={<ItemPage store={stores[0]} />} />
-                <Route path="/new_item" element={<CreateNewItem stores={stores} passback={setStore}/>} />
+                <Route path="/new_item" element={<CreateNewItem stores={stores} filters={filtersList} dataset={setStore}/>} />
                 {/* <Route path="/signin" element={<SignInPage currentUser={currentUser} loginCallback={loginUser} />} /> */}
             </Routes>         
 

@@ -3,27 +3,33 @@ import { useNavigate } from 'react-router-dom';
 
 export function EditProfile(props) {
     // has to have a prop object and we'll change that object and give it back with callback
-    const navigateTo = useNavigate()
+    const navigateTo = useNavigate();
 
-    const [profileData, setProfileData] = useState({
-        name: "Ayata Bernhardt",
-        location: "Bellevue, Washington",
-        occupation: "Student at UW",
-        email: "help@uw.edu",
-        socialInsta: "ayataeatsIG",
-        socialTwitter: "ayataeats",
-        aboutMessage: "Hello I am Ayata! Thank you for looking at my page with multiple things of interest on it. Please enjoy your stay.",
-
-    });
-    // const [test, setTest] = useState('meow');
+    const [profileData, setProfileData] = useState(props.profile);
+    const [imageFile, setImageFile] = useState(undefined);
+    let initialURL = '/pics/brows.png';
+    const [imageUrl, setImageUrl] = useState(initialURL);
 
     const handleProfileData = (event) => {
-        setProfileData({...profileData, [event.target.name]: event.target.value});
+        setProfileData({ ...profileData, [event.target.name]: event.target.value });
         console.log(profileData);
     }
 
     const handleClick = (event) => {
         navigateTo('/profile');
+        props.profileCallback(profileData);
+    }
+
+    const handleChange = (event) => {
+        if (event.target.files.length > 0 && event.target.files[0]) {
+            const imageFile = event.target.files[0]
+            setImageFile(imageFile);
+            setImageUrl(URL.createObjectURL(imageFile));
+        }
+    }
+
+    const handleImageUpload = (event) => {
+        console.log("Uploading", imageFile);
     }
 
     return (
@@ -32,7 +38,9 @@ export function EditProfile(props) {
                 <div className="col-lg-10 flex-column bg-white rounded">
                     <div>
                         <div>
-                            <img alt="profile picture" src="/pics/brows.png" className="rounded img-thumbnail d-block mx-auto profile-img" />
+                            <img alt="profile picture" src={imageUrl} className="rounded img-thumbnail d-block mx-auto profile-img" />
+
+
                         </div>
                     </div>
                     <div className="d-flex profile-negative-margins justify-content-between mx-3">
@@ -45,33 +53,37 @@ export function EditProfile(props) {
                             <button type="button" className="btn btn-info" onClick={handleClick}>Save</button>
                         </div>
                     </div>
-
+                    <div className="d-flex justify-content-center">
+                        <label htmlFor="imageUploadInput" className="btn btn-sm btn-secondary me-2">Choose Image</label>
+                        <button className="btn btn-sm btn-success" onClick={handleImageUpload}>Save to Profile</button>
+                        <input type="file" name="image" id="imageUploadInput" className="d-none" onChange={handleChange} />
+                    </div>
 
                     <div className="d-flex row justify-content-center mt-3 mb-5">
                         <div className="col-8">
                             <div className="form-group mb-3">
                                 <label htmlFor="nameInput" className="form-label">Name:</label>
-                                <input name="name" className="form-control" id="nameInput" type="text" value={profileData.name} onChange={handleProfileData}  />
+                                <input name="name" className="form-control" id="nameInput" type="text" value={profileData.name} onChange={handleProfileData} />
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="locationInput" className="form-label">Location:</label>
                                 <input name="location" id="locationInput" type="text" value={profileData.location} onChange={handleProfileData} className="form-control" />
-                                
+
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="occuInput" className="form-label">Occupation:</label>
                                 <input name="occupation" id="occuInput" type="text" value={profileData.occupation} onChange={handleProfileData} className="form-control" />
-                                
+
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="instaInput" className="form-label">Instagram:</label>
                                 <input name="socialInsta" id="instaInput" type="text" value={profileData.socialInsta} onChange={handleProfileData} className="form-control" />
-                                
+
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="twitterInput" className="form-label">Twitter:</label>
                                 <input name="socialTwitter" id="twitterInput" type="text" value={profileData.socialTwitter} onChange={handleProfileData} className="form-control" />
-                                
+
                             </div>
                             <div>
                                 <label htmlFor="aboutInput" className="form-label">About:</label>

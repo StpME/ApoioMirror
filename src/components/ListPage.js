@@ -7,14 +7,6 @@ const elem = <img id="arrow" src="pics/collapse_arrow.png"/>
 
 
 export function ListPage(props) {
-
-//TEMP FUNCTION FOR NEW ITEM BUTTON TO NAV TO CREATE PAGE
-    let nav = useNavigate();
-    const temp = (event) => {
-        //TESTING PAGE
-        nav('/item');
-    }
-
     // Create card components from data if favorited by user.
     const stores = props.stores.map((item, index) => {
         if (item.favorited === true) {
@@ -58,7 +50,6 @@ export function ListPage(props) {
                                 <strong><h2 className="ms-3" id="list_name">Create New List</h2></strong>
                             </li>
                         </div>*/}
-                        <button className="btn btn-success pull-right me-2" onClick={() => temp()}>ITEM/STORE PAGE (TEMP)</button>
                         <div id='list_header' className="row pt-4 mt-2">
                             <strong><header className="title">My Lists</header></strong>
                             
