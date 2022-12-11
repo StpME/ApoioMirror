@@ -5,6 +5,7 @@
         "description": "Come here for some delicious Japanese fusion burgers!",
         "placeThumbnail": "/pics/kb_tn.jpg",
         "type": "restaurant",
+        "typeFood": "japanese",
         "favorited": false
         
     },
@@ -14,6 +15,7 @@
         "description": "Come eat the highest quality Poke in Seattle!",
         "placeThumbnail": "/pics/ono_poke_tn.jpg",
         "type": "restaurant",
+        "typeFood": "japanese",
         "favorited": false
     },
     {
@@ -22,6 +24,7 @@
         "description": "Looking for a sleek and fancy Italian place? This is the place.",
         "placeThumbnail": "/pics/cafe_juanita_tn.jpg",
         "type": "restaurant",
+        "typeFood": "european",
         "favorited": false
     },
     {
@@ -30,6 +33,7 @@
         "description": "Looking for lunch near UW Seattle?",
         "placeThumbnail": "/pics/hiroshi_poke_tn.jpg",
         "type": "restaurant",
+        "typeFood": "japanese",
         "favorited": false
     },
     {
