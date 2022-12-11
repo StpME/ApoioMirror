@@ -10,6 +10,7 @@ import { CreateNewItem } from './CreateNewItem.js';
 import { ProfilePage } from './newProfilePage.js';
 import { EditProfile } from './EditProfile.js'
 import { ItemPage } from './ItemPage.js'
+import { SignInPage } from './SignInPage.js';
 
 function App(props) {
     //set stores to whatever the user passes to add to list
@@ -37,6 +38,7 @@ function App(props) {
     const list = stores.map((elem) => {
         return elem.type;
     });
+
     const unique = [...(new Set(list))];
 
     //list of stores that have a favorited value on them
@@ -51,9 +53,19 @@ function App(props) {
         })
         setStoreState(storesCopy);
     }
+
     const changeProfileData = (profileObj) => {
         setProfileData(profileObj);
     }
+
+    const loginUser = (userObj) => {
+        console.log("logging in as", userObj.userName);
+        setCurrentUser(userObj);
+        // if(userObj.userId !== null){
+        //   navigateTo('/chat/general'); //go to chat after login
+        // }
+      }
+
     return (
         <div>
             <ApoioHeader />
@@ -67,7 +79,7 @@ function App(props) {
                 {/*This component needs to be passed a single store, create in results page instead of a Route here  */}
                 <Route path="/item" element={<ItemPage store={stores[0]} />} />
                 <Route path="/new_item" element={<CreateNewItem stores={stores} filters={filtersList} dataset={setStore}/>} />
-                {/* <Route path="/signin" element={<SignInPage currentUser={currentUser} loginCallback={loginUser} />} /> */}
+                <Route path="/login" element={<SignInPage currentUser={currentUser} loginCallback={loginUser} />} />
             </Routes>         
 
             <Footer />
