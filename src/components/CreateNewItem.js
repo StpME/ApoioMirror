@@ -174,7 +174,7 @@ export function CreateNewItem(props) {
                                                 <div className="form-group">
                                                     <input type="checkbox" value={item} onChange={handleSelect} />
                                                     <label className="px-1" htmlFor="checkbox">{item}</label>
-                                                </div>
+                        </div>
                                             </div>
                                         </div>
                                     );
