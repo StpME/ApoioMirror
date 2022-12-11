@@ -10,7 +10,7 @@ export function ResultPane(props) {
 
     const resultsArray = stores.map((resultObj, index) => {
         const element = (
-            <ResultItem resultData={resultObj} key={index + 1} storeCallback={props.storeCallback} favCallback={props.favCallback}/>
+            <ResultItem resultData={resultObj} key={index + 1} storeCallback={props.storeCallback} favCallback={props.favCallback} />
         )
         return element;
     })
@@ -28,14 +28,14 @@ function ResultItem(props) {
 
 
     const handleClick = () => {
-        
+
         // console.log(placeName);
 
         // addToMyList = !isFavorited;
         props.storeCallback(placeName, !isFavorited);
         setisFavorited(!isFavorited);
         // props.favCallback(isFavorited);
-        
+
 
     }
 
@@ -63,4 +63,13 @@ function ResultItem(props) {
             </div>
         </div>
     );
+}
+
+function ResultFilter(props) {
+    <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+        <option selected>Open this select menu</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+    </select>
 }
