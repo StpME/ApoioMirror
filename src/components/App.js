@@ -6,6 +6,7 @@ import ResultPage from './ResultPage.js';
 import Home from './Home.js';
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { getDatabase, ref as dbRef, set } from 'firebase/database';
 import { CreateNewItem } from './CreateNewItem.js';
 import { ProfilePage } from './newProfilePage.js';
 import { EditProfile } from './EditProfile.js'
@@ -60,6 +61,9 @@ function App(props) {
 
     const changeProfileData = (profileObj) => {
         setProfileData(profileObj);
+        const db = getDatabase();
+        const userDataRef = dbRef(db, 'userData/'+currentUser.userId);
+        set(userDataRef, profileObj);
     }
 
     const setResultPageLink = (storeObj) => {
@@ -80,6 +84,8 @@ function App(props) {
                 // firebaseUser.userImg = firebaseUser.photoURL || "/img/null.png"
                 // console.log(firebaseUser);
                 setCurrentUser(firebaseUser);
+                console.log(firebaseUser);
+                console.log(currentUser);
             } else {
                 console.log("logged out");
                 setCurrentUser(null);
@@ -96,7 +102,7 @@ function App(props) {
                 <Route index element={<Home />} />
                 <Route path="/lists" element={<ListPage stores={storeState} types={unique} />} />
                 <Route path="/profile" element={<ProfilePage profile={profileData} currentUser={currentUser} />} />
-                <Route path="/profile/edit" element={<EditProfile profile={profileData} profileCallback={changeProfileData} />} />
+                <Route path="/profile/edit" element={<EditProfile profile={profileData} currentUser={currentUser} profileCallback={changeProfileData} />} />
 
                 <Route path="/results" element={<ResultPage stores={stores} storeCallback={favList} currentStoreCallback={setResultPageLink}/>} />
                 <Route path="/results/:storeName" element={<ItemPage currentStore={currentStore} />} />
