@@ -21,7 +21,7 @@ function App(props) {
     const [storeState, setStoreState] = useState(stores);
     const [currentUser, setCurrentUser] = useState(null);
     const [authStateDetermined, setAuthStateDetermined] = useState(false);
-    const [currentStore, setCurrentStore] = useState(stores[1]);
+    const [currentStore, setCurrentStore] = useState(null);
     const [profileData, setProfileData] = useState({
         name: "Ayata Bernhardt",
         location: "Bellevue, Washington",
@@ -36,8 +36,8 @@ function App(props) {
 
     // This is the updated FULL dataset after user adds new item (TESTING)
     const [newStores, setStore] = useState([]);
-    console.log(newStores);
-
+    // console.log(newStores);
+    
     //Generate unique set of store types for list page
     const list = stores.map((elem) => {
         return elem.type;
@@ -62,7 +62,11 @@ function App(props) {
         setProfileData(profileObj);
     }
 
-    const navigateTo = useNavigate();
+    const setResultPageLink = (storeObj) => {
+        setCurrentStore(storeObj);
+    }
+
+    // const navigateTo = useNavigate();
 
     useEffect(() => {
         //log in a default user
@@ -94,7 +98,7 @@ function App(props) {
                 <Route path="/profile" element={<ProfilePage profile={profileData} currentUser={currentUser} />} />
                 <Route path="/profile/edit" element={<EditProfile profile={profileData} profileCallback={changeProfileData} />} />
 
-                <Route path="/results" element={<ResultPage stores={stores} storeCallback={favList} />} />
+                <Route path="/results" element={<ResultPage stores={stores} storeCallback={favList} currentStoreCallback={setResultPageLink}/>} />
                 <Route path="/results/:storeName" element={<ItemPage currentStore={currentStore} />} />
                 {/*This component needs to be passed a single store, create in results page instead of a Route here  */}
                 {/* <Route path="/item" element={<ItemPage store={stores[0]} />} /> */}

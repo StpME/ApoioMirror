@@ -10,7 +10,7 @@ export function ResultPane(props) {
 
     const resultsArray = stores.map((resultObj, index) => {
         const element = (
-            <ResultItem resultData={resultObj} key={index + 1} storeCallback={props.storeCallback} favCallback={props.favCallback} />
+            <ResultItem resultData={resultObj} key={index + 1} storeCallback={props.storeCallback} favCallback={props.favCallback} currentStoreCallback={props.currentStoreCallback}/>
         )
         return element;
     })
@@ -46,6 +46,10 @@ function ResultItem(props) {
         favoritedStyle = "btn btn-danger text-white"
     }
 
+    const currentStoreCallback = () => {
+        props.currentStoreCallback(props.resultData);
+    }
+
     return (
         // <div className="flex-fill card result-item-card">
         //     <img src={placeThumbnail} className="card-img-top" alt="..." />
@@ -69,7 +73,7 @@ function ResultItem(props) {
                 <div className="col col-lg-8">
                     <div className="card-body">
                         {/* <h5 className="card-title">{placeName}</h5> */}
-                        <Link className="company-heading mb-0 mt-1" to={"/results/"+placeName}>{placeName}</Link>
+                        <Link onClick={currentStoreCallback} className="company-heading mb-0 mt-1" to={"/results/"+placeName}>{placeName}</Link>
                         <p className="text-muted">{location}</p>
                         <p className="card-text">
                             {description}
