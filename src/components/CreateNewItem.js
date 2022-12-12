@@ -12,7 +12,7 @@ export function CreateNewItem(props) {
     const [foodType, setFoodType] = useState("");
     const [foodTypeBtn, setFoodTypeBtn] = useState("Food Type");
     const [imageFile, setImageFile] = useState(undefined);
-    let initialURL = '/pics/brows.png';
+    let initialURL = '/pics/placeholder.jpg';
     const [imageUrl, setImageUrl] = useState(initialURL);
     const [alertMessage, setAlertMessage] = useState(null);
     const [checkedTags, setCheckedTags] = useState([]);
@@ -185,7 +185,7 @@ export function CreateNewItem(props) {
                             </div>
                             <div className="col py-5">
                                 <div className="">
-                                    <img alt="profile picture" src={imageUrl} className="rounded img-thumbnail d-block profile-img" />
+                                    <img alt="Add a Picture" src={imageUrl} className="rounded img-thumbnail d-block profile-img" />
                                 </div>
                                 <div className="my-0">
                                     <label htmlFor="imageUploadInput" className="btn btn-success btn-sm mx-auto ">Choose Image</label>
