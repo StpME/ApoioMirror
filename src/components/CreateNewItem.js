@@ -7,6 +7,7 @@ export function CreateNewItem(props) {
     const [type, setType] = useState("");
     const [loc, setLoc] = useState("");
     const [desc, setDesc] = useState("");
+    const [owner, setOwner] = useState("");
     const [typeBtn, setTypeBtn] = useState("Location Type");
     const [foodType, setFoodType] = useState("");
     const [foodTypeBtn, setFoodTypeBtn] = useState("Food Type");
@@ -31,11 +32,27 @@ export function CreateNewItem(props) {
     const handleDescChange = (event) => {
         setDesc(event.target.value);
     };
+    const handleOwnerChange = (event) => {
+        if (event.target.checked) {
+            // Add checked item into checkList
+            if (owner === "") {
+                setOwner(event.target.value);
+            } 
+            else {
+                setOwner((owner + " " + event.target.value));
+            } 
+        } else {
+            // Remove unchecked item from checkList
+            const filteredList = owner.replace(event.target.value,"");
+            setOwner(filteredList.trim());
+        }
+    };
     const handleTypeChange = (event) => {
         // If restaurant chosen for type, show element for restaurant type
         if(event.target.name === "Restaurant") {
             setActive(true);
         }
+        else {setActive(false);}
         setType(event.target.name);
         setTypeBtn(event.target.name);
     };
@@ -69,6 +86,7 @@ export function CreateNewItem(props) {
             placeThumbnail: imageUrl,
             type: type,
             typeFood: foodType,
+            ownedBy: owner,
             filters: checkedTags,
             favorited: true
         }
@@ -81,11 +99,12 @@ export function CreateNewItem(props) {
             }
             return imageFile.name;
         }
-        console.log("SUBMITTED: \n Name: {"+obj.placeName+"}\n" + " Location: {"+obj.location+"}\n" + " Description: {"+obj.description+"}\n" + " Type: {"+obj.type+"}\n" + " Food Type: {" + obj.typeFood + "}\n" + " Image Name: " + imageNameValidation() + "\n Image Url: " + obj.placeThumbnail + "\n Filter Tags: {" + obj.filters + "}");
+        console.log("SUBMITTED: \n Name: {"+obj.placeName+"}\n" + " Location: {"+obj.location+"}\n" + " Owner: {"+obj.ownedBy+"}\n" + " Description: {"+obj.description+"}\n" + " Type: {"+obj.type+"}\n" + " Food Type: {" + obj.typeFood + "}\n" + " Image Name: " + imageNameValidation() + "\n Image Url: " + obj.placeThumbnail + "\n Filter Tags: {" + obj.filters + "}");
         // Reset states
         setName("");
         setType("");
         setLoc("");
+        setOwner("");
         setDesc("");
         setImageUrl(initialURL);
         setImageFile(undefined);
@@ -119,24 +138,42 @@ export function CreateNewItem(props) {
                             <div className="col m-auto">
                                 <strong>Address:</strong>
                             </div>
-                            
                             <div className="col text-muted">
                                 <div className="form-group">
                                     <input type="text" className="form-control" value={loc} placeholder="Address..." onChange={(event) => {handleLocChange(event)}} />
                                 </div>
                             </div>
                         </div>  
+                        <div className="row pb-3 d-flex justify-content-between">
+                            <div className="col m-auto">
+                                <strong>Owned By:</strong>
+                            </div>
+                            <div className="col">
+                                {props.filters.map((item, index) => {
+                                    return (
+                                        <div key={index} className="col checkbox-container">
+                                            <div className="col text-muted">
+                                                <div className="form-group">
+                                                    <input type="checkbox" value={item} onChange={handleOwnerChange} checked={owner.includes(item)} />
+                                                    <label className="px-1" htmlFor="checkbox">{item}</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    );
+                                })}
+                            </div> 
+                        </div> 
                         <div className="row d-flex justify-content-between">
                             <div className="col m-auto">
                                 <strong>Description:</strong>
                             </div>
-
                             <div className="col text-muted">
                                 <div className="form-group">
                                     <input type="text" className="form-control" value={desc} placeholder="Add Text Here..." onChange={(event) => {handleDescChange(event)}} />
                                 </div>
                             </div>
                         </div>  
+                         
                         <div className="row d-flex justify-content-between">
                             <div className="col m-auto">
                                 <strong>Add an Image:</strong>
@@ -183,7 +220,7 @@ export function CreateNewItem(props) {
                                 </Dropdown.Menu>
                             </Dropdown>
                         </div>
-                        <div className="row py-3 d-flex justify-content-between">
+                        {/*<div className="row py-3 d-flex justify-content-between">
                             <div className="col m-auto">
                                 <strong>Store Tags:</strong>
                                 <div className="col">
@@ -209,10 +246,9 @@ export function CreateNewItem(props) {
                                         </div>
                                     );
                                 })}
-                            </div>
-                            {/* <Checkbox className="col" filters={props.filters} activeFilters={filterList} /> */}
-                            
-                        </div>
+                            </div> 
+                        </div> */}
+                        
                         
                         <input className="w-100 btn btn-success mt-5" type="submit" value="Add to List" onClick={(event) => handleSubmit(event)}/>
                     </form>

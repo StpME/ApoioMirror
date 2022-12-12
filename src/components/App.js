@@ -32,7 +32,7 @@ function App(props) {
 
     // This is the updated FULL dataset after user adds new item (TESTING)
     const [newStores, setStore] = useState([]);
-    //console.log(newStores);
+    console.log(newStores);
     
     //Generate unique set of store types for list page
     const list = stores.map((elem) => {
