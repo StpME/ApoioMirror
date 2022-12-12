@@ -54,8 +54,8 @@ export default function ResultPage(props) {
 
     return (
         <div>
-            <div className="container mt-5">
-                <div className="row m-auto">
+            <div className="result-page container mt-5">
+                <div className="d-flex row m-auto justify-content-center">
                     <div className="col-md-4 col-lg-3">
                         <ResultFilter store={props.stores} changeOwnedBy={handleOwnedBy} changeShopsVisible={handleShopTypeFilter} changeRestaurantsVisible={handleRestaurantFilter} />
                         <div className="card shadow-none border">
@@ -64,7 +64,9 @@ export default function ResultPage(props) {
                             </Link>
                         </div>
                     </div>
-                    <ResultPane storeCallback={props.storeCallback} favCallback={props.favCallback} stores={storesVisible} />
+                    <div className="col-md-8 col-lg-9 col-sm-12">
+                        <ResultPane storeCallback={props.storeCallback} favCallback={props.favCallback} stores={storesVisible} />
+                    </div>
                 </div>
             </div>
         </div>

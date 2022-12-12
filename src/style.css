@@ -395,6 +395,8 @@ body {
     .logo-small {
       display: none;
     }
+
+    
   }
 
   @media (min-width: 768px) {
@@ -406,8 +408,30 @@ body {
       max-height: 768px;
       min-width: auto;
     }
+
+    .result-item-card {
+      max-width: 10rem;
+    }
     
   }
+
+  @media (max-width: 1200px) {
+    .result-item-card {
+      width: 10rem;
+    }
+
+    .result-item-card .card-text {
+      display: none;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .result-item-card {
+      max-width: 15rem;
+    }
+  }
+
+  
 
   @media (max-width: 576px) {
     .card#list_card {
@@ -437,5 +461,13 @@ body {
     #arrow {
       max-width: 36px;
       max-height: 36px;
+    }
+
+    .result-item-card{
+      max-width: 9rem;
+    }
+
+    .result-item-card .card-text {
+      display: none;
     }
   }
