@@ -67,7 +67,7 @@ export function CreateNewItem(props) {
             setImageUrl(URL.createObjectURL(imageFile));
         }
     }
-    const handleSelect = (event) => {
+    /*const handleSelect = (event) => {
         if (event.target.checked) {
         // Add checked item into checkList
             setCheckedTags([...checkedTags, event.target.value]);
@@ -76,7 +76,7 @@ export function CreateNewItem(props) {
             const filteredList = checkedTags.filter((item) => item !== event.target.value);
             setCheckedTags(filteredList);
         }
-    };
+    }; */
     const handleSubmit = (event) => {
         // New object to write into json file
         const obj = {
@@ -99,7 +99,7 @@ export function CreateNewItem(props) {
             }
             return imageFile.name;
         }
-        console.log("SUBMITTED: \n Name: {"+obj.placeName+"}\n" + " Location: {"+obj.location+"}\n" + " Owner: {"+obj.ownedBy+"}\n" + " Description: {"+obj.description+"}\n" + " Type: {"+obj.type+"}\n" + " Food Type: {" + obj.typeFood + "}\n" + " Image Name: " + imageNameValidation() + "\n Image Url: " + obj.placeThumbnail);
+        console.log("SUBMITTED: \n Name: {",obj.placeName,"}\n", " Location: {",obj.location,"}\n", " Owner: {",obj.ownedBy,"}\n", " Description: {",obj.description,"}\n", " Type: {",obj.type,"}\n" , " Food Type: {", obj.typeFood, "}\n", " Image Name: ", imageNameValidation(), "\n Image Url: ", obj.placeThumbnail);
         // Reset states
         setName("");
         setType("");
@@ -185,7 +185,7 @@ export function CreateNewItem(props) {
                             </div>
                             <div className="col py-5">
                                 <div className="">
-                                    <img alt="Add a Picture" src={imageUrl} className="rounded img-thumbnail d-block profile-img" />
+                                    <img alt="add content here" src={imageUrl} className="rounded img-thumbnail d-block profile-img" />
                                 </div>
                                 <div className="my-0">
                                     <label htmlFor="imageUploadInput" className="btn btn-success btn-sm mx-auto ">Choose Image</label>

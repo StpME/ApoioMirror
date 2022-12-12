@@ -18,8 +18,8 @@ export default function ApoioHeader(props) {
     return (
         <Navbar className="green" collapseOnSelect expand="lg" variant="dark">
             <Container>
-                <Navbar.Brand href="index.html"><Link className="nav-link" to="/"><img className="logo-large" src="pics/logo.png" alt="Apoio logo large" /></Link></Navbar.Brand>
-                <Navbar.Brand href="index.html"><Link className="nav-link" to="/"><img className="logo-small" src="pics/favicon_white.png" alt="Apoio logo small" /></Link></Navbar.Brand>
+                <Link className="navbar-brand nav-link" to="/"><img className="logo-small" src="pics/favicon_white.png" alt="Apoio logo small" /></Link>
+                <Link className="navbar-brand nav-link" to="/"><img className="logo-large" src="pics/logo.png" alt="Apoio logo large" /></Link>
 
                 <Form className="d-flex">
                     <div className="input-group">

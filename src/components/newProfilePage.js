@@ -41,7 +41,7 @@ export function ProfilePage(props) {
                 <div className="col-lg-10 flex-column bg-white rounded">
                     <div>
                         <div>
-                            <img alt="profile picture" src={profileData.profileImage} className="rounded img-thumbnail d-block mx-auto profile-img" />
+                            <img alt="profile" src={profileData.profileImage} className="rounded img-thumbnail d-block mx-auto profile-img" />
                         </div>
                     </div>
                     <div className="d-flex profile-negative-margins justify-content-between mx-3">
@@ -89,7 +89,7 @@ export function ProfilePage(props) {
 
                         {/* favorite items will go here change with inputs */}
                         <div className="card" id="list_card">
-                            <img className="img-fluid h-100" src="/pics/kb_tn.jpg" />
+                            <img className="img-fluid h-100" src="/pics/kb_tn.jpg" alt="favorited item" />
                             <div className="card-block darken"></div>
                         </div>
 
