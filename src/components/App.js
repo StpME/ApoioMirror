@@ -33,6 +33,7 @@ function App(props) {
         profileImage: "/pics/brows.png"
 
     });
+    const [queryText, setQueryText] = useState("");
 
     // This is the updated FULL dataset after user adds new item (TESTING)
     const [newStores, setStore] = useState([]);
@@ -66,6 +67,10 @@ function App(props) {
         setCurrentStore(storeObj);
     }
 
+    const changeSearchInput = (searchQuery) => {
+        setQueryText(searchQuery);
+    }
+
     // const navigateTo = useNavigate();
 
     useEffect(() => {
@@ -91,14 +96,14 @@ function App(props) {
 
     return (
         <div>
-            <ApoioHeader currentUser={currentUser} />
+            <ApoioHeader currentUser={currentUser} searchInputCallback={changeSearchInput} />
             <Routes>
                 <Route index element={<Home />} />
                 <Route path="/lists" element={<ListPage stores={storeState} types={unique} />} />
                 <Route path="/profile" element={<ProfilePage profile={profileData} currentUser={currentUser} />} />
                 <Route path="/profile/edit" element={<EditProfile profile={profileData} profileCallback={changeProfileData} />} />
 
-                <Route path="/results" element={<ResultPage stores={stores} storeCallback={favList} currentStoreCallback={setResultPageLink}/>} />
+                <Route path="/results" element={<ResultPage stores={stores} storeCallback={favList} currentStoreCallback={setResultPageLink} searchText={queryText}/>} />
                 <Route path="/results/:storeName" element={<ItemPage currentStore={currentStore} />} />
                 {/*This component needs to be passed a single store, create in results page instead of a Route here  */}
                 {/* <Route path="/item" element={<ItemPage store={stores[0]} />} /> */}
