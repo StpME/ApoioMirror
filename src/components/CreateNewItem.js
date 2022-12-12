@@ -157,6 +157,14 @@ export function CreateNewItem(props) {
                                     <input onChange={handleOwnerChange} className="form-check-input" type="checkbox" value="lgbtq" id="flexCheckDefault"/>
                                     <label className="px-1" htmlFor="checkbox">LGBTQ+</label>
                                 </div>
+                                <div className="form-group">
+                                    <input onChange={handleOwnerChange} className="form-check-input" type="checkbox" value="black" id="flexCheckDefault"/>
+                                    <label className="px-1" htmlFor="checkbox">Black</label>
+                                </div>
+                                <div className="form-group">
+                                    <input onChange={handleOwnerChange} className="form-check-input" type="checkbox" value="asian" id="flexCheckDefault"/>
+                                    <label className="px-1" htmlFor="checkbox">Asian</label>
+                                </div>
                             </div> 
                         </div> 
                         <div className="row d-flex justify-content-between">
