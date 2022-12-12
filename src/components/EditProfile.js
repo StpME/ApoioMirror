@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getDatabase, ref as dbRef, set as firebaseSet } from 'firebase/database';
 
 export function EditProfile(props) {
     // has to have a prop object and we'll change that object and give it back with callback
@@ -14,6 +13,7 @@ export function EditProfile(props) {
     const handleProfileData = (event) => {
         setProfileData({ ...profileData, [event.target.name]: event.target.value });
         console.log(profileData);
+        // firebasePush(userDataRef, profileData);
     }
 
     const handleClick = (event) => {
