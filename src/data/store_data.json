@@ -36,6 +36,7 @@
         "placeThumbnail": "/pics/ono_poke_tn.jpg",
         "type": "restaurant",
         "typeFood": "japanese",
+        "ownedBy": ["female", "asian"],
         "favorited": false
     },
     {
@@ -55,6 +56,7 @@
         "placeThumbnail": "/pics/hiroshi_poke_tn.jpg",
         "type": "restaurant",
         "typeFood": "japanese",
+        "ownedBy": ["female", "asian"],
         "favorited": false
     },
     {

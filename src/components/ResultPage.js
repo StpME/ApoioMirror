@@ -59,45 +59,45 @@ export default function ResultPage(props) {
         }
     }
 
-        // changeResultView();
+    // changeResultView();
 
-        // if (isChecked) {
-        //     console.log(storeParam);
-        //     changeFilterArray([...filterArray, storeParam]);
-        //     // console.log(filterArray);
-        // } else {
-        //     const index = filterArray.indexOf(storeParam)
-        //     if(index !== -1) {
-        //         const currentArray = filterArray.splice(index, 1);
-        //         changeFilterArray(currentArray);
-        //     }
-        //     // changeStoresVisible(initStores);
-        // }
-        // if(filterArray.length > 0) {
-        //     console.log(filterArray);
-        //     let currentArray = [];
-        //     initStores.some((store) => {
-        //         // console.log(store);
-        //         // currentObject = store;
-        //         // console.log(currentObject);
-        //         if (store.ownedBy !== undefined) {
-        //             // console.log(store.ownedBy);
-        //             store.ownedBy.every((ownedByItem) => {
-        //                 console.log("filter array " + filterArray);
-        //                 // console.log(currentObject);
-        //                 if(filterArray.includes(ownedByItem)){
-        //                     currentArray = [...currentArray, store];
-        //                 }
-        //                 // return filterArray.includes(ownedByItem);
-        //             });
-        //         }
-        //     });
-        //     // changeTempStores(currentArray);
-        //     console.log(tempStores);
-        //     changeStoresVisible(currentArray);
-        // } else {
-        //     changeStoresVisible(initStores);
-        // }
+    // if (isChecked) {
+    //     console.log(storeParam);
+    //     changeFilterArray([...filterArray, storeParam]);
+    //     // console.log(filterArray);
+    // } else {
+    //     const index = filterArray.indexOf(storeParam)
+    //     if(index !== -1) {
+    //         const currentArray = filterArray.splice(index, 1);
+    //         changeFilterArray(currentArray);
+    //     }
+    //     // changeStoresVisible(initStores);
+    // }
+    // if(filterArray.length > 0) {
+    //     console.log(filterArray);
+    //     let currentArray = [];
+    //     initStores.some((store) => {
+    //         // console.log(store);
+    //         // currentObject = store;
+    //         // console.log(currentObject);
+    //         if (store.ownedBy !== undefined) {
+    //             // console.log(store.ownedBy);
+    //             store.ownedBy.every((ownedByItem) => {
+    //                 console.log("filter array " + filterArray);
+    //                 // console.log(currentObject);
+    //                 if(filterArray.includes(ownedByItem)){
+    //                     currentArray = [...currentArray, store];
+    //                 }
+    //                 // return filterArray.includes(ownedByItem);
+    //             });
+    //         }
+    //     });
+    //     // changeTempStores(currentArray);
+    //     console.log(tempStores);
+    //     changeStoresVisible(currentArray);
+    // } else {
+    //     changeStoresVisible(initStores);
+    // }
 
     // }
 
@@ -105,12 +105,12 @@ export default function ResultPage(props) {
     useEffect(() => {
         // const changeResultView = () => {
         if (Object.values(checkboxBool).every((bool) => bool === false)) {
-            console.log("all false");
+            // console.log("all false");
             changeStoresVisible(initStores);
         }
 
-        if (!Object.values(checkboxBool).every((bool) => bool === false)) {
-            console.log("not all false");
+        else {
+            // console.log("not all false");
             const filteredObjects = new Set();
 
             for (const [type, typeBool] of Object.entries(checkboxBool)) {
@@ -126,17 +126,32 @@ export default function ResultPage(props) {
                         }
                     } else {
                         if (storeObj.ownedBy !== undefined) {
-                            if (storeObj.ownedBy.includes(type)) {
+                            if(storeObj.ownedBy.includes(type)) {
                                 filteredObjects.delete(storeObj);
                             }
+                            // storeObj.ownedBy.every((ownedByProperty) => {
+                            //     console.log("current property " + ownedByProperty);
+                            //     if ((checkboxBool[ownedByProperty] === true)) {
+                            //         console.log("inside " + ownedByProperty);
+                            //         filteredObjects.add(storeObj);
+                            //     } else {
+                            //         console.log("outside " + ownedByProperty)
+                            //         // if (storeObj.ownedBy.includes(type)) {
+                            //         //     filteredObjects.delete(storeObj);
+                            //         // }
+                            //         filteredObjects.delete(storeObj);
+                            //     }
+                            // });
                         }
                     }
                 }
             }
-
             const filteredArray = [...filteredObjects];
             changeStoresVisible(filteredArray);
         }
+
+
+
         // }
     }, [checkboxBool]);
 
@@ -153,7 +168,7 @@ export default function ResultPage(props) {
                             </Link>
                         </div>
                     </div>
-                    <div className="col-md-8 col-lg-9 col-sm-12">
+                    <div className="col-md-8 col-lg-8 col-sm-12">
                         <ResultPane storeCallback={props.storeCallback} favCallback={props.favCallback} stores={storesVisible} />
                     </div>
                 </div>

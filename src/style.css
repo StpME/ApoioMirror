@@ -171,14 +171,15 @@ body {
   /* background-color: white; */
 }
 
-.card {
+/* mitch */
+/* .card {
   flex: 0 1 175px;
   background-color: white;
   margin: .5rem;
   border-radius: 10px;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
   
-}
+} */
 
 .card-block {
   border-radius: 10px;
@@ -193,11 +194,12 @@ body {
     background-color: rgba(0, 0, 0, 0.2);
 }
 
-.img-fluid {
+/* mitch */
+/* .img-fluid {
   border-radius: 10px;
   object-fit: cover;
   max-width: 100%;
-}
+} */
 
 #store_name {
   color: white;
@@ -410,14 +412,25 @@ body {
     }
 
     .result-item-card {
-      max-width: 10rem;
+      border-radius: 10px;
+      max-height: 14rem;
+      overflow: hidden;
+    }
+
+    .result-card-img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
     }
     
   }
 
   @media (max-width: 1200px) {
-    .result-item-card {
+
+    .result-card-img {
+      object-fit: cover;
       width: 10rem;
+      height: 10rem;
     }
 
     .result-item-card .card-text {
@@ -426,9 +439,9 @@ body {
   }
 
   @media (min-width: 1200px) {
-    .result-item-card {
-      max-width: 15rem;
-    }
+    /* .result-item-card {
+      max-height: 15rem;
+    } */
   }
 
   
@@ -463,8 +476,14 @@ body {
       max-height: 36px;
     }
 
-    .result-item-card{
-      max-width: 9rem;
+    /* .result-item-card{
+      max-height: 10rem;
+    } */
+
+    .result-card-img {
+      object-fit: cover;
+      width: 100%;
+      height: 12rem;
     }
 
     .result-item-card .card-text {
