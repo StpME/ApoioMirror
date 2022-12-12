@@ -55,7 +55,7 @@ export default function Home(props) {
 
 function CategoryCard(props) {
     return (
-        <div className="card">
+        <div className="card home-card-item">
             <div className="card-body">
                 <img src={props.img} alt={props.name + " category"} />
             </div>

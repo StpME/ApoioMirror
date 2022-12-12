@@ -188,8 +188,8 @@ export default function ResultPage(props) {
                 <div className="d-flex row m-auto justify-content-center">
                     <div className="col-md-4 col-lg-3">
                         <ResultFilter store={storesVisible} changeOwnedBy={handleOwnedBy} changeShopsVisible={handleShopTypeFilter} changeRestaurantsVisible={handleRestaurantFilter} />
-                        <div className="card shadow-none border">
-                            <Link to="../new_item" className="card-body btn btn-danger">
+                        <div className="my-3 ">
+                            <Link to="../new_item" className="btn btn-danger add-new-button">
                                 <strong className="text-white">Add a New Location</strong>
                             </Link>
                         </div>
