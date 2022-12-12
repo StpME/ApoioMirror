@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -9,10 +9,25 @@ import { Link, NavLink } from 'react-router-dom';
 
 
 export default function ApoioHeader(props) {
+    const [queryText, setQueryText] = useState("");
     const currentUser = props.currentUser;
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        props.searchInputCallback(queryText);
+    }
+
+    const handleChange = (event) => {
+        setQueryText(event.target.value);
+    }
+
     const textCallback = (event) => {
+        
         props.searchInputCallback(event.target.value);
+        setQueryText(event.target.value);
+        event.preventDefault();
+
+        // console.log(event.target.value);
     }
 
     return (
@@ -21,16 +36,17 @@ export default function ApoioHeader(props) {
                 <Link className="navbar-brand nav-link" to="/"><img className="logo-small" src="pics/favicon_white.png" alt="Apoio logo small" /></Link>
                 <Link className="navbar-brand nav-link" to="/"><img className="logo-large" src="pics/logo.png" alt="Apoio logo large" /></Link>
 
-                <Form className="d-flex">
+                <Form className="d-flex" onSubmit={handleSubmit}>
                     <div className="input-group">
                         <Form.Control
                             type="search"
                             placeholder="Search"
                             aria-label="Search"
-                            defaultValue=""
-                            onChange={textCallback}
+                            value={queryText}
+                            onChange={handleChange}
+                            // ON SUBMIT NEEDS PREVENTDEFAULT
                         />
-                        <Button variant="dark"><i className="fa fa-search" aria-hidden="true"></i></Button>
+                        <Button onClick={handleSubmit} variant="dark"><i className="fa fa-search" aria-hidden="true"></i></Button>
                     </div>
                 </Form>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
