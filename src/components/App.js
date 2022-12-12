@@ -21,6 +21,7 @@ function App(props) {
     const [storeState, setStoreState] = useState(stores);
     const [currentUser, setCurrentUser] = useState(null);
     const [authStateDetermined, setAuthStateDetermined] = useState(false);
+    const [currentStore, setCurrentStore] = useState(null);
     const [profileData, setProfileData] = useState({
         name: "Ayata Bernhardt",
         location: "Bellevue, Washington",
@@ -63,8 +64,6 @@ function App(props) {
 
     const navigateTo = useNavigate();
 
-    
-
     useEffect(() => {
     //log in a default user
         const auth = getAuth();
@@ -103,10 +102,12 @@ function App(props) {
                 <Route path="/profile/edit" element={<EditProfile profile={profileData} profileCallback={changeProfileData}/>}/>
 
                 <Route path="/results" element={<ResultPage stores={stores} storeCallback={favList} />} />
+                <Route path="/results/:storeName" element={<ItemPage currentStore={currentStore} />} />
                 {/*This component needs to be passed a single store, create in results page instead of a Route here  */}
                 <Route path="/item" element={<ItemPage store={stores[0]} />} />
                 <Route path="/new_item" element={<CreateNewItem stores={stores} dataset={setStore}/>} />
                 <Route path="/login" element={<SignInPage currentUser={currentUser} />} />
+
             </Routes>         
 
             <Footer />
