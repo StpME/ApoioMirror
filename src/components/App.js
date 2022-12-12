@@ -74,11 +74,11 @@ function App(props) {
         onAuthStateChanged(auth, (firebaseUser) => {
             if (firebaseUser) {
                 console.log("logged in as", firebaseUser.displayName);
-                console.log(firebaseUser.uid);
+                // console.log(firebaseUser.uid);
                 firebaseUser.userId = firebaseUser.uid
                 firebaseUser.name = firebaseUser.displayName;
                 // firebaseUser.userImg = firebaseUser.photoURL || "/img/null.png"
-                console.log(firebaseUser);
+                // console.log(firebaseUser);
                 setCurrentUser(firebaseUser);
             } else {
                 console.log("logged out");
