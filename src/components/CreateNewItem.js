@@ -7,7 +7,7 @@ export function CreateNewItem(props) {
     const [type, setType] = useState("");
     const [loc, setLoc] = useState("");
     const [desc, setDesc] = useState("");
-    const [owner, setOwner] = useState("");
+    const [owner, setOwner] = useState([]);
     const [typeBtn, setTypeBtn] = useState("Location Type");
     const [foodType, setFoodType] = useState("");
     const [foodTypeBtn, setFoodTypeBtn] = useState("Food Type");
@@ -15,7 +15,7 @@ export function CreateNewItem(props) {
     let initialURL = '/pics/placeholder.jpg';
     const [imageUrl, setImageUrl] = useState(initialURL);
     const [alertMessage, setAlertMessage] = useState(null);
-    const [checkedTags, setCheckedTags] = useState([]);
+    //const [checkedTags, setCheckedTags] = useState([]);
 
     const [isActive, setActive] = useState(false);
     const [data, setData] = useState([]);
@@ -35,16 +35,11 @@ export function CreateNewItem(props) {
     const handleOwnerChange = (event) => {
         if (event.target.checked) {
             // Add checked item into checkList
-            if (owner === "") {
-                setOwner(event.target.value);
-            } 
-            else {
-                setOwner((owner + " " + event.target.value));
-            } 
+            setOwner([...owner, event.target.value]);
         } else {
             // Remove unchecked item from checkList
-            const filteredList = owner.replace(event.target.value,"");
-            setOwner(filteredList.trim());
+            const filteredList = owner.filter((item) => item !== event.target.value);
+            setOwner(filteredList);
         }
     };
     const handleTypeChange = (event) => {
@@ -87,7 +82,7 @@ export function CreateNewItem(props) {
             type: type,
             typeFood: foodType,
             ownedBy: owner,
-            filters: checkedTags,
+            /*filters: checkedTags,*/
             favorited: true
         }
         setData([...props.stores, obj]);
@@ -104,16 +99,20 @@ export function CreateNewItem(props) {
         setName("");
         setType("");
         setLoc("");
-        setOwner("");
+        setOwner([]);
         setDesc("");
         setImageUrl(initialURL);
         setImageFile(undefined);
-        setCheckedTags([]);
+        //setCheckedTags([]);
         setTypeBtn("Location Type");
         setFoodType("");
         setFoodTypeBtn("Food Type");
         setActive(false);
         event.preventDefault();
+    }
+    function formValidation(event) {
+        if (event.target.value === "")
+        {alert('Form field is required')};
     }
     return (
         <div className="d-block p-5">
@@ -130,7 +129,7 @@ export function CreateNewItem(props) {
                             </div>
                             <div className="col text-muted">
                                 <div className="form-group">
-                                    <input type="text" className="form-control" value={name} placeholder="Location Name..." onChange={(event) => {handleNameChange(event)}}  />
+                                    <input type="text" className="form-control" value={name} placeholder="Location Name..." onBlur={formValidation} onChange={(event) => {handleNameChange(event)}}/>
                                 </div>
                             </div>
                         </div>  
@@ -140,7 +139,7 @@ export function CreateNewItem(props) {
                             </div>
                             <div className="col text-muted">
                                 <div className="form-group">
-                                    <input type="text" className="form-control" value={loc} placeholder="Address..." onChange={(event) => {handleLocChange(event)}} />
+                                    <input required type="text" className="form-control" value={loc} placeholder="Address..." onBlur={formValidation} onChange={(event) => {handleLocChange(event)}} />
                                 </div>
                             </div>
                         </div>  
@@ -150,19 +149,19 @@ export function CreateNewItem(props) {
                             </div>
                             <div className="col">
                                 <div className="form-group">
-                                    <input onChange={handleOwnerChange} className="form-check-input" type="checkbox" value="female" id="flexCheckDefault"/>
+                                    <input onChange={handleOwnerChange} className="form-check-input" type="checkbox" value="female" checked={owner.includes("female")}/>
                                     <label className="px-1" htmlFor="checkbox">Female</label>
                                 </div> 
                                 <div className="form-group">
-                                    <input onChange={handleOwnerChange} className="form-check-input" type="checkbox" value="lgbtq" id="flexCheckDefault"/>
+                                    <input onChange={handleOwnerChange} className="form-check-input" type="checkbox" value="lgbtq" checked={owner.includes("lgbtq")} />
                                     <label className="px-1" htmlFor="checkbox">LGBTQ+</label>
                                 </div>
                                 <div className="form-group">
-                                    <input onChange={handleOwnerChange} className="form-check-input" type="checkbox" value="black" id="flexCheckDefault"/>
+                                    <input onChange={handleOwnerChange} className="form-check-input" type="checkbox" value="black"checked={owner.includes("black")} />
                                     <label className="px-1" htmlFor="checkbox">Black</label>
                                 </div>
                                 <div className="form-group">
-                                    <input onChange={handleOwnerChange} className="form-check-input" type="checkbox" value="asian" id="flexCheckDefault"/>
+                                    <input onChange={handleOwnerChange} className="form-check-input" type="checkbox" value="asian" checked={owner.includes("asian")} />
                                     <label className="px-1" htmlFor="checkbox">Asian</label>
                                 </div>
                             </div> 
