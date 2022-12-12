@@ -7,17 +7,17 @@ export default function ResultPage(props) {
     const allStores = props.stores;
     const restaurants = allStores.filter((store) => {
         return store.type === "restaurant";
-    })
+    });
     const [storesVisible, changeStoresVisible] = useState(allStores);
-    let isRestaurant = false;
+    const [prevStores, changePrevStores] = useState(storesVisible);
 
     const handleShopTypeFilter = (storeParam) => {
         if (storeParam !== "all") {
             const filteredShops = allStores.filter((store) => {
-                
+
                 return store.type === storeParam;
             })
-            console.log(filteredShops);
+            // console.log(filteredShops);
             changeStoresVisible(filteredShops);
         } else {
             changeStoresVisible(allStores);
@@ -29,10 +29,24 @@ export default function ResultPage(props) {
             const filteredRestaurants = restaurants.filter((store) => {
                 return store.typeFood === storeParam;
             })
-            console.log(filteredRestaurants);
+            // console.log(filteredRestaurants);
             changeStoresVisible(filteredRestaurants);
         } else {
             changeStoresVisible(storesVisible);
+        }
+    }
+
+    const handleOwnedBy = (storeParam, isChecked) => {
+        if (isChecked) {
+            const filteredRestaurants = storesVisible.filter((store) => {
+                if (store.ownedBy !== undefined) {
+                    return store.ownedBy.includes(storeParam);
+                }
+            });
+            changePrevStores(storesVisible);
+            changeStoresVisible(filteredRestaurants);
+        } else {
+            changeStoresVisible(prevStores);
         }
     }
 
@@ -43,7 +57,7 @@ export default function ResultPage(props) {
             <div className="container mt-5">
                 <div className="row m-auto">
                     <div className="col-md-4 col-lg-3">
-                        <ResultFilter store={props.storeCallback} changeShopsVisible={handleShopTypeFilter} isRestaurant={isRestaurant} changeRestaurantsVisible={handleRestaurantFilter} />
+                        <ResultFilter store={props.stores} changeOwnedBy={handleOwnedBy} changeShopsVisible={handleShopTypeFilter} changeRestaurantsVisible={handleRestaurantFilter} />
                         <div className="card shadow-none border">
                             <Link to="../new_item" className="card-body btn btn-danger">
                                 <strong className="text-white">Add a New Location</strong>
@@ -73,6 +87,10 @@ function ResultFilter(props) {
         props.changeRestaurantsVisible(event.target.value);
     }
 
+    const handleCheckbox = (event) => {
+        props.changeOwnedBy(event.target.value, event.target.checked);
+    }
+
     return (
         <div className="card shadow-none">
             <div className="card-body">
@@ -96,14 +114,14 @@ function ResultFilter(props) {
                     </div>
                 }
 
-                <p>Owned By:</p>
+                {/* <p>Owned By:</p> */}
                 <div>
                     <div className="form-check">
-                        <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"></input>
+                        <input onChange={handleCheckbox} className="form-check-input" type="checkbox" value="female" id="flexCheckDefault"></input>
                         <label className="form-check-label">Female-owned</label>
                     </div>
                     <div className="form-check">
-                        <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"></input>
+                        <input onChange={handleCheckbox} className="form-check-input" type="checkbox" value="lgbtq" id="flexCheckDefault"></input>
                         <label className="form-check-label">LGBTQ+-owned</label>
                     </div>
                 </div>
