@@ -8,19 +8,22 @@ export function CreateNewItem(props) {
     const [loc, setLoc] = useState("");
     const [desc, setDesc] = useState("");
     const [typeBtn, setTypeBtn] = useState("Location Type");
-    const [data, setData] = useState([]);
+    const [foodType, setFoodType] = useState("");
+    const [foodTypeBtn, setFoodTypeBtn] = useState("Food Type");
     const [imageFile, setImageFile] = useState(undefined);
     let initialURL = '/pics/brows.png';
     const [imageUrl, setImageUrl] = useState(initialURL);
     const [alertMessage, setAlertMessage] = useState(null);
-    const [checkedList, setCheckedList] = useState([]);
+    const [checkedTags, setCheckedTags] = useState([]);
+
+    const [isActive, setActive] = useState(false);
+    const [data, setData] = useState([]);
     // Callback function to add updated data to database
     function passData() {
         props.dataset(data);
     }
 	const handleNameChange = (event) => {
         setName(event.target.value);
-    
     };
     const handleLocChange = (event) => {
         setLoc(event.target.value);
@@ -29,8 +32,16 @@ export function CreateNewItem(props) {
         setDesc(event.target.value);
     };
     const handleTypeChange = (event) => {
+        // If restaurant chosen for type, show element for restaurant type
+        if(event.target.name === "Restaurant") {
+            setActive(true);
+        }
         setType(event.target.name);
         setTypeBtn(event.target.name);
+    };
+    const handleFoodChange = (event) => {
+        setFoodType(event.target.name);
+        setFoodTypeBtn(event.target.name);
     };
     const handleImgChange = (event) => {
         if (event.target.files.length > 0 && event.target.files[0]) {
@@ -42,11 +53,11 @@ export function CreateNewItem(props) {
     const handleSelect = (event) => {
         if (event.target.checked) {
         // Add checked item into checkList
-            setCheckedList([...checkedList, event.target.value]);
+            setCheckedTags([...checkedTags, event.target.value]);
         } else {
         // Remove unchecked item from checkList
-            const filteredList = checkedList.filter((item) => item !== event.target.value);
-            setCheckedList(filteredList);
+            const filteredList = checkedTags.filter((item) => item !== event.target.value);
+            setCheckedTags(filteredList);
         }
     };
     const handleSubmit = (event) => {
@@ -57,6 +68,8 @@ export function CreateNewItem(props) {
             description: desc,
             placeThumbnail: imageUrl,
             type: type,
+            typeFood: foodType,
+            filters: checkedTags,
             favorited: true
         }
         setData([...props.stores, obj]);
@@ -68,8 +81,7 @@ export function CreateNewItem(props) {
             }
             return imageFile.name;
         }
-        console.log("SUBMITTED: \n Name: {"+obj.placeName+"}\n" + " Location: {"+obj.location+"}\n" + " Description: {"+obj.description+"}\n" + " Type: {"+obj.type+"}\n" + " Image Name: ",
-        imageNameValidation() + "\n Image Url: " + obj.placeThumbnail + "\n Filter Tags: {" + checkedList + "}");
+        console.log("SUBMITTED: \n Name: {"+obj.placeName+"}\n" + " Location: {"+obj.location+"}\n" + " Description: {"+obj.description+"}\n" + " Type: {"+obj.type+"}\n" + " Food Type: {" + obj.typeFood + "}\n" + " Image Name: " + imageNameValidation() + "\n Image Url: " + obj.placeThumbnail + "\n Filter Tags: {" + obj.filters + "}");
         // Reset states
         setName("");
         setType("");
@@ -77,9 +89,11 @@ export function CreateNewItem(props) {
         setDesc("");
         setImageUrl(initialURL);
         setImageFile(undefined);
-        setCheckedList([]);
-        //document.querySelectorAll('input[type=checkbox]').forEach( el => el.checked = false );
+        setCheckedTags([]);
         setTypeBtn("Location Type");
+        setFoodType("");
+        setFoodTypeBtn("Food Type");
+        setActive(false);
         event.preventDefault();
     }
     return (
@@ -153,11 +167,27 @@ export function CreateNewItem(props) {
                                 </Dropdown.Menu>
                             </Dropdown>
                         </div>
+                        <div className={isActive===true ? "row py-3 d-flex justify-content-between" : "d-none"}>
+                            <div className="col m-auto ">
+                                <strong>Restaurant Type:</strong>
+                            </div>
+                            <Dropdown className="col">
+                                <Dropdown.Toggle variant="success">
+                                {foodTypeBtn}
+                                </Dropdown.Toggle >
+                                <Dropdown.Menu>
+                                    <Dropdown.Item href="#/action-4" name={"Japanese"} onClick={(event) => handleFoodChange(event)}>Japanese</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-5" name={"European"} onClick={(event) => handleFoodChange(event)}>European</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-6" name={"Mexican"} onClick={(event) => handleFoodChange(event)}>Mexican</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-7" name={"Mediterranean"} onClick={(event) => handleFoodChange(event)}>Mediterranean</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                        </div>
                         <div className="row py-3 d-flex justify-content-between">
                             <div className="col m-auto">
                                 <strong>Store Tags:</strong>
                                 <div className="col">
-                                    {checkedList.map((item, index) => {
+                                    {checkedTags.map((item, index) => {
                                         return (
                                             <div className="btn btn-success m-1" key={index}>
                                                 {item}
@@ -172,7 +202,7 @@ export function CreateNewItem(props) {
                                         <div key={index} className="col checkbox-container">
                                             <div className="col text-muted">
                                                 <div className="form-group">
-                                                    <input type="checkbox" value={item} onChange={handleSelect} checked={checkedList.includes(item)} />
+                                                    <input type="checkbox" value={item} onChange={handleSelect} checked={checkedTags.includes(item)} />
                                                     <label className="px-1" htmlFor="checkbox">{item}</label>
                                                 </div>
                                             </div>
