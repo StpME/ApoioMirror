@@ -20,22 +20,8 @@ export default function ResultPage(props) {
             "asian": false
         }
     );
-    const [searchStores, setSearchStores] = useState({});
 
-    const getSearchStores = (queryText) => { allStores.filter((store) => {
-        const filteredObjects = new Set();
-        if (props.queryText !== "") {
-            if(store.type !== undefined && store.typeFood !== undefined) {
-                if (store.placeName.includes(props.queryText) || store.type.includes(props.queryText) || store.typeFood.includes(props.queryText)) {
-                    filteredObjects.add(store);
-                }
-            }
-            
-
-            const filteredArray = [...filteredObjects];
-            changeStoresVisible(filteredArray);
-        }
-    })};
+    
 
 
     const handleShopTypeFilter = (storeParam) => {

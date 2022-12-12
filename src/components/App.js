@@ -34,6 +34,7 @@ function App(props) {
 
     });
     const [queryText, setQueryText] = useState("");
+    const [queryResults, setQueryResults] = useState(null);
 
     // This is the updated FULL dataset after user adds new item (TESTING)
     const [newStores, setStore] = useState([]);
@@ -69,6 +70,24 @@ function App(props) {
 
     const changeSearchInput = (searchQuery) => {
         setQueryText(searchQuery);
+
+        // allStores.filter((store) => {
+        //     const filteredObjects = new Set();
+        //     if (props.queryText !== "") {
+        //         if (store.type !== undefined && store.typeFood !== undefined) {
+        //             if (store.placeName.includes(props.queryText) || store.type.includes(props.queryText) || store.typeFood.includes(props.queryText)) {
+        //                 filteredObjects.add(store);
+        //             }
+        //         }
+    
+    
+    
+        //     }
+        //     const filteredArray = [...filteredObjects];
+        //     changeStoresVisible(filteredArray);
+        // });
+
+        console.log(searchQuery);
     }
 
     // const navigateTo = useNavigate();
