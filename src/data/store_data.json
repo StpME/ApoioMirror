@@ -6,7 +6,7 @@
         "placeThumbnail": "/pics/kb_tn.jpg",
         "type": "restaurant",
         "typeFood": "japanese",
-        "ownedBy": "female",
+        "ownedBy": ["female"],
         "favorited": false
         
     },
@@ -17,7 +17,7 @@
         "placeThumbnail": "/pics/heartbeet_tn.jpg",
         "type": "restaurant",
         "typeFood": "healthy",
-        "ownedBy": "lgbtq female",
+        "ownedBy": ["lgbtq", "female"],
         "favorited": false
     },
     {
@@ -45,7 +45,7 @@
         "placeThumbnail": "/pics/cafe_juanita_tn.jpg",
         "type": "restaurant",
         "typeFood": "european",
-        "ownedBy": "female",
+        "ownedBy": ["female"],
         "favorited": false
     },
     {
@@ -71,7 +71,7 @@
         "description": "Seattle treats for dogs! Food Truck vibes!",
         "placeThumbnail": "/pics/barkery_tn.jpg",
         "type": "shop",
-        "ownedBy":"female",
+        "ownedBy": ["female"],
         "favorited": false
     },
     {
@@ -80,7 +80,7 @@
         "description": "Get decoration for your home from this brick + mortar shop!",
         "placeThumbnail": "/pics/butter_home_tn.jpg",
         "type": "shop",
-        "ownedBy":"female",
+        "ownedBy": ["female"],
         "favorited": false
     },
     {

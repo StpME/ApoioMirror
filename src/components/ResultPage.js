@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import { ResultFilter } from './ResultFilter';
 import { ResultPane } from './ResultPane';
 import { Link } from 'react-router-dom';
@@ -9,7 +9,17 @@ export default function ResultPage(props) {
         return store.type === "restaurant";
     });
     const [storesVisible, changeStoresVisible] = useState(allStores);
-    const [prevStores, changePrevStores] = useState(storesVisible);
+    const [initStores, changeinitStores] = useState(allStores);
+    const [filterArray, changeFilterArray] = useState([]);
+    const [tempStores, changeTempStores] = useState([]);
+    const [checkboxBool, setCheckboxBool] = useState(
+        {
+            "female": false,
+            "lgbtq": false,
+            "black": false,
+            "asian": false
+        }
+    );
 
     const handleShopTypeFilter = (storeParam) => {
         if (storeParam !== "all") {
@@ -19,6 +29,7 @@ export default function ResultPage(props) {
             })
             // console.log(filteredShops);
             changeStoresVisible(filteredShops);
+            // changePrevStores(storesVisible);
         } else {
             changeStoresVisible(allStores);
         }
@@ -31,6 +42,7 @@ export default function ResultPage(props) {
             })
             // console.log(filteredRestaurants);
             changeStoresVisible(filteredRestaurants);
+            // changePrevStores(storesVisible);
         } else {
             changeStoresVisible(storesVisible);
         }
@@ -38,18 +50,95 @@ export default function ResultPage(props) {
 
     const handleOwnedBy = (storeParam, isChecked) => {
         if (isChecked) {
-            const filteredRestaurants = storesVisible.filter((store) => {
-                if (store.ownedBy !== undefined) {
-                    return store.ownedBy.includes(storeParam);
-                }
-            });
-            changePrevStores(storesVisible);
-            changeStoresVisible(filteredRestaurants);
+            setCheckboxBool({ ...checkboxBool, [storeParam]: true });
+            // console.log(checkboxBool);
         } else {
-            changeStoresVisible(prevStores);
+            setCheckboxBool({ ...checkboxBool, [storeParam]: false });
+            // console.log(checkboxBool);
+
         }
     }
 
+        // changeResultView();
+
+        // if (isChecked) {
+        //     console.log(storeParam);
+        //     changeFilterArray([...filterArray, storeParam]);
+        //     // console.log(filterArray);
+        // } else {
+        //     const index = filterArray.indexOf(storeParam)
+        //     if(index !== -1) {
+        //         const currentArray = filterArray.splice(index, 1);
+        //         changeFilterArray(currentArray);
+        //     }
+        //     // changeStoresVisible(initStores);
+        // }
+        // if(filterArray.length > 0) {
+        //     console.log(filterArray);
+        //     let currentArray = [];
+        //     initStores.some((store) => {
+        //         // console.log(store);
+        //         // currentObject = store;
+        //         // console.log(currentObject);
+        //         if (store.ownedBy !== undefined) {
+        //             // console.log(store.ownedBy);
+        //             store.ownedBy.every((ownedByItem) => {
+        //                 console.log("filter array " + filterArray);
+        //                 // console.log(currentObject);
+        //                 if(filterArray.includes(ownedByItem)){
+        //                     currentArray = [...currentArray, store];
+        //                 }
+        //                 // return filterArray.includes(ownedByItem);
+        //             });
+        //         }
+        //     });
+        //     // changeTempStores(currentArray);
+        //     console.log(tempStores);
+        //     changeStoresVisible(currentArray);
+        // } else {
+        //     changeStoresVisible(initStores);
+        // }
+
+    // }
+
+
+    useEffect(() => {
+        // const changeResultView = () => {
+        if (Object.values(checkboxBool).every((bool) => bool === false)) {
+            console.log("all false");
+            changeStoresVisible(initStores);
+        }
+
+        if (!Object.values(checkboxBool).every((bool) => bool === false)) {
+            console.log("not all false");
+            const filteredObjects = new Set();
+
+            for (const [type, typeBool] of Object.entries(checkboxBool)) {
+                // console.log(type);
+                // console.log(typeBool);
+                for (const storeObj of initStores) {
+                    // console.log(storeObj);
+                    if (typeBool === true) {
+                        if (storeObj.ownedBy !== undefined) {
+                            if (storeObj.ownedBy.includes(type)) {
+                                filteredObjects.add(storeObj);
+                            }
+                        }
+                    } else {
+                        if (storeObj.ownedBy !== undefined) {
+                            if (storeObj.ownedBy.includes(type)) {
+                                filteredObjects.delete(storeObj);
+                            }
+                        }
+                    }
+                }
+            }
+
+            const filteredArray = [...filteredObjects];
+            changeStoresVisible(filteredArray);
+        }
+        // }
+    }, [checkboxBool]);
 
 
     return (
@@ -72,6 +161,7 @@ export default function ResultPage(props) {
         </div>
     );
 }
+
 
 function ResultFilter(props) {
     const [isRestaurant, setIsRestaurant] = useState(false);
