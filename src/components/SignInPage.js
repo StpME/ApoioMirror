@@ -1,9 +1,10 @@
 import React from 'react';
 
-import { getAuth, EmailAuthProvider, GoogleAuthProvider, signOut } from 'firebase/auth';
+import { getAuth, EmailAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { StyledFirebaseAuth } from 'react-firebaseui';
 
 export function SignInPage(props) {
+    // const loginFunction = props.loginCallback;
 
     const auth = getAuth();
 

@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ApoioHeader from './ApoioHeader.js';
 import Footer from './Footer.js';
 import { ListPage } from './ListPage.js';
 import ResultPage from './ResultPage.js';
 import Home from './Home.js';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
-// import { ProfilePage } from './ProfilePage.js';
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { CreateNewItem } from './CreateNewItem.js';
 import { ProfilePage } from './newProfilePage.js';
 import { EditProfile } from './EditProfile.js'
 import { ItemPage } from './ItemPage.js'
 import { SignInPage } from './SignInPage.js';
+// import { ProfilePage } from './ProfilePage.js';
+
 
 function App(props) {
     //set stores to whatever the user passes to add to list
@@ -18,6 +20,7 @@ function App(props) {
     //const filtersList = ["LGBTQ+", "Minority-owned", "Female-owned"];
     const [storeState, setStoreState] = useState(stores);
     const [currentUser, setCurrentUser] = useState(null);
+    const [authStateDetermined, setAuthStateDetermined] = useState(false);
     const [profileData, setProfileData] = useState({
         name: "Ayata Bernhardt",
         location: "Bellevue, Washington",
@@ -58,13 +61,37 @@ function App(props) {
         setProfileData(profileObj);
     }
 
-    const loginUser = (userObj) => {
-        console.log("logging in as", userObj.userName);
-        setCurrentUser(userObj);
-        // if(userObj.userId !== null){
-        //   navigateTo('/chat/general'); //go to chat after login
-        // }
-      }
+    const navigateTo = useNavigate();
+
+    
+
+    useEffect(() => {
+    //log in a default user
+        const auth = getAuth();
+        onAuthStateChanged(auth, (firebaseUser) => {
+            if(firebaseUser) {
+                console.log("logged in as", firebaseUser.displayName);
+                console.log(firebaseUser.uid);
+                // console.log(firebaseUser);
+                // firebaseUser.userId = firebaseUser.uid
+                // firebaseUser.name = firebaseUser.displayName;
+                // firebaseUser.userImg = firebaseUser.photoURL || "/img/null.png"
+                setCurrentUser(firebaseUser);
+            } else {
+                console.log("logged out");
+                setCurrentUser(null);
+            }
+        })
+    }, [])
+
+    // const loginUser = (userObj) => {
+    //     console.log("logging in as", userObj.userName);
+    //     console.log(userObj);
+    //     setCurrentUser(userObj);
+    //     if(userObj.userId !== null){
+    //       navigateTo('/profile'); //go to chat after login
+    //     }
+    // }
 
     return (
         <div>
@@ -79,7 +106,7 @@ function App(props) {
                 {/*This component needs to be passed a single store, create in results page instead of a Route here  */}
                 <Route path="/item" element={<ItemPage store={stores[0]} />} />
                 <Route path="/new_item" element={<CreateNewItem stores={stores} dataset={setStore}/>} />
-                <Route path="/login" element={<SignInPage currentUser={currentUser} loginCallback={loginUser} />} />
+                <Route path="/login" element={<SignInPage currentUser={currentUser} />} />
             </Routes>         
 
             <Footer />

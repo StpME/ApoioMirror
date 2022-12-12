@@ -1,3 +1,4 @@
+import { getAuth, signOut } from 'firebase/auth';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -24,6 +25,11 @@ export function ProfilePage(props) {
 
     const handleClick = (event) => {
         navigateTo("/profile/edit");
+    }
+
+    const handleSignOut = (event) => {
+        console.log("Signing Out");
+        signOut(getAuth());
     }
 
     return (
@@ -86,8 +92,10 @@ export function ProfilePage(props) {
 
                     </div>
 
+                    
 
                 </div>
+                <button type="button" className="btn btn-signout btn-danger" onClick={handleSignOut}>Sign Out</button>
             </div>
         </div>
 

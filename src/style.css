@@ -164,6 +164,11 @@ body {
   flex: 180px 1 1;
 }
 
+.btn-signout {
+  justify-content: center;
+  /* width: 1em; */
+}
+
 .btn-success {
   border-radius: 15px;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
