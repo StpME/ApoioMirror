@@ -5,10 +5,12 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 
-export default function ApoioHeader() {
+export default function ApoioHeader(props) {
+    const currentUser = props.currentUser;
+
     return (
         <Navbar className="green" collapseOnSelect expand="lg" variant="dark">
             <Container>
@@ -30,9 +32,18 @@ export default function ApoioHeader() {
                     <Nav className="me-auto">
                     </Nav>
                     <Nav>
-                        <Link className="nav-link" to="/">Home</Link>
-                        <Link className="nav-link" to="/lists">My Lists</Link>
-                        <Link className="nav-link" to="/profile">My Account</Link>
+                        <NavLink className="nav-link" to="/">Home</NavLink>
+                        <NavLink className="nav-link" to="/lists">My Lists</NavLink>
+                        {currentUser &&
+                            <>
+                                <NavLink className="nav-link" to="/profile">My Account</NavLink>
+                            </>
+                        }
+                        {!currentUser &&
+                            <>
+                                <NavLink className="nav-link" to="/login">Login</NavLink>
+                            </>
+                        }
                     </Nav>
                 </Navbar.Collapse>
             </Container>
