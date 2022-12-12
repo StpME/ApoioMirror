@@ -11,6 +11,10 @@ import { Link, NavLink } from 'react-router-dom';
 export default function ApoioHeader(props) {
     const currentUser = props.currentUser;
 
+    const textCallback = (event) => {
+        props.searchInputCallback(event.target.value);
+    }
+
     return (
         <Navbar className="green" collapseOnSelect expand="lg" variant="dark">
             <Container>
@@ -23,6 +27,8 @@ export default function ApoioHeader(props) {
                             type="search"
                             placeholder="Search"
                             aria-label="Search"
+                            defaultValue=""
+                            onChange={textCallback}
                         />
                         <Button variant="dark"><i className="fa fa-search" aria-hidden="true"></i></Button>
                     </div>
