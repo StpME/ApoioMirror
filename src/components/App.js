@@ -91,7 +91,7 @@ function App(props) {
             <Routes>
                 <Route index element={<Home />} />
                 <Route path="/lists" element={<ListPage stores={storeState} types={unique} />} />
-                <Route path="/profile" element={<ProfilePage profile={profileData} />} />
+                <Route path="/profile" element={<ProfilePage profile={profileData} currentUser={currentUser} />} />
                 <Route path="/profile/edit" element={<EditProfile profile={profileData} profileCallback={changeProfileData} />} />
 
                 <Route path="/results" element={<ResultPage stores={stores} storeCallback={favList} />} />
