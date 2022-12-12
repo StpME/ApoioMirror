@@ -21,7 +21,7 @@ function App(props) {
     const [storeState, setStoreState] = useState(stores);
     const [currentUser, setCurrentUser] = useState(null);
     const [authStateDetermined, setAuthStateDetermined] = useState(false);
-    const [currentStore, setCurrentStore] = useState(stores[1]);
+    const [currentStore, setCurrentStore] = useState(null);
     const [profileData, setProfileData] = useState({
         name: "Ayata Bernhardt",
         location: "Bellevue, Washington",
@@ -36,7 +36,7 @@ function App(props) {
 
     // This is the updated FULL dataset after user adds new item (TESTING)
     const [newStores, setStore] = useState([]);
-    console.log(newStores);
+    // console.log(newStores);
     
     //Generate unique set of store types for list page
     const list = stores.map((elem) => {
@@ -50,7 +50,7 @@ function App(props) {
     //the list page
     const favList = (storeName, isFavorited) => {
         const storesCopy = storeState.map((storeObj) => {
-            if(storeObj.placeName === storeName) {
+            if (storeObj.placeName === storeName) {
                 storeObj.favorited = isFavorited;
             }
             return storeObj;
@@ -62,19 +62,23 @@ function App(props) {
         setProfileData(profileObj);
     }
 
-    const navigateTo = useNavigate();
+    const setResultPageLink = (storeObj) => {
+        setCurrentStore(storeObj);
+    }
+
+    // const navigateTo = useNavigate();
 
     useEffect(() => {
-    //log in a default user
+        //log in a default user
         const auth = getAuth();
         onAuthStateChanged(auth, (firebaseUser) => {
-            if(firebaseUser) {
+            if (firebaseUser) {
                 console.log("logged in as", firebaseUser.displayName);
                 console.log(firebaseUser.uid);
-                // console.log(firebaseUser);
-                // firebaseUser.userId = firebaseUser.uid
-                // firebaseUser.name = firebaseUser.displayName;
+                firebaseUser.userId = firebaseUser.uid
+                firebaseUser.name = firebaseUser.displayName;
                 // firebaseUser.userImg = firebaseUser.photoURL || "/img/null.png"
+                console.log(firebaseUser);
                 setCurrentUser(firebaseUser);
             } else {
                 console.log("logged out");
@@ -83,32 +87,25 @@ function App(props) {
         })
     }, [])
 
-    // const loginUser = (userObj) => {
-    //     console.log("logging in as", userObj.userName);
-    //     console.log(userObj);
-    //     setCurrentUser(userObj);
-    //     if(userObj.userId !== null){
-    //       navigateTo('/profile'); //go to chat after login
-    //     }
-    // }
+    // console.log("Current User " + typeof(currentUser));
 
     return (
         <div>
-            <ApoioHeader />
+            <ApoioHeader currentUser={currentUser} />
             <Routes>
                 <Route index element={<Home />} />
                 <Route path="/lists" element={<ListPage stores={storeState} types={unique} />} />
-                <Route path="/profile" element={<ProfilePage profile={profileData} />} />
-                <Route path="/profile/edit" element={<EditProfile profile={profileData} profileCallback={changeProfileData}/>}/>
+                <Route path="/profile" element={<ProfilePage profile={profileData} currentUser={currentUser} />} />
+                <Route path="/profile/edit" element={<EditProfile profile={profileData} profileCallback={changeProfileData} />} />
 
-                <Route path="/results" element={<ResultPage stores={stores} storeCallback={favList} />} />
+                <Route path="/results" element={<ResultPage stores={stores} storeCallback={favList} currentStoreCallback={setResultPageLink}/>} />
                 <Route path="/results/:storeName" element={<ItemPage currentStore={currentStore} />} />
                 {/*This component needs to be passed a single store, create in results page instead of a Route here  */}
                 {/* <Route path="/item" element={<ItemPage store={stores[0]} />} /> */}
-                <Route path="/new_item" element={<CreateNewItem stores={stores} dataset={setStore}/>} />
+                <Route path="/new_item" element={<CreateNewItem stores={stores} dataset={setStore} />} />
                 <Route path="/login" element={<SignInPage currentUser={currentUser} />} />
 
-            </Routes>         
+            </Routes>
 
             <Footer />
         </div>

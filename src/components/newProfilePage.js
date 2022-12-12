@@ -1,10 +1,9 @@
 import { getAuth, signOut } from 'firebase/auth';
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 export function ProfilePage(props) {
-
-
+    const currentUser = props.currentUser;
 
     const navigateTo = useNavigate();
     // const [profileData, setProfileData] = useState({
@@ -30,6 +29,10 @@ export function ProfilePage(props) {
     const handleSignOut = (event) => {
         console.log("Signing Out");
         signOut(getAuth());
+    }
+
+    if (!currentUser) {
+        return <Navigate to="/" />
     }
 
     return (
