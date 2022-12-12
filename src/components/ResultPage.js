@@ -127,6 +127,14 @@ function ResultFilter(props) {
                         <input onChange={handleCheckbox} className="form-check-input" type="checkbox" value="lgbtq" id="flexCheckDefault"></input>
                         <label className="form-check-label">LGBTQ+-owned</label>
                     </div>
+                    <div className="form-check">
+                        <input onChange={handleCheckbox} className="form-check-input" type="checkbox" value="black" id="flexCheckDefault"></input>
+                        <label className="form-check-label">Black-owned</label>
+                    </div>
+                    <div className="form-check">
+                        <input onChange={handleCheckbox} className="form-check-input" type="checkbox" value="asian" id="flexCheckDefault"></input>
+                        <label className="form-check-label">Asian-owned</label>
+                    </div>
                 </div>
             </div>
         </div>
