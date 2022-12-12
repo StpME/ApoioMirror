@@ -15,7 +15,7 @@ import { SignInPage } from './SignInPage.js';
 function App(props) {
     //set stores to whatever the user passes to add to list
     const stores = props.stores;
-    const filtersList = ["LGBTQ", "Minority"];
+    const filtersList = ["LGBTQ+", "Minority-owned", "Female-owned"];
     const [storeState, setStoreState] = useState(stores);
     const [currentUser, setCurrentUser] = useState(null);
     const [profileData, setProfileData] = useState({

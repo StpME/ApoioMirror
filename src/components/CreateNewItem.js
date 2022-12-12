@@ -20,6 +20,7 @@ export function CreateNewItem(props) {
     }
 	const handleNameChange = (event) => {
         setName(event.target.value);
+    
     };
     const handleLocChange = (event) => {
         setLoc(event.target.value);
@@ -77,16 +78,16 @@ export function CreateNewItem(props) {
         setImageUrl(initialURL);
         setImageFile(undefined);
         setCheckedList([]);
-        event.preventDefault();
+        //document.querySelectorAll('input[type=checkbox]').forEach( el => el.checked = false );
         setTypeBtn("Location Type");
+        event.preventDefault();
     }
-    
     return (
         <div className="d-block p-5">
             {alertMessage &&
                 <Alert variant="danger" dismissible onClose={() => setAlertMessage(null)}>{alertMessage}</Alert>
             }
-            <div className="card ">
+            <div className="card">
                 <div className="card-body ">
                     <h3 className="text-center py-3 "><strong>Add a New Location</strong></h3>
                     <form className="py-3 ">
@@ -96,7 +97,7 @@ export function CreateNewItem(props) {
                             </div>
                             <div className="col text-muted">
                                 <div className="form-group">
-                                    <input type="text" className="form-control" placeholder="Location Name..." onBlur={(event) => {handleNameChange(event)}} />
+                                    <input type="text" className="form-control" value={name} placeholder="Location Name..." onChange={(event) => {handleNameChange(event)}}  />
                                 </div>
                             </div>
                         </div>  
@@ -107,7 +108,7 @@ export function CreateNewItem(props) {
                             
                             <div className="col text-muted">
                                 <div className="form-group">
-                                    <input type="text" className="form-control" placeholder="Address..." onBlur={(event) => {handleLocChange(event)}} />
+                                    <input type="text" className="form-control" value={loc} placeholder="Address..." onChange={(event) => {handleLocChange(event)}} />
                                 </div>
                             </div>
                         </div>  
@@ -118,7 +119,7 @@ export function CreateNewItem(props) {
 
                             <div className="col text-muted">
                                 <div className="form-group">
-                                    <input type="text" className="form-control" placeholder="Add Text Here..." onBlur={(event) => {handleDescChange(event)}} />
+                                    <input type="text" className="form-control" value={desc} placeholder="Add Text Here..." onChange={(event) => {handleDescChange(event)}} />
                                 </div>
                             </div>
                         </div>  
@@ -166,13 +167,12 @@ export function CreateNewItem(props) {
                                 </div>
                             </div>
                             <div className="col">
-                               
                                 {props.filters.map((item, index) => {
                                     return (
                                         <div key={index} className="col checkbox-container">
                                             <div className="col text-muted">
                                                 <div className="form-group">
-                                                    <input type="checkbox" value={item} onChange={handleSelect} />
+                                                    <input type="checkbox" value={item} onChange={handleSelect} checked={checkedList.includes(item)} />
                                                     <label className="px-1" htmlFor="checkbox">{item}</label>
                                                 </div>
                                             </div>
