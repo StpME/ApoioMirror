@@ -5,29 +5,34 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 
 export default function ApoioHeader(props) {
     const [queryText, setQueryText] = useState("");
     const currentUser = props.currentUser;
+    const navigateTo = useNavigate();
+
+
+    const location = useLocation();
+    // console.log(location.pathname);
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        props.searchInputCallback(queryText);
+
+        props.searchInputCallback(queryText, location.pathname);
+        // if (location.pathname === "/results") {
+        //     navigateTo("/searchResults");
+        // } else {
+        //     navigateTo("/results");
+        // }
+        navigateTo("/results");
+
     }
 
     const handleChange = (event) => {
         setQueryText(event.target.value);
-    }
-
-    const textCallback = (event) => {
-        
-        props.searchInputCallback(event.target.value);
-        setQueryText(event.target.value);
-        event.preventDefault();
-
-        // console.log(event.target.value);
     }
 
     return (
@@ -44,7 +49,7 @@ export default function ApoioHeader(props) {
                             aria-label="Search"
                             value={queryText}
                             onChange={handleChange}
-                            // ON SUBMIT NEEDS PREVENTDEFAULT
+                        // ON SUBMIT NEEDS PREVENTDEFAULT
                         />
                         <Button onClick={handleSubmit} variant="dark"><i className="fa fa-search" aria-hidden="true"></i></Button>
                     </div>

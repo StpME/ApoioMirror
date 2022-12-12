@@ -34,13 +34,13 @@ function App(props) {
         profileImage: "/pics/brows.png"
 
     });
-    const [queryText, setQueryText] = useState("");
-    const [queryResults, setQueryResults] = useState(null);
+    const [location, setLocation] = useState("");
+    const [queryResults, setQueryResults] = useState(stores);
 
     // This is the updated FULL dataset after user adds new item (TESTING)
     const [newStores, setStore] = useState([]);
     // console.log(newStores);
-    
+
     //Generate unique set of store types for list page
     const list = stores.map((elem) => {
         return elem.type;
@@ -64,7 +64,7 @@ function App(props) {
     const changeProfileData = (profileObj) => {
         setProfileData(profileObj);
         const db = getDatabase();
-        const userDataRef = dbRef(db, 'userData/'+currentUser.userId);
+        const userDataRef = dbRef(db, 'userData/' + currentUser.userId);
         set(userDataRef, profileObj);
     }
 
@@ -72,26 +72,42 @@ function App(props) {
         setCurrentStore(storeObj);
     }
 
-    const changeSearchInput = (searchQuery) => {
-        setQueryText(searchQuery);
+    const changeSearchInput = (searchQuery, locationName) => {
+        setLocation(locationName);
+        console.log(locationName);
+        setQueryResults(storeState);
+        const queryToLower = searchQuery.toLowerCase();
+        const filteredObjects = new Set();
 
-        // allStores.filter((store) => {
-        //     const filteredObjects = new Set();
-        //     if (props.queryText !== "") {
-        //         if (store.type !== undefined && store.typeFood !== undefined) {
-        //             if (store.placeName.includes(props.queryText) || store.type.includes(props.queryText) || store.typeFood.includes(props.queryText)) {
-        //                 filteredObjects.add(store);
-        //             }
-        //         }
-    
-    
-    
-        //     }
-        //     const filteredArray = [...filteredObjects];
-        //     changeStoresVisible(filteredArray);
-        // });
 
-        console.log(searchQuery);
+        storeState.filter((storeObj) => {
+
+            if (searchQuery !== "") {
+                if (storeObj.placeName !== undefined) {
+                    const placeLower = storeObj.placeName.toLowerCase();
+                    if (placeLower.includes(queryToLower)) {
+                        filteredObjects.add(storeObj);
+                    }
+                }
+                if (storeObj.type !== undefined) {
+                    if (storeObj.type.includes(queryToLower)) {
+                        filteredObjects.add(storeObj);
+                    }
+                }
+                if (storeObj.typeFood !== undefined) {
+                    if (storeObj.typeFood.includes(queryToLower)) {
+                        filteredObjects.add(storeObj);
+                    }
+                }
+            }
+        })
+
+
+        const filteredArray = [...filteredObjects];
+        console.log("results in app " + queryResults);
+        if (filteredArray.length !== 0) {
+            setQueryResults(filteredArray);
+        }
     }
 
     // const navigateTo = useNavigate();
@@ -128,7 +144,7 @@ function App(props) {
                 <Route path="/profile" element={<ProfilePage profile={profileData} currentUser={currentUser} />} />
                 <Route path="/profile/edit" element={<EditProfile profile={profileData} currentUser={currentUser} profileCallback={changeProfileData} />} />
 
-                <Route path="/results" element={<ResultPage stores={stores} storeCallback={favList} currentStoreCallback={setResultPageLink} searchText={queryText}/>} />
+                <Route path="/results" element={<ResultPage stores={queryResults} storeCallback={favList} currentStoreCallback={setResultPageLink} locationPath={location}/>} />
                 <Route path="/results/:storeName" element={<ItemPage currentStore={currentStore} />} />
                 {/*This component needs to be passed a single store, create in results page instead of a Route here  */}
                 {/* <Route path="/item" element={<ItemPage store={stores[0]} />} /> */}

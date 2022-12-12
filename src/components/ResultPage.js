@@ -10,8 +10,8 @@ export default function ResultPage(props) {
     });
     const [storesVisible, changeStoresVisible] = useState(allStores);
     const [initStores, changeinitStores] = useState(allStores);
-    const [filterArray, changeFilterArray] = useState([]);
-    const [tempStores, changeTempStores] = useState([]);
+    // const [filterArray, changeFilterArray] = useState([]);
+    // const [tempStores, changeTempStores] = useState([]);
     const [checkboxBool, setCheckboxBool] = useState(
         {
             "female": false,
@@ -20,20 +20,29 @@ export default function ResultPage(props) {
             "asian": false
         }
     );
+    const [renderCheckerBool, setRenderCheckerBool] = useState(false);
 
-    
-
+    // RE RENDERS IF THE INPUT AFTER SEARCH QUERY IS NOT THE SAME!
+    // DOES NOT WORK IF I AM ALREADY ON RESULTS PAGE
+    // if(props.stores !== storesVisible) {
+    //     changeStoresVisible(props.stores);
+    // }
+    if (props.stores !== storesVisible && props.locationPath === "/results" && renderCheckerBool === false) {
+        changeStoresVisible(props.stores);
+    }
 
     const handleShopTypeFilter = (storeParam) => {
         if (storeParam !== "all") {
             const filteredShops = allStores.filter((store) => {
-
+                
                 return store.type === storeParam;
             })
             // console.log(filteredShops);
+            setRenderCheckerBool(true);
             changeStoresVisible(filteredShops);
             // changePrevStores(storesVisible);
         } else {
+            setRenderCheckerBool(false);
             changeStoresVisible(allStores);
         }
     }
@@ -41,18 +50,22 @@ export default function ResultPage(props) {
     const handleRestaurantFilter = (storeParam) => {
         if (storeParam !== "all") {
             const filteredRestaurants = restaurants.filter((store) => {
+                
                 return store.typeFood === storeParam;
             })
             // console.log(filteredRestaurants);
+            setRenderCheckerBool(true);
             changeStoresVisible(filteredRestaurants);
             // changePrevStores(storesVisible);
         } else {
+            setRenderCheckerBool(false);
             changeStoresVisible(storesVisible);
         }
     }
 
     const handleOwnedBy = (storeParam, isChecked) => {
         if (isChecked) {
+            
             setCheckboxBool({ ...checkboxBool, [storeParam]: true });
             // console.log(checkboxBool);
         } else {
@@ -106,20 +119,30 @@ export default function ResultPage(props) {
 
 
     useEffect(() => {
+        // const searchResultState = props.searchResults;
+        // console.log(searchResultState);
+
+        changeStoresVisible(props.stores);
+        console.log("RE RENDERED!");
+
+        
+
         // const changeResultView = () => {
         if (Object.values(checkboxBool).every((bool) => bool === false)) {
             // console.log("all false");
+            setRenderCheckerBool(false);
             changeStoresVisible(initStores);
         }
 
         else {
+            setRenderCheckerBool(true);
             // console.log("not all false");
             const filteredObjects = new Set();
 
             for (const [type, typeBool] of Object.entries(checkboxBool)) {
                 // console.log(type);
                 // console.log(typeBool);
-                for (const storeObj of initStores) {
+                for (const storeObj of storesVisible) {
                     // console.log(storeObj);
                     if (typeBool === true) {
                         if (storeObj.ownedBy !== undefined) {
@@ -161,10 +184,10 @@ export default function ResultPage(props) {
 
     return (
         <div>
-            <div className="result-page container mt-5">
+            <div className="result-page container my-5">
                 <div className="d-flex row m-auto justify-content-center">
                     <div className="col-md-4 col-lg-3">
-                        <ResultFilter store={props.stores} changeOwnedBy={handleOwnedBy} changeShopsVisible={handleShopTypeFilter} changeRestaurantsVisible={handleRestaurantFilter} />
+                        <ResultFilter store={storesVisible} changeOwnedBy={handleOwnedBy} changeShopsVisible={handleShopTypeFilter} changeRestaurantsVisible={handleRestaurantFilter} />
                         <div className="card shadow-none border">
                             <Link to="../new_item" className="card-body btn btn-danger">
                                 <strong className="text-white">Add a New Location</strong>
