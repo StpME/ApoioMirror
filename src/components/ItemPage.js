@@ -1,20 +1,21 @@
 import React, {useState} from 'react';
 
 export function ItemPage(props) {
-    const store = props.store;
-    let owner = "";
+    const store = props.currentStore;
+    // let owner = "";
     
-    if (store.ownedBy !== "") {
-        owner = store.ownedBy.substring(0,1).toUpperCase() + store.ownedBy.substring(1) + "-owned"
-    }
+    // if (store.ownedBy !== "") {
+    //     owner = store.ownedBy.substring(0,1).toUpperCase() + store.ownedBy.substring(1) + "-owned"
+    // }
     return (
         <div className="card m-5 pb-4">
             <div className="card-body">
                 <div className="search-item-div">
-                    <img className="search-item-img" src="./pics/kb_item.jpg" alt="katsu burger large content image"/>
+                    <img className="search-item-img" src={store.placeThumbnail} alt="katsu burger large content image"/>
                 </div>
                 <h1 className="p-4 text-center"><strong>{store.placeName}</strong></h1>
-                <h2 className="text-center text-muted">{owner} {store.type.substring(0,1).toUpperCase() + store.type.substring(1)}</h2>
+                {/* <h2 className="text-center text-muted">{owner} {store.type.substring(0,1).toUpperCase() + store.type.substring(1)}</h2> */}
+                <h2 className="text-center text-muted">{store.location}</h2>
                 <h3 className="text-center text-muted">{store.description}</h3>
             
 

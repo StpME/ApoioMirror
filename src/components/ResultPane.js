@@ -69,7 +69,7 @@ function ResultItem(props) {
                 <div className="col col-lg-8">
                     <div className="card-body">
                         {/* <h5 className="card-title">{placeName}</h5> */}
-                        <Link className="company-heading mb-0 mt-1" to="../item">{placeName}</Link>
+                        <Link className="company-heading mb-0 mt-1" to={"/results/"+placeName}>{placeName}</Link>
                         <p className="text-muted">{location}</p>
                         <p className="card-text">
                             {description}
