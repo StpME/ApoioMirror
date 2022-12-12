@@ -99,7 +99,7 @@ export function CreateNewItem(props) {
             }
             return imageFile.name;
         }
-        console.log("SUBMITTED: \n Name: {"+obj.placeName+"}\n" + " Location: {"+obj.location+"}\n" + " Owner: {"+obj.ownedBy+"}\n" + " Description: {"+obj.description+"}\n" + " Type: {"+obj.type+"}\n" + " Food Type: {" + obj.typeFood + "}\n" + " Image Name: " + imageNameValidation() + "\n Image Url: " + obj.placeThumbnail + "\n Filter Tags: {" + obj.filters + "}");
+        console.log("SUBMITTED: \n Name: {"+obj.placeName+"}\n" + " Location: {"+obj.location+"}\n" + " Owner: {"+obj.ownedBy+"}\n" + " Description: {"+obj.description+"}\n" + " Type: {"+obj.type+"}\n" + " Food Type: {" + obj.typeFood + "}\n" + " Image Name: " + imageNameValidation() + "\n Image Url: " + obj.placeThumbnail);
         // Reset states
         setName("");
         setType("");
@@ -149,18 +149,14 @@ export function CreateNewItem(props) {
                                 <strong>Owned By:</strong>
                             </div>
                             <div className="col">
-                                {props.filters.map((item, index) => {
-                                    return (
-                                        <div key={index} className="col checkbox-container">
-                                            <div className="col text-muted">
-                                                <div className="form-group">
-                                                    <input type="checkbox" value={item} onChange={handleOwnerChange} checked={owner.includes(item)} />
-                                                    <label className="px-1" htmlFor="checkbox">{item}</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    );
-                                })}
+                                <div className="form-group">
+                                    <input onChange={handleOwnerChange} className="form-check-input" type="checkbox" value="female" id="flexCheckDefault"/>
+                                    <label className="px-1" htmlFor="checkbox">Female</label>
+                                </div> 
+                                <div className="form-group">
+                                    <input onChange={handleOwnerChange} className="form-check-input" type="checkbox" value="lgbtq" id="flexCheckDefault"/>
+                                    <label className="px-1" htmlFor="checkbox">LGBTQ+</label>
+                                </div>
                             </div> 
                         </div> 
                         <div className="row d-flex justify-content-between">

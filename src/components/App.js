@@ -15,7 +15,7 @@ import { SignInPage } from './SignInPage.js';
 function App(props) {
     //set stores to whatever the user passes to add to list
     const stores = props.stores;
-    const filtersList = ["LGBTQ+", "Minority-owned", "Female-owned"];
+    //const filtersList = ["LGBTQ+", "Minority-owned", "Female-owned"];
     const [storeState, setStoreState] = useState(stores);
     const [currentUser, setCurrentUser] = useState(null);
     const [profileData, setProfileData] = useState({
@@ -78,7 +78,7 @@ function App(props) {
                 <Route path="/results" element={<ResultPage stores={stores} storeCallback={favList} />} />
                 {/*This component needs to be passed a single store, create in results page instead of a Route here  */}
                 <Route path="/item" element={<ItemPage store={stores[0]} />} />
-                <Route path="/new_item" element={<CreateNewItem stores={stores} filters={filtersList} dataset={setStore}/>} />
+                <Route path="/new_item" element={<CreateNewItem stores={stores} dataset={setStore}/>} />
                 <Route path="/login" element={<SignInPage currentUser={currentUser} loginCallback={loginUser} />} />
             </Routes>         
 
