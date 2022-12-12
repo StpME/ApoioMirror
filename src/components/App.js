@@ -37,10 +37,11 @@ function App(props) {
     const [location, setLocation] = useState("");
     const [queryResults, setQueryResults] = useState(stores);
 
-    // This is the updated FULL dataset after user adds new item (TESTING)
-    const [newStores, setStore] = useState([]);
-    // console.log(newStores);
-
+    // This is the updated full dataset after user adds new item (TESTING)
+    // Adds new object from create page, should get added to database
+    const [newStores, setStore] = useState(storeState);
+    //console.log("Current Dataset: ", newStores);
+    
     //Generate unique set of store types for list page
     const list = stores.map((elem) => {
         return elem.type;

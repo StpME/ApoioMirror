@@ -30,7 +30,7 @@ export function ListPage(props) {
         else if (count === 1) {
             count += 1;
             return (
-                <Link to="../new_item" style={{textDecoration:'inherit', color: 'inherit'}} key={index} id="empty" className="p-4 mt-4">{"Add Some Places!"}</Link>
+                <Link to="../results" style={{textDecoration:'inherit', color: 'inherit'}} key={index} id="empty" className="p-4 mt-4">{"Add Some Places!"}</Link>
             );
         }
         
@@ -133,7 +133,7 @@ export function ListPage(props) {
         function thumbnailCheck() {
             if (store.placeThumbnail === undefined) {
             // Filler image if passed no thumbnail from data
-                store.placeThumbnail = "/pics/shirt.png";
+                store.placeThumbnail = "/pics/placeholder.jpg";
             }
             return store.placeThumbnail;
         }
