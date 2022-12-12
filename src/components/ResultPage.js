@@ -109,6 +109,7 @@ function ResultFilter(props) {
                             <option value="all">Filter by Type of Food</option>
                             <option value="japanese">Japanese</option>
                             <option value="european">European</option>
+                            <option value="mexican">Mexican</option>
                             {/* <option value="">Three</option> */}
                         </select>
                     </div>

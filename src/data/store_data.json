@@ -21,6 +21,15 @@
         "favorited": false
     },
     {
+        "placeName": "Cactus Restaurants",
+        "location": "535 Bellevue Square, Bellevue",
+        "description": "Local Mexican Food since 1990!",
+        "placeThumbnail": "/pics/cactus_tn.jpg",
+        "type": "restaurant",
+        "typeFood": "mexican",
+        "favorited": false
+    },
+    {
         "placeName": "Ono Authentic Hawaiian Poke",
         "location": "10016 Edmonds Way, Edmonds",
         "description": "Come eat the highest quality Poke in Seattle!",
