@@ -32,7 +32,8 @@ function App(props) {
         socialTwitter: "",
         aboutMessage: "",
         profileImage: "/pics/placeholder.jpg",
-        uid: null
+        uid: null,
+        favs: []
     });
     const [location, setLocation] = useState("");
     const [queryResults, setQueryResults] = useState(stores);
@@ -69,6 +70,9 @@ function App(props) {
             return storeObj;
         })
         setStoreState(storesCopy);
+        const db = getDatabase();
+        const userFavRef = dbRef(db, 'userData/' + currentUser.userId +"/favorites");
+        set(userFavRef, storeState);
     }
 
     const changeProfileData = (profileObj) => {
@@ -180,7 +184,7 @@ function App(props) {
             <ApoioHeader currentUser={currentUser} searchInputCallback={changeSearchInput} />
             <Routes>
                 <Route index element={<Home typeStoreCallback={typeStoreForResult} />} />
-                <Route path="/favorites" element={<ListPage stores={storeState} types={unique} currentStoreCallback={setResultPageLink} />} />
+                <Route path="/favorites" element={<ListPage currentUser={currentUser} stores={storeState} types={unique} currentStoreCallback={setResultPageLink} />} />
                 <Route path="/profile" element={<ProfilePage profile={profileData} currentUser={currentUser} />} />
                 <Route path="/profile/edit" element={<EditProfile profile={profileData} currentUser={currentUser} profileCallback={changeProfileData} />} />
 

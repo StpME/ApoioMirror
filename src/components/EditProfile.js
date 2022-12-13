@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { getDatabase, ref as dbRef, set as firebaseSet} from 'firebase/database';
+import { updateProfile } from 'firebase/auth';
 
 export function EditProfile(props) {
     // has to have a prop object and we'll change that object and give it back with callback
     const navigateTo = useNavigate();
+    const currentUser = props.currentUser;
 
     const [profileData, setProfileData] = useState(props.profile);
     const [imageFile, setImageFile] = useState(undefined);
-    let initialURL = '/pics/brows.png';
+    let initialURL = '/pics/placeholder.jpg';
     const [imageUrl, setImageUrl] = useState(initialURL);
 
     const handleProfileData = (event) => {
@@ -29,9 +33,21 @@ export function EditProfile(props) {
         }
     }
 
-    const handleImageUpload = (event) => {
+    const handleImageUpload = async (event) => {
         console.log("Uploading", imageFile);
-    }
+    
+        const storage = getStorage();
+        const userImageRef = storageRef(storage, "/userImages/"+currentUser.userId+".png");
+    
+        await uploadBytes(userImageRef, imageFile);
+        const downloadUrlString = await getDownloadURL(userImageRef)
+        console.log(downloadUrlString)
+        await updateProfile(currentUser, {photoURL: downloadUrlString})
+        console.log(currentUser.userId);
+    
+        const userDbRef = dbRef(getDatabase(), "userData/"+currentUser.userId+"/profileImage");
+        firebaseSet(userDbRef, downloadUrlString);
+      }
 
     return (
         <div className="container mt-5 p-5">

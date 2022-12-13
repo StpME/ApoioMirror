@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { getAuth, EmailAuthProvider, GoogleAuthProvider, onAuthStateChanged } from 'firebase/auth';
+import { getAuth, EmailAuthProvider, onAuthStateChanged } from 'firebase/auth';
 import { StyledFirebaseAuth } from 'react-firebaseui';
 import { Navigate } from 'react-router-dom';
 import { getDatabase, ref, set as firebaseSet, onValue, push as firebasePush } from 'firebase/database';
@@ -34,8 +34,7 @@ export function SignInPage(props) {
 
   const uiConfigObj = {
     signInOptions: [
-      { provider: EmailAuthProvider.PROVIDER_ID, requireDisplayName: true },
-      { provider: GoogleAuthProvider.PROVIDER_ID }
+      { provider: EmailAuthProvider.PROVIDER_ID, requireDisplayName: true }
     ],
     signInFlow: 'popup',
     callbacks: {
