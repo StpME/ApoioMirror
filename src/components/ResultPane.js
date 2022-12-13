@@ -60,6 +60,7 @@ function ResultItem(props) {
 
     let favoritedText = "Add to Favorites!";
     let favoritedStyle = "btn btn-outline-danger";
+    // if i was right about the ifFavorited value sucking then this will also need to be changed
     if ((ifFavorited === true)) {
         favoritedText = "Remove from Favorites!";
         favoritedStyle = "btn btn-danger text-white"
