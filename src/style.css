@@ -190,6 +190,12 @@ body {
   
 }
 
+.home-card-img {
+  object-fit: cover;
+  height: 5rem;
+  width: 5rem;
+}
+
 .card-block {
   border-radius: 10px;
 }

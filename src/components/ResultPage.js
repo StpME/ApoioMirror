@@ -112,8 +112,6 @@ export default function ResultPage(props) {
 
         // const changeResultView = () => {
         if (Object.values(checkboxBool).every((bool) => bool === false)) {
-            console.log(typeShop);
-            console.log(typeRestaurant);
             if (typeShop === "" || typeShop === "all") {
                 changeStoresVisible(allStores);
                 // setRenderCheckerBool(true);
@@ -162,38 +160,20 @@ export default function ResultPage(props) {
                         }
                     } else {
                         if (storeObj.ownedBy !== undefined) {
-                            console.log(storeObj.placeName + " " + storeObj.ownedBy);
+                            // console.log(storeObj.placeName + " " + storeObj.ownedBy);
                             for (const propertyItem of storeObj.ownedBy) {
 
                                 if (checkboxBool[propertyItem] === false) {
-                                    console.log("deleting " + propertyItem);
+                                    // console.log("deleting " + propertyItem);
                                     filteredObjects.delete(storeObj);
                                 } else {
-                                    console.log("adding " + propertyItem);
+                                    // console.log("adding " + propertyItem);
                                     filteredObjects.add(storeObj);
                                     break;
                                 }
                             }
                         }
                     }
-                    // else {
-                    //     if (storeObj.ownedBy !== undefined) {
-
-                    //         // storeObj.ownedBy.every((ownedByProperty) => {
-                    //         //     console.log("current property " + ownedByProperty);
-                    //         //     if ((checkboxBool[ownedByProperty] === true)) {
-                    //         //         console.log("inside " + ownedByProperty);
-                    //         //         filteredObjects.add(storeObj);
-                    //         //     } else {
-                    //         //         console.log("outside " + ownedByProperty)
-                    //         //         // if (storeObj.ownedBy.includes(type)) {
-                    //         //         //     filteredObjects.delete(storeObj);
-                    //         //         // }
-                    //         //         filteredObjects.delete(storeObj);
-                    //         //     }
-                    //         // });
-                    //     }
-                    // }
                 }
             }
             const filteredArray = [...filteredObjects];
