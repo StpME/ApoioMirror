@@ -9,6 +9,8 @@ export function ItemPage(props) {
     // if (store.ownedBy !== "") {
     //     owner = store.ownedBy.substring(0,1).toUpperCase() + store.ownedBy.substring(1) + "-owned"
     // }
+
+    // Component for rating system
     const StarRating = () => {
         // Passback rating for database
         const [rating, setRating] = useState(0);
@@ -35,13 +37,6 @@ export function ItemPage(props) {
           </div>
         );
       };
-
-
-
-
-
-
-      
     return (
         <div className="container">
             <div className="card m-5 pb-4">
@@ -63,5 +58,4 @@ export function ItemPage(props) {
             </div>
         </div>
     );
-
 }

@@ -134,6 +134,10 @@ body {
   max-height: 48px;
 }
 
+.Collapsible__trigger.is-open img {
+  transform: rotate(180deg);
+}
+
 .list-group-item:not(.active) {
   /* border-radius: 10px; */
   /* border-top: 0px solid black; */
