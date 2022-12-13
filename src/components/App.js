@@ -6,7 +6,7 @@ import ResultPage from './ResultPage.js';
 import Home from './Home.js';
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { getDatabase, ref as dbRef, ref, set, onValue } from 'firebase/database';
+import { getDatabase, ref as dbRef, set, onValue, child, get } from 'firebase/database';
 import { CreateNewItem } from './CreateNewItem.js';
 import { ProfilePage } from './newProfilePage.js';
 import { EditProfile } from './EditProfile.js'
@@ -71,7 +71,7 @@ function App(props) {
         })
         setStoreState(storesCopy);
         const db = getDatabase();
-        const userFavRef = dbRef(db, 'userData/' + currentUser.userId +"/favorites");
+        const userFavRef = dbRef(db, 'userData/' + currentUser.userId + "/favorites");
         set(userFavRef, storeState);
     }
 
@@ -132,19 +132,27 @@ function App(props) {
 
     }
 
-    let current = null
+    const auth = getAuth();
+    const [user, loading, error] = useAuthState(auth);
 
     // logging in
     useEffect(() => {
-        const auth = getAuth();
-
         onAuthStateChanged(auth, (firebaseUser) => {
             if (firebaseUser) {
                 console.log("logged in as", firebaseUser.displayName);
                 firebaseUser.userId = firebaseUser.uid
                 firebaseUser.name = firebaseUser.displayName;
                 setCurrentUser(firebaseUser);
-                console.log(currentUser);
+                const userDataRef = dbRef(getDatabase(), "userData");
+                get(child(userDataRef, firebaseUser.userId)).then((snapshot) => {
+                    if(snapshot.exists()) {
+                        setProfileData(snapshot.val())
+                    } else {
+                        console.log("unavailable");
+                    }
+                }).catch((error) => {
+                    console.log(error);
+                })
             } else {
                 console.log("logged out");
                 setCurrentUser(null);
@@ -156,7 +164,7 @@ function App(props) {
     useEffect(() => {
 
         const db = getDatabase(); //"the database"
-        const businessData = ref(db, "businessData");
+        const businessData = dbRef(db, "businessData");
 
         //when db value changes
         const offFunction = onValue(businessData, (snapshot) => {
@@ -177,8 +185,6 @@ function App(props) {
         return cleanup; //return instructions on how to turn off lights
     }, [])
 
-    // console.log("Current User " + typeof(currentUser));
-
     return (
         <div>
             <ApoioHeader currentUser={currentUser} searchInputCallback={changeSearchInput} />
@@ -189,7 +195,7 @@ function App(props) {
                 <Route path="/profile/edit" element={<EditProfile profile={profileData} currentUser={currentUser} profileCallback={changeProfileData} />} />
 
                 <Route path="/results" element={<ResultPage stores={queryResults} storeCallback={favList} currentStoreCallback={setResultPageLink} locationPath={location} typeStore={typeStore} />} />
-                <Route path="/results/:storeName" element={<ItemPage allStores={stores} currentStore={currentStore} starCallback={starSetter} userInfo={currentUser}/>} />
+                <Route path="/results/:storeName" element={<ItemPage allStores={stores} currentStore={currentStore} starCallback={starSetter} userInfo={currentUser} />} />
                 {/*This component needs to be passed a single store, create in results page instead of a Route here  */}
                 {/* <Route path="/item" element={<ItemPage store={stores[0]} />} /> */}
                 <Route path="/new_item" element={<CreateNewItem stores={stores} dataset={setStore} />} />

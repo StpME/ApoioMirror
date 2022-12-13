@@ -60,9 +60,9 @@ export default function ApoioHeader(props) {
                     </Nav>
                     <Nav>
                         <NavLink className="nav-link" to="/">Home</NavLink>
-                        <NavLink className="nav-link" to="/favorites">My Favorites</NavLink>
                         {currentUser &&
                             <>
+                                <NavLink className="nav-link" to="/favorites">My Favorites</NavLink>
                                 <NavLink className="nav-link" to="/profile">My Account</NavLink>
                             </>
                         }

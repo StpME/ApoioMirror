@@ -21,8 +21,8 @@ export function EditProfile(props) {
     }
 
     const handleClick = (event) => {
-        navigateTo('/profile');
         props.profileCallback(profileData);
+        navigateTo('/profile');
     }
 
     const handleChange = (event) => {
@@ -88,8 +88,8 @@ export function EditProfile(props) {
 
                             </div>
                             <div className="mb-3">
-                                <label htmlFor="occuInput" className="form-label">Occupation:</label>
-                                <input name="occupation" id="occuInput" type="text" value={profileData.occupation} onChange={handleProfileData} className="form-control" />
+                                <label htmlFor="occuInput" className="form-label">Title:</label>
+                                <input name="occupation" id="occuInput" type="text" value={profileData.title} onChange={handleProfileData} className="form-control" />
 
                             </div>
                             <div className="mb-3">
