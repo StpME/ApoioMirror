@@ -84,7 +84,7 @@ export function ProfilePage(props) {
                     <div className="text-center mt-3 mb-5">
                         <h1 className="fw-bold">{profileData.name}</h1>
                         <p className="text-muted text-uppercase mb-5">{profileData.location}</p>
-                        <p className="profile-text text-muted mb-2">{profileData.occupation}</p>
+                        <p className="profile-text text-muted mb-2">{profileData.title}</p>
 
                         <div className="d-flex justify-content-center">
                             <p className="profile-text text-muted me-1">Contact:</p>

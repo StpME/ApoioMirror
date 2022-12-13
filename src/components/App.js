@@ -24,16 +24,27 @@ function App(props) {
     const [authStateDetermined, setAuthStateDetermined] = useState(false);
     const [currentStore, setCurrentStore] = useState(null);
     const [profileData, setProfileData] = useState({
-        name: "Ayata Bernhardt",
-        location: "Bellevue, Washington",
-        occupation: "Student at UW",
-        email: "help@uw.edu",
-        socialInsta: "ayataeatsIG",
-        socialTwitter: "ayataeats",
-        aboutMessage: "Hello I am Ayata! Thank you for looking at my page with multiple things of interest on it. Please enjoy your stay.",
-        profileImage: "/pics/brows.png"
-
+        name: "Person Person",
+        location: "location",
+        title: "title",
+        email: "email",
+        socialInsta: "instagram",
+        socialTwitter: "twitter",
+        aboutMessage: "About",
+        profileImage: "/pics/brows.png",
+        uid: null
     });
+    // const [profileData, setProfileData] = useState({
+    //     name: "Ayata Bernhardt",
+    //     location: "Bellevue, Washington",
+    //     occupation: "Student at UW",
+    //     email: "help@uw.edu",
+    //     socialInsta: "ayataeatsIG",
+    //     socialTwitter: "ayataeats",
+    //     aboutMessage: "Hello I am Ayata! Thank you for looking at my page with multiple things of interest on it. Please enjoy your stay.",
+    //     profileImage: "/pics/brows.png"
+
+    // });
     const [location, setLocation] = useState("");
     const [queryResults, setQueryResults] = useState(stores);
     const [typeStore, setTypeStore] = useState("");
@@ -43,7 +54,7 @@ function App(props) {
     // Adds new object from create page, should get added to database
     const [newStores, setStore] = useState(storeState);
     //console.log("Current Dataset: ", newStores);
-    
+
     //Generate unique set of store types for list page
     const list = stores.map((elem) => {
         return elem.type;
@@ -154,13 +165,13 @@ function App(props) {
         <div>
             <ApoioHeader currentUser={currentUser} searchInputCallback={changeSearchInput} />
             <Routes>
-                <Route index element={<Home typeStoreCallback={typeStoreForResult}/>} />
+                <Route index element={<Home typeStoreCallback={typeStoreForResult} />} />
                 <Route path="/lists" element={<ListPage stores={storeState} types={unique} currentStoreCallback={setResultPageLink} />} />
                 <Route path="/profile" element={<ProfilePage profile={profileData} currentUser={currentUser} />} />
                 <Route path="/profile/edit" element={<EditProfile profile={profileData} currentUser={currentUser} profileCallback={changeProfileData} />} />
 
-                <Route path="/results" element={<ResultPage stores={queryResults} storeCallback={favList} currentStoreCallback={setResultPageLink} locationPath={location} typeStore={typeStore}/>} />
-                <Route path="/results/:storeName" element={<ItemPage currentStore={currentStore} starCallback={starSetter}/>} />
+                <Route path="/results" element={<ResultPage stores={queryResults} storeCallback={favList} currentStoreCallback={setResultPageLink} locationPath={location} typeStore={typeStore} />} />
+                <Route path="/results/:storeName" element={<ItemPage currentStore={currentStore} starCallback={starSetter} />} />
                 {/*This component needs to be passed a single store, create in results page instead of a Route here  */}
                 {/* <Route path="/item" element={<ItemPage store={stores[0]} />} /> */}
                 <Route path="/new_item" element={<CreateNewItem stores={stores} dataset={setStore} />} />

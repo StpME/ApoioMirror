@@ -11,13 +11,6 @@ export function SignInPage(props) {
 
   const db = getDatabase();
   console.log(currentUser);
-  // const firebaseUser = ref(db, 'userData'+currentUser.userId)
-
-  // console.log(firebaseUser);
-
-  // useEffect(() => {
-
-  // })
 
   const uiConfigObj = {
     signInOptions: [
@@ -31,9 +24,9 @@ export function SignInPage(props) {
     credentialHelper: 'none'
   };
 
-  // if (currentUser) { //if I'm signed in
-  //   return <Navigate to="/profile" />
-  // }
+  if (currentUser) { //if I'm signed in
+    return <Navigate to="/profile" />
+  }
 
   return (
     <StyledFirebaseAuth className="p-5" firebaseAuth={auth} uiConfig={uiConfigObj} />
