@@ -37,9 +37,6 @@ export function ListPage(props) {
         
     });
 
-    
-
-
     return (
         <section className="col p-5">
             <div className="col-lg-12 d-block">
@@ -52,10 +49,9 @@ export function ListPage(props) {
                             </li>
                         </div>*/}
                         <div id='list_header' className="row pt-4 mt-2">
-                            <strong><header className="title">Favorites</header></strong>
+                            <strong><header className="title">My Favorites</header></strong>
                             
                         </div>
-                        
                         <div className="row px-3">
                             {storeTypes}
                         </div>

@@ -28,8 +28,10 @@ export default function Home(props) {
                             alt="Sizzle and Crunch"
                         />
                         <Carousel.Caption>
-                            <h3>Looking for food?</h3>
-                            <p>Try Sizzle and Crunch!</p>
+                            <Link className="text-decoration-none text-light" to="/results">
+                                <h3>Looking for food?</h3>
+                                <p>Try Sizzle and Crunch!</p>
+                            </Link>
                         </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item>
@@ -39,8 +41,10 @@ export default function Home(props) {
                             alt="Butter Home"
                         />
                         <Carousel.Caption>
-                            <h3>Time for a new look?</h3>
-                            <p>Get decoration for your home from this brick + mortar shop!</p>
+                            <Link className="text-decoration-none text-light" to="/results">
+                                <h3>Time for a new look?</h3>
+                                <p>Get decoration for your home from this brick + mortar shop!</p>
+                            </Link>
                         </Carousel.Caption>
                     </Carousel.Item>
                 </Carousel>
