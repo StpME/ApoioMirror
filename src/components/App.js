@@ -146,7 +146,7 @@ function App(props) {
             <ApoioHeader currentUser={currentUser} searchInputCallback={changeSearchInput} />
             <Routes>
                 <Route index element={<Home typeStoreCallback={typeStoreForResult}/>} />
-                <Route path="/lists" element={<ListPage stores={storeState} types={unique} />} />
+                <Route path="/lists" element={<ListPage stores={storeState} types={unique} currentStoreCallback={setResultPageLink} />} />
                 <Route path="/profile" element={<ProfilePage profile={profileData} currentUser={currentUser} />} />
                 <Route path="/profile/edit" element={<EditProfile profile={profileData} currentUser={currentUser} profileCallback={changeProfileData} />} />
 

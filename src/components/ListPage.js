@@ -7,11 +7,12 @@ const elem = <img id="arrow" src="pics/collapse_arrow.png"/>
 
 
 export function ListPage(props) {
+    
     // Create card components from data if favorited by user.
     const stores = props.stores.map((item, index) => {
         if (item.favorited === true) {
             return (
-                <CreateCard key={index} store={item} type={item.type}/>
+                <CreateCard key={index} store={item} type={item.type} currentStoreCallback={props.currentStoreCallback} />
             ); 
         }
     });
@@ -23,7 +24,7 @@ export function ListPage(props) {
     const storeTypes = props.types.map((type, index) => {
         if (type != null && boolSet.has(true) === true) {
             return (
-                <CreateList key={index} type={type} cards={stores}/>
+                <CreateList key={index} type={type} cards={stores} />
             ); 
         }
         // Only prints message once instead of once per type in data source
@@ -123,11 +124,12 @@ export function ListPage(props) {
     // Function called when user favorites a store
     function CreateCard(props) { 
         const store = props.store;
+        //console.log(store);
         let nav = useNavigate();
         //unstar to remove from the list?
         //click to go to store information (when info is implemented)?
         const handleClick = (event) => {
-            nav('/item');
+            
         }
         
         function thumbnailCheck() {
@@ -145,13 +147,17 @@ export function ListPage(props) {
             }
             return store.placeName;
         }
-        
+        const currentStoreCallback = () => {
+            props.currentStoreCallback(store);
+        }
         return (
             <div className="col" id="list_card">
                 <div className="card" id="list_card">
                     <img className="img-fluid h-100" src={thumbnailCheck()}/>
-                    <div className="card-block text-center darken" onClick={handleClick}>
-                        <h4 className="center" id="store_name">{nameCheck()}</h4>
+                    <div className="darken">
+                        <Link onClick={currentStoreCallback} className="card-block text-center darken" to={"/results/"+store.placeName} >
+                            <h4 className="center" id="store_name">{nameCheck()}</h4>
+                        </Link>
                         {/*<p>{store.description}</p>*/}
                         {/*<a href="#" className="btn stretched-link"></a>*/}
                     </div>

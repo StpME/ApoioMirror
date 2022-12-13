@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 
+
 export function ItemPage(props) {
     const store = props.currentStore;
     console.log(store);
@@ -8,21 +9,27 @@ export function ItemPage(props) {
     // if (store.ownedBy !== "") {
     //     owner = store.ownedBy.substring(0,1).toUpperCase() + store.ownedBy.substring(1) + "-owned"
     // }
+
+    // Component for rating system
     const StarRating = () => {
+        // Passback rating for database
         const [rating, setRating] = useState(0);
         const [hover, setHover] = useState(0);
+        const starArr = [...Array(5)];
         return (
           <div className="star-rating">
-            {[...Array(5)].map((star, index) => {
+            {starArr.map((star, index) => {
               index += 1;
               return (
                 <button
-                  type="button"
                   key={index}
+                  // Uses css styling for class based on hover or rating index
                   className={index <= (hover || rating) ? "on" : "off"}
+                  // Sets rating to clicked star index
                   onClick={() => setRating(index)}
-                  onMouseEnter={() => setHover(index)}
-                  onMouseLeave={() => setHover(rating)}
+                  // Displays active rating based on user hover
+                  onMouseEnter={(e) => setHover(index)}
+                  onMouseLeave={(e) => setHover(rating)}
                 >
                   <span className="star">&#9733;</span>
                 </button>
@@ -31,8 +38,11 @@ export function ItemPage(props) {
           </div>
         );
       };
+<<<<<<< HEAD
 
       
+=======
+>>>>>>> 6823ee4320aa4a331e1b4303b219d198e9d8bfba
     return (
         <div className="container">
             <div className="card m-5 pb-4">
@@ -54,5 +64,4 @@ export function ItemPage(props) {
             </div>
         </div>
     );
-
 }
