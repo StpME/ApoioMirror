@@ -43,7 +43,7 @@ function App(props) {
     // Adds new object from create page, should get added to database
     const [newStores, setStore] = useState(storeState);
     //console.log("Current Dataset: ", newStores);
-    
+
     //Generate unique set of store types for list page
     const list = stores.map((elem) => {
         return elem.type;
@@ -148,19 +148,44 @@ function App(props) {
         })
     }, [])
 
+    //just getting data
+    useEffect(() => {
+
+        const db = getDatabase(); //"the database"
+        const businessData = ref(db, "businessData");
+
+        //when db value changes
+        const offFunction = onValue(businessData, (snapshot) => {
+            const valueObj = snapshot.val();
+            //convert object into array
+            const objKeys = Object.keys(valueObj);
+            const objArray = objKeys.map((keyString) => {
+                const businessObj = valueObj[keyString];
+                businessObj.key = keyString;
+                return businessObj;
+            })
+            console.log(objArray);
+        })
+
+        function cleanup() {
+            offFunction();
+        }
+        return cleanup; //return instructions on how to turn off lights
+    }, [])
+
     // console.log("Current User " + typeof(currentUser));
 
     return (
         <div>
             <ApoioHeader currentUser={currentUser} searchInputCallback={changeSearchInput} />
             <Routes>
-                <Route index element={<Home typeStoreCallback={typeStoreForResult}/>} />
+                <Route index element={<Home typeStoreCallback={typeStoreForResult} />} />
                 <Route path="/lists" element={<ListPage stores={storeState} types={unique} currentStoreCallback={setResultPageLink} />} />
                 <Route path="/profile" element={<ProfilePage profile={profileData} currentUser={currentUser} />} />
                 <Route path="/profile/edit" element={<EditProfile profile={profileData} currentUser={currentUser} profileCallback={changeProfileData} />} />
 
-                <Route path="/results" element={<ResultPage stores={queryResults} storeCallback={favList} currentStoreCallback={setResultPageLink} locationPath={location} typeStore={typeStore}/>} />
-                <Route path="/results/:storeName" element={<ItemPage currentStore={currentStore} starCallback={starSetter}/>} />
+                <Route path="/results" element={<ResultPage stores={queryResults} storeCallback={favList} currentStoreCallback={setResultPageLink} locationPath={location} typeStore={typeStore} />} />
+                <Route path="/results/:storeName" element={<ItemPage allStores={stores} currentStore={currentStore} starCallback={starSetter} />} />
                 {/*This component needs to be passed a single store, create in results page instead of a Route here  */}
                 {/* <Route path="/item" element={<ItemPage store={stores[0]} />} /> */}
                 <Route path="/new_item" element={<CreateNewItem stores={stores} dataset={setStore} />} />
