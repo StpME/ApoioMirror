@@ -30,7 +30,7 @@ export default function Home(props) {
                         <Carousel.Caption>
                             <Link className="text-decoration-none text-light" to="/results">
                                 <h3>Looking for food?</h3>
-                                <p>Try Sizzle and Crunch!</p>
+                                <p>Try Sizzle and Crunch! A local fast-casual Vietnamese restaurant!</p>
                             </Link>
                         </Carousel.Caption>
                     </Carousel.Item>
@@ -42,8 +42,8 @@ export default function Home(props) {
                         />
                         <Carousel.Caption>
                             <Link className="text-decoration-none text-light" to="/results">
-                                <h3>Time for a new look?</h3>
-                                <p>Get decoration for your home from this brick + mortar shop!</p>
+                                <h3>Bored?</h3>
+                                <p>Stop by Butter Home, a brick + mortor shop in Seattle specializing in fun and functional items for you and your home!</p>
                             </Link>
                         </Carousel.Caption>
                     </Carousel.Item>
