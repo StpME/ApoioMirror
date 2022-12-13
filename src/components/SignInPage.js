@@ -7,24 +7,9 @@ import { getDatabase, ref, set as firebaseSet, onValue, push as firebasePush } f
 
 
 export function SignInPage(props) {
-  const [userExists, setUserExists] = useState(false);
+  const [users, setUsers] = useState({});
   const currentUser = props.currentUser;
   const auth = getAuth();
-
-  // console.log(currentUser);
-
-  useEffect(() => {
-    const auth = getAuth();
-
-    onAuthStateChanged(auth, (firebaseUser) => {
-        if (firebaseUser) {
-            console.log(firebaseUser);
-        } else {
-            // console.log("logged out");
-            // setCurrentUser(null);
-        }
-    })
-}, [])
 
   const db = getDatabase();
 
@@ -36,12 +21,7 @@ export function SignInPage(props) {
     //when db value changes
     const offFunction = onValue(userDataRef, (snapshot) => {
       const valueObj = snapshot.val();
-      const objKeys = Object.keys(valueObj)
-      // console.log(objKeys);
-
-      // setProfileData(valueObj[currentUser.userId])
-      // console.log(profileData);
-
+      setUsers(Object.keys(valueObj));
     })
 
     function cleanup() {
@@ -65,7 +45,10 @@ export function SignInPage(props) {
   };
 
   if (currentUser) { //if I'm signed in
-    return <Navigate to="/profile" />
+    if (users.includes(currentUser.userId)) {
+      return <Navigate to="/profile" />
+    }
+    return <Navigate to="/profile/edit" />
   }
 
   return (

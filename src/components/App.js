@@ -24,14 +24,14 @@ function App(props) {
     const [currentUser, setCurrentUser] = useState(null);
     const [currentStore, setCurrentStore] = useState(null);
     const [profileData, setProfileData] = useState({
-        name: "Person Person",
-        location: "location",
-        title: "title",
-        email: "email",
-        socialInsta: "instagram",
-        socialTwitter: "twitter",
-        aboutMessage: "About",
-        profileImage: "/pics/brows.png",
+        name: "",
+        location: "",
+        title: "",
+        email: "",
+        socialInsta: "",
+        socialTwitter: "",
+        aboutMessage: "",
+        profileImage: "/pics/placeholder.jpg",
         uid: null
     });
     const [location, setLocation] = useState("");
@@ -140,7 +140,7 @@ function App(props) {
                 firebaseUser.userId = firebaseUser.uid
                 firebaseUser.name = firebaseUser.displayName;
                 setCurrentUser(firebaseUser);
-                // console.log(currentUser);
+                console.log(currentUser);
             } else {
                 console.log("logged out");
                 setCurrentUser(null);

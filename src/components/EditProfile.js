@@ -46,8 +46,8 @@ export function EditProfile(props) {
                     </div>
                     <div className="d-flex profile-negative-margins justify-content-between mx-3">
                         <div className="d-block justify-content-center bg-light text-center">
-                            <p className="page-view-count mb-0">3</p>
-                            <p className="text-muted">Pages Viewed</p>
+                            <p className="page-view-count mb-0">2022</p>
+                            <p className="text-muted">Member Since</p>
 
                         </div>
                         <div>
