@@ -4,7 +4,7 @@ import Footer from './Footer.js';
 import { ListPage } from './ListPage.js';
 import ResultPage from './ResultPage.js';
 import Home from './Home.js';
-import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import { getDatabase, ref as dbRef, set, onValue, child, get } from 'firebase/database';
 import { CreateNewItem } from './CreateNewItem.js';
@@ -153,7 +153,7 @@ function App(props) {
                 setCurrentUser(firebaseUser);
                 const userDataRef = dbRef(getDatabase(), "userData");
                 get(child(userDataRef, firebaseUser.userId)).then((snapshot) => {
-                    if(snapshot.exists()) {
+                    if (snapshot.exists()) {
                         setProfileData(snapshot.val())
                     } else {
                         console.log("unavailable");
@@ -198,21 +198,31 @@ function App(props) {
             <ApoioHeader currentUser={currentUser} searchInputCallback={changeSearchInput} />
             <Routes>
                 <Route index element={<Home typeStoreCallback={typeStoreForResult} />} />
-                <Route path="/favorites" element={<ListPage currentUser={currentUser} stores={storeState} types={unique} currentStoreCallback={setResultPageLink} />} />
-                <Route path="/profile" element={<ProfilePage signOutCallback={handleSignOut} profile={profileData} currentUser={currentUser} />} />
-                <Route path="/profile/edit" element={<EditProfile profile={profileData} currentUser={currentUser} profileCallback={changeProfileData} />} />
-
-                <Route path="/results" element={<ResultPage stores={queryResults} storeCallback={favList} currentStoreCallback={setResultPageLink} locationPath={location} typeStore={typeStore} />} />
-                <Route path="/results/:storeName" element={<ItemPage allStores={stores} currentStore={currentStore} starCallback={starSetter} userInfo={currentUser} />} />
-                {/*This component needs to be passed a single store, create in results page instead of a Route here  */}
-                {/* <Route path="/item" element={<ItemPage store={stores[0]} />} /> */}
-                <Route path="/new_item" element={<CreateNewItem stores={stores} dataset={setStore} />} />
                 <Route path="/login" element={<SignInPage currentUser={currentUser} />} />
 
-            </Routes>
+                <Route element={<ProtectedPage currentUser={currentUser} />}>
+                    <Route path="/favorites" element={<ListPage currentUser={currentUser} stores={storeState} types={unique} currentStoreCallback={setResultPageLink} />} />
+                    <Route path="/profile" element={<ProfilePage signOutCallback={handleSignOut} profile={profileData} currentUser={currentUser} />} />
+                    <Route path="/profile/edit" element={<EditProfile profile={profileData} currentUser={currentUser} profileCallback={changeProfileData} />} />
+                    <Route path="/results" element={<ResultPage stores={queryResults} storeCallback={favList} currentStoreCallback={setResultPageLink} locationPath={location} typeStore={typeStore} />} />
+                    <Route path="/results/:storeName" element={<ItemPage allStores={stores} currentStore={currentStore} starCallback={starSetter} userInfo={currentUser} />} />
+                    {/*This component needs to be passed a single store, create in results page instead of a Route here  */}
+                    {/* <Route path="/item" element={<ItemPage store={stores[0]} />} /> */}
+                    <Route path="/new_item" element={<CreateNewItem stores={stores} dataset={setStore} />} />
+                </Route>
 
+            </Routes>
             <Footer />
         </div>
     );
 }
+
+function ProtectedPage(props) {
+    if (props.currentUser === null) {
+        return <Navigate to="/login" />
+    } else {
+        return <Outlet />
+    }
+}
+
 export default App;
