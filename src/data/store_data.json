@@ -6,7 +6,7 @@
         "placeThumbnail": "/pics/kb_tn.jpg",
         "type": "restaurant",
         "typeFood": "japanese",
-        "ownedBy": ["female"],
+        "ownedBy": ["female", "asian"],
         "favorited": false
         
     },
@@ -86,7 +86,13 @@
         "favorited": false
     },
     {
-        "type": "test",
+        "placeName": "Cafe Campagne",
+        "location": "1600 Post Alley, Seattle",
+        "description": "A classic Parisian cafe in the heart of Pike Place Market.",
+        "placeThumbnail": "/pics/cafe_champagne_tn.jpg",
+        "type": "restaurant",
+        "typeFood":"european",
+        "ownedBy": ["black"],
         "favorited": false
     }
 ]

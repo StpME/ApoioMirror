@@ -32,11 +32,6 @@ export function ItemPage(props) {
         );
       };
 
-
-
-
-
-
       
     return (
         <div className="container">

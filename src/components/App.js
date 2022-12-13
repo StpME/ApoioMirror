@@ -36,6 +36,7 @@ function App(props) {
     });
     const [location, setLocation] = useState("");
     const [queryResults, setQueryResults] = useState(stores);
+    const [typeStore, setTypeStore] = useState("");
 
     // This is the updated full dataset after user adds new item (TESTING)
     // Adds new object from create page, should get added to database
@@ -111,6 +112,10 @@ function App(props) {
         }
     }
 
+    const typeStoreForResult = (storeString) => {
+        setTypeStore(storeString);
+    }
+
     // const navigateTo = useNavigate();
 
     useEffect(() => {
@@ -140,12 +145,12 @@ function App(props) {
         <div>
             <ApoioHeader currentUser={currentUser} searchInputCallback={changeSearchInput} />
             <Routes>
-                <Route index element={<Home />} />
+                <Route index element={<Home typeStoreCallback={typeStoreForResult}/>} />
                 <Route path="/lists" element={<ListPage stores={storeState} types={unique} />} />
                 <Route path="/profile" element={<ProfilePage profile={profileData} currentUser={currentUser} />} />
                 <Route path="/profile/edit" element={<EditProfile profile={profileData} currentUser={currentUser} profileCallback={changeProfileData} />} />
 
-                <Route path="/results" element={<ResultPage stores={queryResults} storeCallback={favList} currentStoreCallback={setResultPageLink} locationPath={location}/>} />
+                <Route path="/results" element={<ResultPage stores={queryResults} storeCallback={favList} currentStoreCallback={setResultPageLink} locationPath={location} typeStore={typeStore}/>} />
                 <Route path="/results/:storeName" element={<ItemPage currentStore={currentStore} />} />
                 {/*This component needs to be passed a single store, create in results page instead of a Route here  */}
                 {/* <Route path="/item" element={<ItemPage store={stores[0]} />} /> */}
