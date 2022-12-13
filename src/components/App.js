@@ -201,18 +201,18 @@ function App(props) {
                     <Route index element={<Home typeStoreCallback={typeStoreForResult} />} />
                     <Route path="/login" element={<SignInPage currentUser={currentUser} />} />
 
-                <Route element={<ProtectedPage currentUser={currentUser} />}>
-                    <Route path="/favorites" element={<ListPage currentUser={currentUser} stores={storeState} types={unique} currentStoreCallback={setResultPageLink} />} />
-                    <Route path="/profile" element={<ProfilePage signOutCallback={handleSignOut} profile={profileData} currentUser={currentUser} />} />
-                    <Route path="/profile/edit" element={<EditProfile profile={profileData} currentUser={currentUser} profileCallback={changeProfileData} />} />
-                    <Route path="/results" element={<ResultPage currentUser={currentUser} stores={queryResults} storeCallback={favList} currentStoreCallback={setResultPageLink} locationPath={location} typeStore={typeStore} />} />
-                    <Route path="/results/:storeName" element={<ItemPage allStores={stores} currentStore={currentStore} starCallback={starSetter} userInfo={currentUser} />} />
-                    {/*This component needs to be passed a single store, create in results page instead of a Route here  */}
-                    {/* <Route path="/item" element={<ItemPage store={stores[0]} />} /> */}
-                    <Route path="/new_item" element={<CreateNewItem stores={stores} dataset={setStore} />} />
-                </Route>
-
-            </Routes>
+                    <Route element={<ProtectedPage currentUser={currentUser} />}>
+                        <Route path="/favorites" element={<ListPage currentUser={currentUser} stores={storeState} types={unique} currentStoreCallback={setResultPageLink} />} />
+                        <Route path="/profile" element={<ProfilePage signOutCallback={handleSignOut} profile={profileData} currentUser={currentUser} />} />
+                        <Route path="/profile/edit" element={<EditProfile profile={profileData} currentUser={currentUser} profileCallback={changeProfileData} />} />
+                        <Route path="/results" element={<ResultPage currentUser={currentUser} stores={queryResults} storeCallback={favList} currentStoreCallback={setResultPageLink} locationPath={location} typeStore={typeStore} />} />
+                        <Route path="/results/:storeName" element={<ItemPage allStores={stores} currentStore={currentStore} starCallback={starSetter} userInfo={currentUser} />} />
+                        {/*This component needs to be passed a single store, create in results page instead of a Route here  */}
+                        {/* <Route path="/item" element={<ItemPage store={stores[0]} />} /> */}
+                        <Route path="/new_item" element={<CreateNewItem stores={stores} dataset={setStore} />} />
+                    </Route>
+                </Routes>
+            </div>
             <Footer />
         </div>
     );
