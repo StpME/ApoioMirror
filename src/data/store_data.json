@@ -7,7 +7,8 @@
         "type": "restaurant",
         "typeFood": "japanese",
         "ownedBy": ["female", "asian"],
-        "favorited": false
+        "favorited": false,
+        "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2691.5393814631484!2d-122.17258248452757!3d47.57674987918264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54906eaaac5fc89f%3A0xc19dbcdad1040ad3!2sKatsu%20Burger!5e0!3m2!1sen!2sus!4v1668031908779!5m2!1sen!2sus"
         
     },
     {
@@ -18,7 +19,8 @@
         "type": "restaurant",
         "typeFood": "healthy",
         "ownedBy": ["lgbtq", "female"],
-        "favorited": false
+        "favorited": false,
+        "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2693.043884843957!2d-122.39148496948623!3d47.54747461259036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54904115badd0951%3A0xe574b5ff22e343d!2sHeartBeet%20Organic%20Superfoods%20Cafe!5e0!3m2!1sen!2sus!4v1670903157492!5m2!1sen!2sus"
     },
     {
         "placeName": "Cactus Restaurants",
@@ -27,7 +29,8 @@
         "placeThumbnail": "/pics/cactus_tn.jpg",
         "type": "restaurant",
         "typeFood": "mexican",
-        "favorited": false
+        "favorited": false,
+        "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2689.4804050117823!2d-122.2042415844151!3d47.616792179185346!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54906c8f55f9e3f1%3A0x139ee13eb992f78f!2sCactus%20Bellevue%20Square!5e0!3m2!1sen!2sus!4v1670903289765!5m2!1sen!2sus"
     },
     {
         "placeName": "Ono Authentic Hawaiian Poke",
@@ -37,17 +40,19 @@
         "type": "restaurant",
         "typeFood": "japanese",
         "ownedBy": ["female", "asian"],
-        "favorited": false
+        "favorited": false,
+        "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d42884.33335038505!2d-122.45079829384996!3d47.795585474461475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54901a62b66efaed%3A0xe3a4b417252fe6d0!2sOno%20Authentic%20Hawaiian%20Poke!5e0!3m2!1sen!2sus!4v1670903329441!5m2!1sen!2sus"
     },
     {
         "placeName": "Cafe Juanita",
-        "location": "702 NE 120th Pl, Kirkland",
+        "location": "9702 NE 120th Pl, Kirkland",
         "description": "Looking for a sleek and fancy Italian place? This is the place.",
         "placeThumbnail": "/pics/cafe_juanita_tn.jpg",
         "type": "restaurant",
         "typeFood": "european",
         "ownedBy": ["female"],
-        "favorited": false
+        "favorited": false,
+        "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2684.8040184160286!2d-122.21689516943722!3d47.70764231263532!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5490126f4a264ad5%3A0x4d5d74b2f322ad51!2sCafe%20Juanita!5e0!3m2!1sen!2sus!4v1670903385666!5m2!1sen!2sus"
     },
     {
         "placeName": "Hiroshi's Poke",
@@ -57,7 +62,8 @@
         "type": "restaurant",
         "typeFood": "japanese",
         "ownedBy": ["female", "asian"],
-        "favorited": false
+        "favorited": false,
+        "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d86074.98860907409!2d-122.41154683499924!3d47.609734742555204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54906a868e8af8af%3A0xb83dd8e42a0334a!2sHiroshi&#39;s!5e0!3m2!1sen!2sus!4v1670903999125!5m2!1sen!2sus"
     },
     {
         "placeName": "Fremont Vintage Mall",
@@ -65,7 +71,8 @@
         "description": "Want to spice up your house with cool, vintage deco?",
         "placeThumbnail": "/pics/fv_mall_tn.jpg",
         "type": "shop",
-        "favorited": false
+        "favorited": false,
+        "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2687.75761029232!2d-122.35462966945488!3d47.65027691261891!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5490150749f9e661%3A0x53ad40f2a14eb997!2sFremont%20Vintage%20Mall!5e0!3m2!1sen!2sus!4v1670903506649!5m2!1sen!2sus"
     },
     {
         "placeName": "The Seattle Barkery",
@@ -74,7 +81,8 @@
         "placeThumbnail": "/pics/barkery_tn.jpg",
         "type": "shop",
         "ownedBy": ["female"],
-        "favorited": false
+        "favorited": false,
+        "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2689.4488280260525!2d-122.342020684415!3d47.617406079185365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5490117b9fdbde33%3A0x538eb97eed4c1aa!2sThe%20Seattle%20Barkery!5e0!3m2!1sen!2sus!4v1670903541087!5m2!1sen!2sus"
     },
     {
         "placeName": "Butter Home",
@@ -83,7 +91,8 @@
         "placeThumbnail": "/pics/butter_home_tn.jpg",
         "type": "shop",
         "ownedBy": ["female"],
-        "favorited": false
+        "favorited": false,
+        "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2689.58416607793!2d-122.33029478441513!3d47.61477487918517!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54906acad6c06ca9%3A0xd563428cbb50c7f3!2sButter%20Home!5e0!3m2!1sen!2sus!4v1670903563053!5m2!1sen!2sus"
     },
     {
         "placeName": "Cafe Campagne",
@@ -93,6 +102,7 @@
         "type": "restaurant",
         "typeFood":"european",
         "ownedBy": ["black"],
-        "favorited": false
+        "favorited": false,
+        "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2689.8422966764565!2d-122.34369578441529!3d47.60975607918479!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54906ab2dd12fa59%3A0x52b2957ee837cc7b!2sCafe%20Campagne!5e0!3m2!1sen!2sus!4v1670903594688!5m2!1sen!2sus"
     }
 ]
