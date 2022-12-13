@@ -54,7 +54,7 @@ function App(props) {
     const objectData = dbRef(db, "businessData");
     const objectInformation = onValue(objectData, (snapshot) => {
         console.log(snapshot.val());
-    })
+    });
     // console.log(objectData);
     // objectInformation();
 
