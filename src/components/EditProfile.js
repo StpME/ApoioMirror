@@ -14,6 +14,8 @@ export function EditProfile(props) {
     let initialURL = '/pics/placeholder.jpg';
     const [imageUrl, setImageUrl] = useState(initialURL);
 
+    let localProfileData = profileData;
+
     const handleProfileData = (event) => {
         setProfileData({ ...profileData, [event.target.name]: event.target.value });
         // console.log(profileData);
@@ -21,7 +23,9 @@ export function EditProfile(props) {
     }
 
     const handleClick = (event) => {
+        // localProfileData
         props.profileCallback(profileData);
+        console.log(profileData);
         navigateTo('/profile');
     }
 
@@ -35,6 +39,7 @@ export function EditProfile(props) {
 
     const handleImageUpload = async (event) => {
         console.log("Uploading", imageFile);
+        console.log(currentUser);
     
         const storage = getStorage();
         const userImageRef = storageRef(storage, "/userImages/"+currentUser.userId+".png");
