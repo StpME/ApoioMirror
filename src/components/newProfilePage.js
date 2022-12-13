@@ -6,16 +6,17 @@ import { getDatabase, ref, set as firebaseSet, onValue, push as firebasePush } f
 
 export function ProfilePage(props) {
     const currentUser = props.currentUser;
+    
 
     const navigateTo = useNavigate();
     const [profileData, setProfileData] = useState({
-        name: "Ayata Bernhardt",
-        location: "Bellevue, Washington",
-        occupation: "Student at UW",
-        email: "help@uw.edu",
-        socialInsta: "ayataeatsIG",
-        socialTwitter: "ayataeats",
-        aboutMessage: "Hello I am Ayata! Thank you for looking at my page with multiple things of interest on it. Please enjoy your stay.",
+        name: "",
+        location: "",
+        occupation: "",
+        email: "",
+        socialInsta: "",
+        socialTwitter: "",
+        aboutMessage: "",
 
     });
 
@@ -39,8 +40,8 @@ export function ProfilePage(props) {
         const offFunction = onValue(allMessageRef, (snapshot) => {
             const valueObj = snapshot.val();
             //convert object into array
-            setProfileData(valueObj["mYo7YZyWDQbuuTeMDXRCELBXAJ32"])
-            console.log(profileData);
+            setProfileData(valueObj[currentUser.userId])
+            // console.log(profileData);
 
         })
 
@@ -117,13 +118,9 @@ export function ProfilePage(props) {
                             <img className="img-fluid h-100" src="/pics/kb_tn.jpg" alt="favorited item" />
                             <div className="card-block darken"></div>
                         </div> */}
-
                     </div>
-
-
                 </div>
                 <button type="button" className="btn btn-signout btn-danger" onClick={handleSignOut}>Sign Out</button>
-
             </div>
         </div>
 
