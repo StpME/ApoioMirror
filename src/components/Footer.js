@@ -10,7 +10,7 @@ export default function Footer() {
         return (
             <ul className="pb-3">
                 <li><Link className="nav-link" to="/">Home</Link></li>
-                <li><Link className="nav-link" to="/lists">My Lists</Link></li>
+                <li><Link className="nav-link" to="/favorites">My Favorites</Link></li>
                 <li><Link className="nav-link" to="/profile">My Account</Link></li>
             </ul>
         );
