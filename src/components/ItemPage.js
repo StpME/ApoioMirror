@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 
+
 export function ItemPage(props) {
     const store = props.currentStore;
     console.log(store);
@@ -9,20 +10,23 @@ export function ItemPage(props) {
     //     owner = store.ownedBy.substring(0,1).toUpperCase() + store.ownedBy.substring(1) + "-owned"
     // }
     const StarRating = () => {
+        // Passback rating for database
         const [rating, setRating] = useState(0);
         const [hover, setHover] = useState(0);
+        const starArr = [...Array(5)];
         return (
           <div className="star-rating">
-            {[...Array(5)].map((star, index) => {
+            {starArr.map((star, index) => {
               index += 1;
               return (
                 <button
-                  type="button"
                   key={index}
+                  // Uses css styling for class based on hover index
                   className={index <= (hover || rating) ? "on" : "off"}
                   onClick={() => setRating(index)}
-                  onMouseEnter={() => setHover(index)}
-                  onMouseLeave={() => setHover(rating)}
+                  // Displays active rating based on user hover
+                  onMouseEnter={(e) => setHover(index)}
+                  onMouseLeave={(e) => setHover(rating)}
                 >
                   <span className="star">&#9733;</span>
                 </button>

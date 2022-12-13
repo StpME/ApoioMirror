@@ -255,9 +255,8 @@ body {
   font-size: 28px;
   text-align: center;
 }
-
-.button {
-  color: #FFFF00;
+.star {
+  font-size: 48px;
 }
 
 button {
@@ -267,7 +266,7 @@ button {
   cursor: pointer;
 }
 .on {
-  color: #000;
+  color: yellow;
 }
 .off {
   color: #ccc;
@@ -278,7 +277,6 @@ button {
 .footer-apoio {
   padding: 50px 0;
   color: #FFFFFF;
-  /* text-shadow: 1px 0 0 rgb(187, 187, 187); */
   font-weight: bold;
   background-color: #5B8F52;
 }
