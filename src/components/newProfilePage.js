@@ -108,22 +108,22 @@ export function ProfilePage(props) {
                         <hr className='line-break my-5 mx-3' />
                         <h2 className="mb-3">A little about me</h2>
                         <p className="px-10">{profileData.aboutMessage}</p>
-                        <hr className='line-break my-5 mx-3' />
+                        {/* <hr className='line-break my-5 mx-3' /> */}
 
-                        <h2>My Favorite Places to Go</h2>
+                        {/* <h2>My Favorite Places to Go</h2> */}
 
-                        {/* favorite items will go here change with inputs */}
+                        {/* favorite items will go here change with inputs
                         <div className="card" id="list_card">
                             <img className="img-fluid h-100" src="/pics/kb_tn.jpg" alt="favorited item" />
                             <div className="card-block darken"></div>
-                        </div>
+                        </div> */}
 
                     </div>
 
 
-
                 </div>
                 <button type="button" className="btn btn-signout btn-danger" onClick={handleSignOut}>Sign Out</button>
+
             </div>
         </div>
 
