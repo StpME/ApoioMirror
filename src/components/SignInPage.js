@@ -25,6 +25,6 @@ export function SignInPage(props) {
   }
 
   return (
-    <StyledFirebaseAuth firebaseAuth={auth} uiConfig={uiConfigObj} />
+    <StyledFirebaseAuth className="p-5" firebaseAuth={auth} uiConfig={uiConfigObj} />
   );
 }

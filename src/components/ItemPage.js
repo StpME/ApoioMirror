@@ -23,8 +23,9 @@ export function ItemPage(props) {
               return (
                 <button
                   key={index}
-                  // Uses css styling for class based on hover index
+                  // Uses css styling for class based on hover or rating index
                   className={index <= (hover || rating) ? "on" : "off"}
+                  // Sets rating to clicked star index
                   onClick={() => setRating(index)}
                   // Displays active rating based on user hover
                   onMouseEnter={(e) => setHover(index)}
