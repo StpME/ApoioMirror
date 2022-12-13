@@ -79,6 +79,7 @@ function App(props) {
         setProfileData(profileObj);
         const db = getDatabase();
         const userDataRef = dbRef(db, 'userData/' + currentUser.userId);
+        console.log(userDataRef);
         set(userDataRef, profileObj);
     }
 

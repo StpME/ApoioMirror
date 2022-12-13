@@ -21,6 +21,7 @@ export function EditProfile(props) {
     }
 
     const handleClick = (event) => {
+        console.log(profileData);
         props.profileCallback(profileData);
         navigateTo('/profile');
     }
@@ -45,7 +46,7 @@ export function EditProfile(props) {
         await updateProfile(currentUser, {photoURL: downloadUrlString})
         console.log(currentUser.userId);
         setImageUrl(downloadUrlString);
-    
+        setProfileData({...profileData, "profileImage": imageUrl})
         const userDbRef = dbRef(getDatabase(), "userData/"+currentUser.userId+"/profileImage");
         firebaseSet(userDbRef, downloadUrlString);
       }
