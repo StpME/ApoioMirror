@@ -43,7 +43,7 @@ function ResultItem(props) {
     //this is potentially messed up because its not really doing anything its just changing ifFavorited value from true to false
     onValue(userFavData, (snapshot) => {
         const data = snapshot.val();
-        console.log(data);
+        // console.log(data);
         ifFavorited = data;
     })
 

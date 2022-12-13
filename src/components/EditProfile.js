@@ -11,22 +11,14 @@ export function EditProfile(props) {
 
     const [profileData, setProfileData] = useState(props.profile);
     const [imageFile, setImageFile] = useState(undefined);
-    let initialURL = '/pics/placeholder.jpg';
     const [imageUrl, setImageUrl] = useState(props.profile.profileImage);
-
-    let localProfileData = profileData;
-    console.log(profileData);
 
     const handleProfileData = (event) => {
         setProfileData({ ...profileData, [event.target.name]: event.target.value });
-        // console.log(profileData);
-        // firebasePush(userDataRef, profileData);
     }
 
     const handleClick = (event) => {
-        console.log(profileData);
         props.profileCallback(profileData);
-        console.log(profileData);
         navigateTo('/profile');
     }
 
@@ -38,8 +30,8 @@ export function EditProfile(props) {
     }
 
     const handleImageUpload = async (event) => {
-        console.log("Uploading", imageFile);
-        console.log(currentUser);
+        // console.log("Uploading", imageFile);
+        // console.log(currentUser);
     
         const storage = getStorage();
         const userImageRef = storageRef(storage, "/userImages/"+currentUser.userId+".png");
@@ -115,8 +107,6 @@ export function EditProfile(props) {
 
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>

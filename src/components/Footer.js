@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Collapsible from 'react-collapsible';
 import MediaQuery from 'react-responsive';
-import { useMediaQuery } from 'react-responsive';
 
 export default function Footer() {
 

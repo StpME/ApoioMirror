@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
+import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
+import { getDatabase, ref as dbRef, set, onValue, child, get } from 'firebase/database';
 import ApoioHeader from './ApoioHeader.js';
 import Footer from './Footer.js';
 import { ListPage } from './ListPage.js';
 import ResultPage from './ResultPage.js';
 import Home from './Home.js';
-import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
-import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
-import { getDatabase, ref as dbRef, set, onValue, child, get } from 'firebase/database';
-import { CreateNewItem } from './CreateNewItem.js';
 import { ProfilePage } from './newProfilePage.js';
 import { EditProfile } from './EditProfile.js'
 import { ItemPage } from './ItemPage.js'
 import { SignInPage } from './SignInPage.js';
-import { useAuthState } from 'react-firebase-hooks/auth';
-// import { ProfilePage } from './ProfilePage.js';
+import { ErrorPage } from './ErrorPage.js';
 
 const DEFAULT_USER = {
     name: "",
@@ -50,14 +48,6 @@ function App(props) {
     });
     const unique = [...(new Set(list))];
 
-    // const db = getDatabase();
-    // const objectData = dbRef(db, "businessData");
-    // const objectInformation = onValue(objectData, (snapshot) => {
-    //     // console.log(snapshot.val());
-    // });
-    // console.log(objectData);
-    // objectInformation();
-
     //list of stores that have a favorited value on them
     //use this to filter if you want to add an item to
     //the list page
@@ -78,7 +68,7 @@ function App(props) {
         setProfileData(profileObj);
         const db = getDatabase();
         const userDataRef = dbRef(db, 'userData/' + currentUser.userId);
-        console.log(userDataRef);
+        // console.log(userDataRef);
         set(userDataRef, profileObj);
     }
 
@@ -201,6 +191,7 @@ function App(props) {
                 <Routes>
                     <Route index element={<Home typeStoreCallback={typeStoreForResult} />} />
                     <Route path="/login" element={<SignInPage currentUser={currentUser} />} />
+                    <Route path="*" element={<ErrorPage />} />
 
                     <Route element={<ProtectedPage currentUser={currentUser} />}>
                         <Route path="/favorites" element={<ListPage currentUser={currentUser} stores={storeState} types={unique} currentStoreCallback={setResultPageLink} />} />

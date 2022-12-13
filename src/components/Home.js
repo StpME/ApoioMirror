@@ -62,7 +62,7 @@ export default function Home(props) {
 function CategoryCard(props) {
 
     const handleClick = () => {
-        console.log(props.typeShop);
+        // console.log(props.typeShop);
         props.typeStoreCallback(props.typeShop);
     }
 
