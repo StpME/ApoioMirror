@@ -10,26 +10,26 @@ const elem = <img id="arrow" src="pics/collapse_arrow.png"/>
 export function ListPage(props) {
     const currentUser = props.currentUser;
     const [storeData, setStoreData] = useState({});
-    // useEffect(() => {
+    useEffect(() => {
 
-    //     const db = getDatabase(); //"the database"
-    //     const userFavsRef = ref(db, "userData/" + currentUser.userId + "/favorites");
+        const db = getDatabase(); //"the database"
+        const userFavsRef = ref(db, "userData/" + currentUser.userId + "/favorites");
 
-    //     //when db value changes
-    //     const offFunction = onValue(userFavsRef, (snapshot) => {
-    //         const valueObj = snapshot.val();
-    //         console.log(valueObj);
-    //         // console.log(profileData);
+        //when db value changes
+        const offFunction = onValue(userFavsRef, (snapshot) => {
+            const valueObj = snapshot.val();
+            console.log(valueObj);
+            // console.log(profileData);
 
-    //     })
+        })
 
-    //     function cleanup() {
-    //         //   console.log("component is being removed");
-    //         //when the component goes away, we turn off the listener
-    //         offFunction();
-    //     }
-    //     return cleanup; //return instructions on how to turn off lights
-    // }, [])
+        function cleanup() {
+            //   console.log("component is being removed");
+            //when the component goes away, we turn off the listener
+            offFunction();
+        }
+        return cleanup; //return instructions on how to turn off lights
+    }, [])
     
     // Create card components from data if favorited by user.
     const stores = props.stores.map((item, index) => {
