@@ -42,19 +42,22 @@ form {
 
 /* main content */
 
-body {
-  flex-direction: column;
-  font-family: 'Red Hat Display', "Lato", "Helvetica Neue", "Helvetica", sans-serif;
-  margin: 0;
-  height: inherit;
-  background-color: #DEDEDE;
+.outer {
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+}
+
+.mainContent {
+  flex:1;
 }
 
 body {
+  display: flex;
   flex-direction: column;
+  min-height: 100vh;
   font-family: 'Red Hat Display', "Lato", "Helvetica Neue", "Helvetica", sans-serif;
   margin: 0;
-  height: inherit;
   background-color: #DEDEDE;
 }
 
