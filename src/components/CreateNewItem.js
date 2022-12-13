@@ -219,7 +219,7 @@ export function CreateNewItem(props) {
                                     <Dropdown.Item href="#/action-4" name={"Japanese"} onClick={(event) => handleFoodChange(event)}>Japanese</Dropdown.Item>
                                     <Dropdown.Item href="#/action-5" name={"European"} onClick={(event) => handleFoodChange(event)}>European</Dropdown.Item>
                                     <Dropdown.Item href="#/action-6" name={"Mexican"} onClick={(event) => handleFoodChange(event)}>Mexican</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-7" name={"Mediterranean"} onClick={(event) => handleFoodChange(event)}>Mediterranean</Dropdown.Item>
+                                    {/* {<Dropdown.Item href="#/action-7" name={"Mediterranean"} onClick={(event) => handleFoodChange(event)}>Mediterranean</Dropdown.Item> */}
                                 </Dropdown.Menu>
                             </Dropdown>
                         </div>

@@ -5,13 +5,10 @@ import { Link } from 'react-router-dom';
 
 export default function ResultPage(props) {
     const allStores = props.stores;
-    const restaurants = allStores.filter((store) => {
-        return store.type === "restaurant";
-    });
+    // const restaurants = allStores.filter((store) => {
+    //     return store.type === "restaurant";
+    // });
     const [storesVisible, changeStoresVisible] = useState(allStores);
-    const [initStores, changeinitStores] = useState(allStores);
-    // const [filterArray, changeFilterArray] = useState([]);
-    // const [tempStores, changeTempStores] = useState([]);
     const [checkboxBool, setCheckboxBool] = useState(
         {
             "female": false,
@@ -21,51 +18,76 @@ export default function ResultPage(props) {
         }
     );
     const [renderCheckerBool, setRenderCheckerBool] = useState(false);
+    const [typeShop, setTypeShop] = useState("");
+    const [typeRestaurant, setTypeRestaurant] = useState("");
 
     // RE RENDERS IF THE INPUT AFTER SEARCH QUERY IS NOT THE SAME!
     // DOES NOT WORK IF I AM ALREADY ON RESULTS PAGE
     // if(props.stores !== storesVisible) {
     //     changeStoresVisible(props.stores);
     // }
+
+    
+    
     if (props.stores !== storesVisible && props.locationPath === "/results" && renderCheckerBool === false) {
         changeStoresVisible(props.stores);
+        // handleShopTypeFilter("all");
     }
 
     const handleShopTypeFilter = (storeParam) => {
         if (storeParam !== "all") {
             const filteredShops = allStores.filter((store) => {
-                
+
                 return store.type === storeParam;
             })
             // console.log(filteredShops);
+            if(storeParam === "shop") {
+                setTypeRestaurant("all");
+            }
             setRenderCheckerBool(true);
+            setTypeShop(storeParam);
             changeStoresVisible(filteredShops);
             // changePrevStores(storesVisible);
         } else {
             setRenderCheckerBool(false);
+            setTypeShop("all");
             changeStoresVisible(allStores);
         }
     }
 
+    if(props.typeStore !== "" && renderCheckerBool === false) {
+        handleShopTypeFilter(props.typeStore);
+    }
+
     const handleRestaurantFilter = (storeParam) => {
+        // const filteredRestaurants = restaurants.filter((store) => {
+
+        //     return store.typeFood === storeParam;
+        // });
+        // changeStoresVisible(filteredRestaurants);
+
         if (storeParam !== "all") {
-            const filteredRestaurants = restaurants.filter((store) => {
-                
+            const filteredRestaurants = allStores.filter((store) => {
                 return store.typeFood === storeParam;
             })
             // console.log(filteredRestaurants);
             setRenderCheckerBool(true);
+            setTypeShop("restaurant");
+            setTypeRestaurant(storeParam);
             changeStoresVisible(filteredRestaurants);
             // changePrevStores(storesVisible);
         } else {
             setRenderCheckerBool(false);
-            changeStoresVisible(storesVisible);
+            setTypeShop("all");
+            setTypeRestaurant("all");
+            handleShopTypeFilter("restaurant");
+            // changeStoresVisible(restaurants);
         }
     }
 
     const handleOwnedBy = (storeParam, isChecked) => {
         if (isChecked) {
-            
+
             setCheckboxBool({ ...checkboxBool, [storeParam]: true });
             // console.log(checkboxBool);
         } else {
@@ -75,63 +97,46 @@ export default function ResultPage(props) {
         }
     }
 
-    // changeResultView();
-
-    // if (isChecked) {
-    //     console.log(storeParam);
-    //     changeFilterArray([...filterArray, storeParam]);
-    //     // console.log(filterArray);
-    // } else {
-    //     const index = filterArray.indexOf(storeParam)
-    //     if(index !== -1) {
-    //         const currentArray = filterArray.splice(index, 1);
-    //         changeFilterArray(currentArray);
-    //     }
-    //     // changeStoresVisible(initStores);
-    // }
-    // if(filterArray.length > 0) {
-    //     console.log(filterArray);
-    //     let currentArray = [];
-    //     initStores.some((store) => {
-    //         // console.log(store);
-    //         // currentObject = store;
-    //         // console.log(currentObject);
-    //         if (store.ownedBy !== undefined) {
-    //             // console.log(store.ownedBy);
-    //             store.ownedBy.every((ownedByItem) => {
-    //                 console.log("filter array " + filterArray);
-    //                 // console.log(currentObject);
-    //                 if(filterArray.includes(ownedByItem)){
-    //                     currentArray = [...currentArray, store];
-    //                 }
-    //                 // return filterArray.includes(ownedByItem);
-    //             });
-    //         }
-    //     });
-    //     // changeTempStores(currentArray);
-    //     console.log(tempStores);
-    //     changeStoresVisible(currentArray);
-    // } else {
-    //     changeStoresVisible(initStores);
-    // }
-
-    // }
-
 
     useEffect(() => {
         // const searchResultState = props.searchResults;
         // console.log(searchResultState);
-
-        changeStoresVisible(props.stores);
-        console.log("RE RENDERED!");
-
+        if(props.typeStore !== "") {
+            handleShopTypeFilter(props.typeStore);
+        } else {
+            changeStoresVisible(props.stores);
+        }
         
+        // console.log("RE RENDERED!");
+
 
         // const changeResultView = () => {
         if (Object.values(checkboxBool).every((bool) => bool === false)) {
+            if (typeShop === "" || typeShop === "all") {
+                changeStoresVisible(allStores);
+                // setRenderCheckerBool(true);
+            } else {
+                if (typeRestaurant === "" || typeRestaurant === "all") {
+                    handleShopTypeFilter(typeShop);
+                    // setRenderCheckerBool(true);
+                    // handleRestaurantFilter(typeRestaurant);
+                } else {
+                    handleShopTypeFilter(typeShop);
+                    handleRestaurantFilter(typeRestaurant);
+                    // setRenderCheckerBool(true);
+                }
+                setRenderCheckerBool(false);
+                // handleShopTypeFilter(typeShop);
+                // setRenderCheckerBool(false);
+            }
             // console.log("all false");
-            setRenderCheckerBool(false);
-            changeStoresVisible(initStores);
+
+
+            // if(typeShop === "restaurant") {
+            //     handleShopTypeFilter(typeShop);
+            // }
+            // if(typeShop === "")
+            // changeStoresVisible(storesVisible);
         }
 
         else {
@@ -149,25 +154,24 @@ export default function ResultPage(props) {
                             if (storeObj.ownedBy.includes(type)) {
                                 filteredObjects.add(storeObj);
                             }
+                            if (!storeObj.ownedBy.includes(type)) {
+                                filteredObjects.delete(storeObj);
+                            }
                         }
                     } else {
                         if (storeObj.ownedBy !== undefined) {
-                            if (storeObj.ownedBy.includes(type)) {
-                                filteredObjects.delete(storeObj);
+                            // console.log(storeObj.placeName + " " + storeObj.ownedBy);
+                            for (const propertyItem of storeObj.ownedBy) {
+
+                                if (checkboxBool[propertyItem] === false) {
+                                    // console.log("deleting " + propertyItem);
+                                    filteredObjects.delete(storeObj);
+                                } else {
+                                    // console.log("adding " + propertyItem);
+                                    filteredObjects.add(storeObj);
+                                    break;
+                                }
                             }
-                            // storeObj.ownedBy.every((ownedByProperty) => {
-                            //     console.log("current property " + ownedByProperty);
-                            //     if ((checkboxBool[ownedByProperty] === true)) {
-                            //         console.log("inside " + ownedByProperty);
-                            //         filteredObjects.add(storeObj);
-                            //     } else {
-                            //         console.log("outside " + ownedByProperty)
-                            //         // if (storeObj.ownedBy.includes(type)) {
-                            //         //     filteredObjects.delete(storeObj);
-                            //         // }
-                            //         filteredObjects.delete(storeObj);
-                            //     }
-                            // });
                         }
                     }
                 }

@@ -134,6 +134,10 @@ body {
   max-height: 48px;
 }
 
+.Collapsible__trigger.is-open img {
+  transform: rotate(180deg);
+}
+
 .list-group-item:not(.active) {
   /* border-radius: 10px; */
   /* border-top: 0px solid black; */
@@ -184,6 +188,12 @@ body {
   border-radius: 10px;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
   
+}
+
+.home-card-img {
+  object-fit: cover;
+  height: 5rem;
+  width: 5rem;
 }
 
 .card-block {
@@ -266,7 +276,7 @@ button {
   cursor: pointer;
 }
 .on {
-  color: yellow;
+  color: rgb(218, 218, 25);
 }
 .off {
   color: #ccc;
@@ -489,6 +499,11 @@ button {
     #list_name {
       font-size: 20px;
     }
+
+    #embed {
+      width: 300px;
+      height: 150px;
+    }
   }
   @media (min-width: 576px) and (max-width: 768px) {
     .card#list_card {
@@ -502,7 +517,10 @@ button {
       max-width: 36px;
       max-height: 36px;
     }
-
+    #embed {
+      width: 350px;
+      height: 200px;
+    }
     /* .result-item-card{
       max-height: 10rem;
     } */

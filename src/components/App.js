@@ -6,7 +6,7 @@ import ResultPage from './ResultPage.js';
 import Home from './Home.js';
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { getDatabase, ref as dbRef, set } from 'firebase/database';
+import { getDatabase, ref as dbRef, ref, set, onValue } from 'firebase/database';
 import { CreateNewItem } from './CreateNewItem.js';
 import { ProfilePage } from './newProfilePage.js';
 import { EditProfile } from './EditProfile.js'
@@ -36,6 +36,8 @@ function App(props) {
     });
     const [location, setLocation] = useState("");
     const [queryResults, setQueryResults] = useState(stores);
+    const [typeStore, setTypeStore] = useState("");
+    const [placeRating, setPlaceRating] = useState({});
 
     // This is the updated full dataset after user adds new item (TESTING)
     // Adds new object from create page, should get added to database
@@ -46,8 +48,15 @@ function App(props) {
     const list = stores.map((elem) => {
         return elem.type;
     });
-
     const unique = [...(new Set(list))];
+
+    const db = getDatabase();
+    const objectData = dbRef(db, "businessData");
+    const objectInformation = onValue(objectData, (snapshot) => {
+        console.log(snapshot.val());
+    })
+    // console.log(objectData);
+    // objectInformation();
 
     //list of stores that have a favorited value on them
     //use this to filter if you want to add an item to
@@ -75,7 +84,7 @@ function App(props) {
 
     const changeSearchInput = (searchQuery, locationName) => {
         setLocation(locationName);
-        console.log(locationName);
+        // console.log(locationName);
         setQueryResults(storeState);
         const queryToLower = searchQuery.toLowerCase();
         const filteredObjects = new Set();
@@ -105,10 +114,18 @@ function App(props) {
 
 
         const filteredArray = [...filteredObjects];
-        console.log("results in app " + queryResults);
+        // console.log("results in app " + queryResults);
         if (filteredArray.length !== 0) {
             setQueryResults(filteredArray);
         }
+    }
+
+    const typeStoreForResult = (storeString) => {
+        setTypeStore(storeString);
+    }
+
+    const starSetter = (numStars) => {
+
     }
 
     // const navigateTo = useNavigate();
@@ -137,13 +154,13 @@ function App(props) {
         <div>
             <ApoioHeader currentUser={currentUser} searchInputCallback={changeSearchInput} />
             <Routes>
-                <Route index element={<Home />} />
-                <Route path="/lists" element={<ListPage stores={storeState} types={unique} />} />
+                <Route index element={<Home typeStoreCallback={typeStoreForResult}/>} />
+                <Route path="/lists" element={<ListPage stores={storeState} types={unique} currentStoreCallback={setResultPageLink} />} />
                 <Route path="/profile" element={<ProfilePage profile={profileData} currentUser={currentUser} />} />
                 <Route path="/profile/edit" element={<EditProfile profile={profileData} currentUser={currentUser} profileCallback={changeProfileData} />} />
 
-                <Route path="/results" element={<ResultPage stores={queryResults} storeCallback={favList} currentStoreCallback={setResultPageLink} locationPath={location}/>} />
-                <Route path="/results/:storeName" element={<ItemPage currentStore={currentStore} />} />
+                <Route path="/results" element={<ResultPage stores={queryResults} storeCallback={favList} currentStoreCallback={setResultPageLink} locationPath={location} typeStore={typeStore}/>} />
+                <Route path="/results/:storeName" element={<ItemPage currentStore={currentStore} starCallback={starSetter}/>} />
                 {/*This component needs to be passed a single store, create in results page instead of a Route here  */}
                 {/* <Route path="/item" element={<ItemPage store={stores[0]} />} /> */}
                 <Route path="/new_item" element={<CreateNewItem stores={stores} dataset={setStore} />} />

@@ -4,16 +4,18 @@ import { Link } from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel';
 
 const CARD_CATEGORIES = [
-    { name: 'Food', img: 'pics/hamburger.png' },
-    { name: 'Clothing', img: 'pics/shirt.png' },
-    { name: 'Groceries', img: 'pics/basket.png' }
+    { name: 'All', typeShop: "", img: 'pics/all_category_icon.png' },
+    { name: 'Restaurants', typeShop: "restaurant", img: 'pics/hamburger.png' },
+    { name: 'Shops', typeShop: "shop", img: 'pics/shirt.png' }
 ]
 
 export default function Home(props) {
 
     const categoryCards = CARD_CATEGORIES.map((element, index) => {
-        return <CategoryCard key={index} img={element.img} name={element.name} />
+        return <CategoryCard key={index} typeShop={element.typeShop} img={element.img} name={element.name} typeStoreCallback={props.typeStoreCallback}/>
     })
+
+    
 
     return (
         <main>
@@ -54,13 +56,19 @@ export default function Home(props) {
 }
 
 function CategoryCard(props) {
+
+    const handleClick = () => {
+        console.log(props.typeShop);
+        props.typeStoreCallback(props.typeShop);
+    }
+
     return (
         <div className="card home-card-item">
             <div className="card-body">
-                <img src={props.img} alt={props.name + " category"} />
+                <img className="home-card-img" src={props.img} alt={props.name + " category"} />
             </div>
             <div className="card-title">
-                <Link className="btn stretched-link nav-link" to="/results">{props.name}</Link>
+                <Link className="btn stretched-link nav-link" onClick={handleClick} to="/results">{props.name}</Link>
             </div>
         </div>
 

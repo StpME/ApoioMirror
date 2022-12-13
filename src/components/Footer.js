@@ -19,8 +19,8 @@ export default function Footer() {
     function company() {
         return (
             <ul className="pb-3">
-                <li><a href="#">Login</a></li>
-                <li><a href="#">Register</a></li>
+                <li><Link className="nav-link" to="/login">Login</Link></li>
+                <li><Link className="nav-link" to="/login">Register</Link></li>
             </ul>
         );
     }
