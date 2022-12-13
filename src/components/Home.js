@@ -15,8 +15,6 @@ export default function Home(props) {
         return <CategoryCard key={index} typeShop={element.typeShop} img={element.img} name={element.name} typeStoreCallback={props.typeStoreCallback} />
     })
 
-
-
     return (
         <main>
             <div className="container-fluid">

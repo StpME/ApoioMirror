@@ -2,28 +2,14 @@ import React, { useEffect, useState } from 'react';
 import Collapsible from 'react-collapsible';
 import MediaQuery from 'react-responsive';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
-import { getDatabase, ref, set as firebaseSet, onValue, push as firebasePush } from 'firebase/database';
 // Collapse arrow icon
 const elem = <img id="arrow" src="pics/collapse_arrow.png" />
 
 
 export function ListPage(props) {
-    const currentUser = props.currentUser;
     let favoritedItems = props.stores;
-    const [storeData, setStoreData] = useState({});
+    // console.log(favoritedItems);
 
-    const db = getDatabase(); //"the database"
-    const userFavsRef = ref(db, "userData/" + currentUser.userId + "/favorites");
-
-    //this might be where things are going wrong because favoritedItems might not be assigned the right database values
-    onValue(userFavsRef, (snapshot) => {
-        const valueObj = snapshot.val();
-        console.log(valueObj);
-        favoritedItems = valueObj;
-        // console.log(profileData);
-
-    })
-    // useEffect(() => {
 
     //     const db = getDatabase(); //"the database"
     //     const userFavsRef = ref(db, "userData/" + currentUser.userId + "/favorites");

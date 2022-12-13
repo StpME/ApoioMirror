@@ -25,7 +25,7 @@ const DEFAULT_USER = {
     aboutMessage: "",
     profileImage: "/pics/placeholder.jpg",
     uid: null,
-    favs: []
+    favorites: {}
 };
 
 function App(props) {
@@ -39,11 +39,9 @@ function App(props) {
     const [location, setLocation] = useState("");
     const [queryResults, setQueryResults] = useState(stores);
     const [typeStore, setTypeStore] = useState("");
-    const [placeRating, setPlaceRating] = useState({});
-
     // This is the updated full dataset after user adds new item (TESTING)
     // Adds new object from create page, should get added to database
-    const [newStores, setStore] = useState(storeState);
+    // const [newStores, setStore] = useState(storeState);
     //console.log("Current Dataset: ", newStores);
 
     //Generate unique set of store types for list page
@@ -52,11 +50,11 @@ function App(props) {
     });
     const unique = [...(new Set(list))];
 
-    const db = getDatabase();
-    const objectData = dbRef(db, "businessData");
-    const objectInformation = onValue(objectData, (snapshot) => {
-        // console.log(snapshot.val());
-    });
+    // const db = getDatabase();
+    // const objectData = dbRef(db, "businessData");
+    // const objectInformation = onValue(objectData, (snapshot) => {
+    //     // console.log(snapshot.val());
+    // });
     // console.log(objectData);
     // objectInformation();
 
@@ -141,6 +139,7 @@ function App(props) {
         console.log("Signing Out");
         signOut(getAuth());
         setProfileData(DEFAULT_USER);
+        setStoreState(stores);
     }
 
     // logging in
@@ -154,7 +153,9 @@ function App(props) {
                 const userDataRef = dbRef(getDatabase(), "userData");
                 get(child(userDataRef, firebaseUser.userId)).then((snapshot) => {
                     if (snapshot.exists()) {
-                        setProfileData(snapshot.val())
+                        setProfileData(snapshot.val());
+                        setStoreState(snapshot.val().favorites);
+                        setQueryResults(snapshot.val().favorites);
                     } else {
                         console.log("unavailable");
                     }
@@ -207,9 +208,7 @@ function App(props) {
                         <Route path="/profile/edit" element={<EditProfile profile={profileData} currentUser={currentUser} profileCallback={changeProfileData} />} />
                         <Route path="/results" element={<ResultPage currentUser={currentUser} stores={queryResults} storeCallback={favList} currentStoreCallback={setResultPageLink} locationPath={location} typeStore={typeStore} />} />
                         <Route path="/results/:storeName" element={<ItemPage allStores={stores} currentStore={currentStore} starCallback={starSetter} userInfo={currentUser} />} />
-                        {/*This component needs to be passed a single store, create in results page instead of a Route here  */}
-                        {/* <Route path="/item" element={<ItemPage store={stores[0]} />} /> */}
-                        <Route path="/new_item" element={<CreateNewItem stores={stores} dataset={setStore} />} />
+                        {/* <Route path="/new_item" element={<CreateNewItem stores={stores} dataset={setStore} />} /> */}
                     </Route>
                 </Routes>
             </div>
