@@ -12,7 +12,7 @@ export function EditProfile(props) {
     const [profileData, setProfileData] = useState(props.profile);
     const [imageFile, setImageFile] = useState(undefined);
     let initialURL = '/pics/placeholder.jpg';
-    const [imageUrl, setImageUrl] = useState(initialURL);
+    const [imageUrl, setImageUrl] = useState(props.profile.profileImage);
 
     let localProfileData = profileData;
 
