@@ -37,16 +37,20 @@ function ResultItem(props) {
     }
 
     const db = getDatabase();
-    const userFavData = ref(db, "userRatingData/" + props.currentUser.userId + "/favorites/" + index + "/favorited");
+    //goes into the database to find the favorited value for each store
+    const userFavData = ref(db, "userData/" + props.currentUser.userId + "/favorites/" + index + "/favorited");
 
+    //this is potentially messed up because its not really doing anything its just changing ifFavorited value from true to false
     onValue(userFavData, (snapshot) => {
         const data = snapshot.val();
         console.log(data);
         ifFavorited = data;
     })
 
+    // when add to favorites is clicked this happens
     const handleClick = () => {
 
+        //change the value in firebase i think
         firebaseSet(userFavData, !isFavorited);
         props.storeCallback(placeName, !isFavorited);
         setisFavorited(!isFavorited);
@@ -56,7 +60,7 @@ function ResultItem(props) {
 
     let favoritedText = "Add to Favorites!";
     let favoritedStyle = "btn btn-outline-danger";
-    if (isFavorited || (ifFavorited === true)) {
+    if ((ifFavorited === true)) {
         favoritedText = "Remove from Favorites!";
         favoritedStyle = "btn btn-danger text-white"
     }

@@ -15,7 +15,7 @@ export function ListPage(props) {
     const db = getDatabase(); //"the database"
     const userFavsRef = ref(db, "userData/" + currentUser.userId + "/favorites");
 
-    //when db value changes
+    //this might be where things are going wrong because favoritedItems might not be assigned the right database values
     onValue(userFavsRef, (snapshot) => {
         const valueObj = snapshot.val();
         console.log(valueObj);
