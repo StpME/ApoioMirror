@@ -9,16 +9,7 @@ export function ProfilePage(props) {
     
 
     const navigateTo = useNavigate();
-    const [profileData, setProfileData] = useState({
-        name: "",
-        location: "",
-        occupation: "",
-        email: "",
-        socialInsta: "",
-        socialTwitter: "",
-        aboutMessage: "",
-
-    });
+    const [profileData, setProfileData] = useState(props.profile);
 
     // console.log(profileData);
 
@@ -39,7 +30,6 @@ export function ProfilePage(props) {
         //when db value changes
         const offFunction = onValue(allMessageRef, (snapshot) => {
             const valueObj = snapshot.val();
-            //convert object into array
             setProfileData(valueObj[currentUser.userId])
             // console.log(profileData);
 
@@ -57,10 +47,6 @@ export function ProfilePage(props) {
         return <Navigate to="/" />
     }
 
-    // const emailHref = "mailto:" + profileData.email
-    const emailHref = "mailto:"
-
-
     return (
         <div className="container mt-5 p-5">
             <div className="d-flex row justify-content-center m-auto">
@@ -72,8 +58,8 @@ export function ProfilePage(props) {
                     </div>
                     <div className="d-flex profile-negative-margins justify-content-between mx-3">
                         <div className="d-block justify-content-center text-center">
-                            <p className="page-view-count mb-0">3</p>
-                            <p className="text-muted">Pages Viewed</p>
+                            <p className="page-view-count mb-0">2022</p>
+                            <p className="text-muted">Member Since</p>
 
                         </div>
                         <div>
@@ -89,7 +75,7 @@ export function ProfilePage(props) {
 
                         <div className="d-flex justify-content-center">
                             <p className="profile-text text-muted me-1">Contact:</p>
-                            <a className="profile-text text-decoration-none mb-3" href={emailHref}>{profileData.email}</a>
+                            <a className="profile-text text-decoration-none mb-3" href={"mailto:" + profileData.email}>{profileData.email}</a>
                         </div>
 
                         <div className="d-flex row justify-content-center mt-2">
