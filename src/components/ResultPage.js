@@ -5,9 +5,6 @@ import { Link } from 'react-router-dom';
 
 export default function ResultPage(props) {
     const allStores = props.stores;
-    // const restaurants = allStores.filter((store) => {
-    //     return store.type === "restaurant";
-    // });
     const [storesVisible, changeStoresVisible] = useState(allStores);
     const [checkboxBool, setCheckboxBool] = useState(
         {
@@ -21,17 +18,9 @@ export default function ResultPage(props) {
     const [typeShop, setTypeShop] = useState("");
     const [typeRestaurant, setTypeRestaurant] = useState("");
 
-    // RE RENDERS IF THE INPUT AFTER SEARCH QUERY IS NOT THE SAME!
-    // DOES NOT WORK IF I AM ALREADY ON RESULTS PAGE
-    // if(props.stores !== storesVisible) {
-    //     changeStoresVisible(props.stores);
-    // }
 
-    
-    
     if (props.stores !== storesVisible && props.locationPath === "/results" && renderCheckerBool === false) {
         changeStoresVisible(props.stores);
-        // handleShopTypeFilter("all");
     }
 
     const handleShopTypeFilter = (storeParam) => {
@@ -40,14 +29,12 @@ export default function ResultPage(props) {
 
                 return store.type === storeParam;
             })
-            // console.log(filteredShops);
             if(storeParam === "shop") {
                 setTypeRestaurant("all");
             }
             setRenderCheckerBool(true);
             setTypeShop(storeParam);
             changeStoresVisible(filteredShops);
-            // changePrevStores(storesVisible);
         } else {
             setRenderCheckerBool(false);
             setTypeShop("all");
@@ -60,11 +47,6 @@ export default function ResultPage(props) {
     }
 
     const handleRestaurantFilter = (storeParam) => {
-        // const filteredRestaurants = restaurants.filter((store) => {
-
-        //     return store.typeFood === storeParam;
-        // });
-        // changeStoresVisible(filteredRestaurants);
 
         if (storeParam !== "all") {
             const filteredRestaurants = allStores.filter((store) => {
@@ -75,13 +57,11 @@ export default function ResultPage(props) {
             setTypeShop("restaurant");
             setTypeRestaurant(storeParam);
             changeStoresVisible(filteredRestaurants);
-            // changePrevStores(storesVisible);
         } else {
             setRenderCheckerBool(false);
             setTypeShop("all");
             setTypeRestaurant("all");
             handleShopTypeFilter("restaurant");
-            // changeStoresVisible(restaurants);
         }
     }
 
@@ -89,64 +69,41 @@ export default function ResultPage(props) {
         if (isChecked) {
 
             setCheckboxBool({ ...checkboxBool, [storeParam]: true });
-            // console.log(checkboxBool);
         } else {
             setCheckboxBool({ ...checkboxBool, [storeParam]: false });
-            // console.log(checkboxBool);
 
         }
     }
 
 
     useEffect(() => {
-        // const searchResultState = props.searchResults;
-        // console.log(searchResultState);
         if(props.typeStore !== "") {
             handleShopTypeFilter(props.typeStore);
         } else {
             changeStoresVisible(props.stores);
         }
-        
-        // console.log("RE RENDERED!");
 
 
         // const changeResultView = () => {
         if (Object.values(checkboxBool).every((bool) => bool === false)) {
             if (typeShop === "" || typeShop === "all") {
                 changeStoresVisible(allStores);
-                // setRenderCheckerBool(true);
             } else {
                 if (typeRestaurant === "" || typeRestaurant === "all") {
                     handleShopTypeFilter(typeShop);
-                    // setRenderCheckerBool(true);
-                    // handleRestaurantFilter(typeRestaurant);
                 } else {
                     handleShopTypeFilter(typeShop);
                     handleRestaurantFilter(typeRestaurant);
-                    // setRenderCheckerBool(true);
                 }
                 setRenderCheckerBool(false);
-                // handleShopTypeFilter(typeShop);
-                // setRenderCheckerBool(false);
             }
-            // console.log("all false");
-
-
-            // if(typeShop === "restaurant") {
-            //     handleShopTypeFilter(typeShop);
-            // }
-            // if(typeShop === "")
-            // changeStoresVisible(storesVisible);
         }
 
         else {
             setRenderCheckerBool(true);
-            // console.log("not all false");
             const filteredObjects = new Set();
 
             for (const [type, typeBool] of Object.entries(checkboxBool)) {
-                // console.log(type);
-                // console.log(typeBool);
                 for (const storeObj of storesVisible) {
                     // console.log(storeObj);
                     if (typeBool === true) {
@@ -160,14 +117,14 @@ export default function ResultPage(props) {
                         }
                     } else {
                         if (storeObj.ownedBy !== undefined) {
-                            // console.log(storeObj.placeName + " " + storeObj.ownedBy);
+                            
                             for (const propertyItem of storeObj.ownedBy) {
 
                                 if (checkboxBool[propertyItem] === false) {
-                                    // console.log("deleting " + propertyItem);
+                                    
                                     filteredObjects.delete(storeObj);
                                 } else {
-                                    // console.log("adding " + propertyItem);
+                                    
                                     filteredObjects.add(storeObj);
                                     break;
                                 }
@@ -192,11 +149,11 @@ export default function ResultPage(props) {
                 <div className="d-flex row m-auto justify-content-center">
                     <div className="col-md-4 col-lg-3">
                         <ResultFilter store={storesVisible} changeOwnedBy={handleOwnedBy} changeShopsVisible={handleShopTypeFilter} changeRestaurantsVisible={handleRestaurantFilter} />
-                        <div className="my-3 ">
+                        {/* <div className="my-3 ">
                             <Link to="../new_item" className="btn btn-danger add-new-button">
                                 <strong className="text-white">Add a New Location</strong>
                             </Link>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="col-md-8 col-lg-8 col-sm-12">
                         <ResultPane storeCallback={props.storeCallback} favCallback={props.favCallback} currentStoreCallback={props.currentStoreCallback} stores={storesVisible} />
