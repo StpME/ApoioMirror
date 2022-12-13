@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { getDatabase, ref, set as firebaseSet, onValue } from 'firebase/database';
 // import STORE_DATA from '../data/store_data.json';
 
 export function ResultPane(props) {
@@ -8,7 +9,7 @@ export function ResultPane(props) {
 
     const resultsArray = stores.map((resultObj, index) => {
         const element = (
-            <ResultItem resultData={resultObj} key={index + 1} storeCallback={props.storeCallback} favCallback={props.favCallback} currentStoreCallback={props.currentStoreCallback}/>
+            <ResultItem resultData={resultObj} currentUser={props.currentUser} key={index + 1} stores={stores} storeCallback={props.storeCallback} favCallback={props.favCallback} currentStoreCallback={props.currentStoreCallback} />
         )
         return element;
     })
@@ -25,8 +26,27 @@ function ResultItem(props) {
     const { placeName, location, description, placeThumbnail } = props.resultData;
 
 
+    let index = 0;
+    let ifFavorited = false;
+
+    for (let i = 0; i < props.stores.length; i++) {
+        if (props.stores[i].placeName === placeName) {
+            index = i;
+        }
+    }
+
+    const db = getDatabase();
+    const userFavData = ref(db, "userRatingData/" + props.currentUser.userId + "/favorites/" + index + "/favorited");
+
+    onValue(userFavData, (snapshot) => {
+        const data = snapshot.val();
+        console.log(data);
+        ifFavorited = data;
+    })
+
     const handleClick = () => {
 
+        firebaseSet(userFavData, !isFavorited);
         props.storeCallback(placeName, !isFavorited);
         setisFavorited(!isFavorited);
 
@@ -58,7 +78,7 @@ function ResultItem(props) {
                 <div className="col col-lg-8">
                     <div className="card-body">
                         {/* <h5 className="card-title">{placeName}</h5> */}
-                        <Link onClick={currentStoreCallback} className="company-heading mb-0 mt-1" to={"/results/"+placeName}>{placeName}</Link>
+                        <Link onClick={currentStoreCallback} className="company-heading mb-0 mt-1" to={"/results/" + placeName}>{placeName}</Link>
                         <p className="text-muted">{location}</p>
                         <p className="card-text">
                             {description}

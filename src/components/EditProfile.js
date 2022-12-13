@@ -93,7 +93,7 @@ export function EditProfile(props) {
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="occuInput" className="form-label">Title:</label>
-                                <input name="occupation" id="occuInput" type="text" value={profileData.title} onChange={handleProfileData} className="form-control" />
+                                <input name="title" id="occuInput" type="text" value={profileData.title} onChange={handleProfileData} className="form-control" />
 
                             </div>
                             <div className="mb-3">

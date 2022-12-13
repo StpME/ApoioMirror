@@ -1,70 +1,84 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Collapsible from 'react-collapsible';
 import MediaQuery from 'react-responsive';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { getDatabase, ref, set as firebaseSet, onValue, push as firebasePush } from 'firebase/database';
 // Collapse arrow icon
-const elem = <img id="arrow" src="pics/collapse_arrow.png"/>
+const elem = <img id="arrow" src="pics/collapse_arrow.png" />
 
 
 export function ListPage(props) {
     const currentUser = props.currentUser;
+    let favoritedItems = props.stores;
     const [storeData, setStoreData] = useState({});
-    useEffect(() => {
 
-        const db = getDatabase(); //"the database"
-        const userFavsRef = ref(db, "userData/" + currentUser.userId + "/favorites");
+    const db = getDatabase(); //"the database"
+    const userFavsRef = ref(db, "userData/" + currentUser.userId + "/favorites");
 
-        //when db value changes
-        const offFunction = onValue(userFavsRef, (snapshot) => {
-            const valueObj = snapshot.val();
-            console.log(valueObj);
-            // console.log(profileData);
+    //when db value changes
+    onValue(userFavsRef, (snapshot) => {
+        const valueObj = snapshot.val();
+        console.log(valueObj);
+        favoritedItems = valueObj;
+        // console.log(profileData);
 
-        })
+    })
+    // useEffect(() => {
 
-        function cleanup() {
-            //   console.log("component is being removed");
-            //when the component goes away, we turn off the listener
-            offFunction();
-        }
-        return cleanup; //return instructions on how to turn off lights
-    }, [])
-    
+    //     const db = getDatabase(); //"the database"
+    //     const userFavsRef = ref(db, "userData/" + currentUser.userId + "/favorites");
+
+    //     //when db value changes
+    //     const offFunction = onValue(userFavsRef, (snapshot) => {
+    //         const valueObj = snapshot.val();
+    //         console.log(valueObj);
+    //         favoritedItems = valueObj;
+    //         // console.log(profileData);
+
+    //     })
+
+    //     function cleanup() {
+    //         //   console.log("component is being removed");
+    //         //when the component goes away, we turn off the listener
+    //         offFunction();
+    //     }
+    //     return cleanup; //return instructions on how to turn off lights
+    // }, [])
+
     // Create card components from data if favorited by user.
-    const stores = props.stores.map((item, index) => {
+    const stores = favoritedItems.map((item, index) => {
         if (item.favorited === true) {
             return (
                 <CreateCard key={index} store={item} type={item.type} currentStoreCallback={props.currentStoreCallback} />
-            ); 
+            );
         }
     });
     const bools = props.stores.map((elem) => {
         return elem.favorited;
-      });
+    });
     const boolSet = new Set(bools);
     let count = 1;
     const storeTypes = props.types.map((type, index) => {
         if (type != null && boolSet.has(true) === true) {
             return (
                 <CreateList key={index} type={type} cards={stores} />
-            ); 
+            );
         }
         // Only prints message once instead of once per type in data source
         else if (count === 1) {
             count += 1;
             return (
-                <Link to="../results" style={{textDecoration:'inherit', color: 'inherit'}} key={index} id="empty" className="p-4 mt-4">{"Add Some Places!"}</Link>
+                <Link to="../results" style={{ textDecoration: 'inherit', color: 'inherit' }} key={index} id="empty" className="p-4 mt-4">{"Add Some Places!"}</Link>
             );
         }
-        
+
     });
 
     return (
         <section className="col p-5">
             <div className="col-lg-12 d-block">
                 <div className="card pb-5">
-                    
+
                     <ul className="list-group list-group-flush">
                         {/*<div id='list_header' className="row p-4 mt-4">
                             <li className="btn btn-success" onClick={handleClick}>
@@ -73,7 +87,7 @@ export function ListPage(props) {
                         </div>*/}
                         <div id='list_header' className="row pt-4 mt-2">
                             <strong><header className="title">My Favorites</header></strong>
-                            
+
                         </div>
                         <div className="row px-3">
                             {storeTypes}
@@ -87,24 +101,25 @@ export function ListPage(props) {
     function CreateList(props) {
         const type = props.type;
         // List names defaults to store types
-        const [text, setText] = useState(type.substring(0,1).toUpperCase() + type.substring(1));
-    
+        const [text, setText] = useState(type.substring(0, 1).toUpperCase() + type.substring(1));
+
         // Prompts user for list name and changes it
         const changeText = () => {
             const input = prompt('Enter List Name');
-            if (input != null && input != "") {setText(input);} 
-            else {return} 
+            if (input != null && input != "") { setText(input); }
+            else { return }
         }
-        
+
         // Matches card type to list type
         const listCount = [];
         const card = props.cards.map((item) => {
-            if (item === undefined) {return}
+            if (item === undefined) { return }
             else if (type === item.props.type) {
                 listCount.push(type);
-                return (item)}
+                return (item)
+            }
         });
-        
+
         function listHeader(button_name) {
             if (listCount.length != 0) {
                 return (
@@ -135,33 +150,33 @@ export function ListPage(props) {
                             </div>
                         </Collapsible>
                     </MediaQuery>
-                </div> 
+                </div>
             )
         }
     }
-    
+
     // Function called when user favorites a store
-    function CreateCard(props) { 
+    function CreateCard(props) {
         const store = props.store;
         //console.log(store);
         let nav = useNavigate();
         //unstar to remove from the list?
         //click to go to store information (when info is implemented)?
         const handleClick = (event) => {
-            
+
         }
-        
+
         function thumbnailCheck() {
             if (store.placeThumbnail === undefined) {
-            // Filler image if passed no thumbnail from data
+                // Filler image if passed no thumbnail from data
                 store.placeThumbnail = "/pics/placeholder.jpg";
             }
             return store.placeThumbnail;
         }
-    
+
         function nameCheck() {
             if (store.placeName === undefined || store.placeName === null) {
-            // Filler name if passed no store name from data
+                // Filler name if passed no store name from data
                 store.placeName = "Store Name";
             }
             return store.placeName;
@@ -172,9 +187,9 @@ export function ListPage(props) {
         return (
             <div className="col" id="list_card">
                 <div className="card" id="list_card">
-                    <img className="img-fluid h-100" src={thumbnailCheck()}/>
+                    <img className="img-fluid h-100" src={thumbnailCheck()} />
                     <div className="darken">
-                        <Link onClick={currentStoreCallback} className="card-block text-center darken" to={"/results/"+store.placeName} >
+                        <Link onClick={currentStoreCallback} className="card-block text-center darken" to={"/results/" + store.placeName} >
                             <h4 className="center" id="store_name">{nameCheck()}</h4>
                         </Link>
                         {/*<p>{store.description}</p>*/}
@@ -183,5 +198,5 @@ export function ListPage(props) {
                 </div>
             </div>
         );
-    }  
+    }
 }
