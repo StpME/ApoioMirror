@@ -51,7 +51,7 @@ export function ItemPage(props) {
                     <h3 className="mt-4 mb-4">{store.description}</h3>
                     <StarRating />
                     
-                    <h1 className="pt-4">Location via Google Maps</h1>
+                    {store.mapEmbed ? <h1 className="pt-4">Location via Google Maps</h1> : null}
                     
                     <iframe title="location" src={store.mapEmbed} className="ps-4" width="400" height="250" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade">
                     </iframe>
