@@ -30,7 +30,6 @@ export function EditProfile(props) {
         if (event.target.files.length > 0 && event.target.files[0]) {
             const imageFile = event.target.files[0]
             setImageFile(imageFile);
-            setImageUrl(URL.createObjectURL(imageFile));
         }
     }
 
@@ -42,11 +41,9 @@ export function EditProfile(props) {
     
         await uploadBytes(userImageRef, imageFile);
         const downloadUrlString = await getDownloadURL(userImageRef)
-        console.log(downloadUrlString)
-        await updateProfile(currentUser, {photoURL: downloadUrlString})
-        console.log(currentUser.userId);
         setImageUrl(downloadUrlString);
-        setProfileData({...profileData, "profileImage": imageUrl})
+        await updateProfile(currentUser, {photoURL: downloadUrlString})
+        setProfileData({...profileData, "profileImage": downloadUrlString})
         const userDbRef = dbRef(getDatabase(), "userData/"+currentUser.userId+"/profileImage");
         firebaseSet(userDbRef, downloadUrlString);
       }
