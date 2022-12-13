@@ -24,16 +24,25 @@ function App(props) {
     const [authStateDetermined, setAuthStateDetermined] = useState(false);
     const [currentStore, setCurrentStore] = useState(null);
     const [profileData, setProfileData] = useState({
-        name: "Ayata Bernhardt",
-        location: "Bellevue, Washington",
-        occupation: "Student at UW",
-        email: "help@uw.edu",
-        socialInsta: "ayataeatsIG",
-        socialTwitter: "ayataeats",
-        aboutMessage: "Hello I am Ayata! Thank you for looking at my page with multiple things of interest on it. Please enjoy your stay.",
-        profileImage: "/pics/brows.png"
-
+        name: "Person Person",
+        location: "location",
+        title: "title",
+        email: "email",
+        socialInsta: "instagram",
+        socialTwitter: "twitter",
+        aboutMessage: "About",
+        profileImage: "/pics/brows.png",
+        uid: null
     });
+    //     name: "Ayata Bernhardt",
+    //     location: "Bellevue, Washington",
+    //     occupation: "Student at UW",
+    //     email: "help@uw.edu",
+    //     socialInsta: "ayataeatsIG",
+    //     socialTwitter: "ayataeats",
+    //     aboutMessage: "Hello I am Ayata! Thank you for looking at my page with multiple things of interest on it. Please enjoy your stay.",
+    //     profileImage: "/pics/brows.png"
+    // });
     const [location, setLocation] = useState("");
     const [queryResults, setQueryResults] = useState(stores);
     const [typeStore, setTypeStore] = useState("");
@@ -180,7 +189,7 @@ function App(props) {
             <ApoioHeader currentUser={currentUser} searchInputCallback={changeSearchInput} />
             <Routes>
                 <Route index element={<Home typeStoreCallback={typeStoreForResult} />} />
-                <Route path="/lists" element={<ListPage stores={storeState} types={unique} currentStoreCallback={setResultPageLink} />} />
+                <Route path="/favorites" element={<ListPage stores={storeState} types={unique} currentStoreCallback={setResultPageLink} />} />
                 <Route path="/profile" element={<ProfilePage profile={profileData} currentUser={currentUser} />} />
                 <Route path="/profile/edit" element={<EditProfile profile={profileData} currentUser={currentUser} profileCallback={changeProfileData} />} />
 
