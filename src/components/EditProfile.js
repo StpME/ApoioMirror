@@ -44,6 +44,7 @@ export function EditProfile(props) {
         console.log(downloadUrlString)
         await updateProfile(currentUser, {photoURL: downloadUrlString})
         console.log(currentUser.userId);
+        setImageUrl(downloadUrlString);
     
         const userDbRef = dbRef(getDatabase(), "userData/"+currentUser.userId+"/profileImage");
         firebaseSet(userDbRef, downloadUrlString);
