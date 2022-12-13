@@ -256,6 +256,23 @@ body {
   text-align: center;
 }
 
+.button {
+  color: #FFFF00;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.on {
+  color: #000;
+}
+.off {
+  color: #ccc;
+}
+
 /* Footer */
 
 .footer-apoio {
