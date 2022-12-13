@@ -5,58 +5,61 @@ export function ItemPage(props) {
   const store = props.currentStore;
   const [currRating, setCurrRating] = useState(0);
   const [currNumRating, setCurrNumRating] = useState(0);
-  const [ratedBool, setRatedBool] = useState(false);
-  const [storeIndex, setStoreIndex] = useState(0);
-  const [actualRating, setActualRating] = useState(0);
+
+  let index = 0;
+  let ratingValue = 0;
+  for (let i = 0; i < props.allStores.length; i++) {
+    if (props.allStores[i].placeName === store.placeName) {
+      index = i;
+    }
+  }
+
+  const db = getDatabase(); //"the database"
+  const businessData = ref(db, "businessData/" + index);
+  onValue(businessData, (snapshot) => {
+    const data = snapshot.val();
+    // console.log(data["aggregateRating"] / data["numRatings"]);
+    
+    if (data["numRatings"] === 0) {
+      ratingValue = 0;
+    } else {
+      const longRatingValue = data["aggregateRating"] / data["numRatings"]
+      ratingValue = longRatingValue.toFixed(1);
+    }
+
+  });
 
 
   const handleStars = (starCount) => {
-    let index = 0;
 
+    let aggregatedRatingVariable = 0;
+    let numberOfRatings = 0;
 
-    for (let i = 0; i < props.allStores.length; i++) {
-      if (props.allStores[i].placeName === store.placeName) {
-        setStoreIndex(i);
-        index = i;
-      }
-    }
-
-    const db = getDatabase(); //"the database"
+    
     const aggregateRating = ref(db, "businessData/" + index + "/aggregateRating");
     const numRatings = ref(db, "businessData/" + index + "/numRatings");
     // const userRatingData = ref(db, "userRatingData/");
-    const userCheck = ref(db, "userRatingData/" + props.userInfo.userId + "/" + storeIndex);
-
-    // onValue(userRatingData, (snapshot) => {
-    //   const data = snapshot.val();
-    //   console.log(data);
-    //   if (Object.keys(data).some(v => v === props.userInfo.userId)) {
-    //     // setRatedBool(true);
-    //     // console.log(data[props.userInfo.userId]);
-    //     setExistingRating(data[props.userInfo.userId]);
-    //   }
-    // });
+    const userCheck = ref(db, "userRatingData/" + props.userInfo.userId + "/" + index);
+    
 
     onValue(aggregateRating, (snapshot) => {
       const data = snapshot.val();
-      console.log("aggregate " + data);
+      // console.log("aggregate " + data);
       setCurrRating(data);
+      aggregatedRatingVariable = data;
     });
 
     onValue(numRatings, (snapshot) => {
       const data = snapshot.val();
-      console.log("num rating " + data);
+      // console.log("num rating " + data);
       setCurrNumRating(data);
+      numberOfRatings = data;
     });
+    
 
-    firebaseSet(aggregateRating, currRating + starCount);
-    firebaseSet(numRatings, currNumRating + 1);
+    firebaseSet(aggregateRating, aggregatedRatingVariable + starCount);
+    firebaseSet(numRatings, numberOfRatings + 1);
     firebaseSet(userCheck, starCount);
-
-    if (currNumRating !== 0) {
-      setActualRating(currRating / currNumRating);
-      console.log(actualRating)
-    }
 
   }
 
@@ -70,10 +73,11 @@ export function ItemPage(props) {
           <h1 className="mt-4 text-center"><strong>{store.placeName}</strong></h1>
           {/* <h2 className="text-center text-muted">{owner} {store.type.substring(0,1).toUpperCase() + store.type.substring(1)}</h2> */}
           <h2 className="text-muted">{store.location}</h2>
-          <h3 className="my-4">{store.description}</h3>
-          <h3 className="mt-5">This restaurant has a {actualRating} star rating! Rate this place below!</h3>
+          <p className="fs-5 my-4">{store.description}</p>
+          <p className="fs-5 mt-5">This restaurant has a {ratingValue} star rating! Rate this place below!</p>
           {/* <StarRating starCallback={props.starCallback}/> */}
-          <StarRating currStore={storeIndex} userInfo={props.userInfo} starCallback={handleStars} />
+          <p className="fs-5 fw-bold mb-0">Your current rating of this place:</p>
+          <StarRating currStore={index} userInfo={props.userInfo} starCallback={handleStars} />
 
           {store.mapEmbed ? <h1 className="pt-4">Location via Google Maps</h1> : null}
 
@@ -99,16 +103,6 @@ function StarRating(props) {
     // console.log("store " + props.currStore);
     if (data !== null && rating === 0) {
       setRating(data);
-    }
-    // console.log("store " + props.currStore);
-    if (Object.keys(data).some(v => v === props.currStore)) {
-      // setRatedBool(true);
-      // console.log(data[props.userInfo.userId]);
-
-      if (rating === 0) {
-        // console.log("im here " + data[props.currStore]);
-      }
-
     }
   });
 
