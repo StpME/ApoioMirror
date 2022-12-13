@@ -15,6 +15,7 @@ export function EditProfile(props) {
     const [imageUrl, setImageUrl] = useState(props.profile.profileImage);
 
     let localProfileData = profileData;
+    console.log(profileData);
 
     const handleProfileData = (event) => {
         setProfileData({ ...profileData, [event.target.name]: event.target.value });
