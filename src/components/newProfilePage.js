@@ -1,26 +1,25 @@
 import { getAuth, signOut } from 'firebase/auth';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
+import { getDatabase, ref, set as firebaseSet, onValue, push as firebasePush } from 'firebase/database';
+
 
 export function ProfilePage(props) {
     const currentUser = props.currentUser;
 
     const navigateTo = useNavigate();
-    // const [profileData, setProfileData] = useState({
-    //     name: "Ayata Bernhardt",
-    //     location: "Bellevue, Washington",
-    //     occupation: "Student at UW",
-    //     email: "help@uw.edu",
-    //     socialInsta: "ayataeatsIG",
-    //     socialTwitter: "ayataeats",
-    //     aboutMessage: "Hello I am Ayata! Thank you for looking at my page with multiple things of interest on it. Please enjoy your stay.",
+    const [profileData, setProfileData] = useState({
+        name: "Ayata Bernhardt",
+        location: "Bellevue, Washington",
+        occupation: "Student at UW",
+        email: "help@uw.edu",
+        socialInsta: "ayataeatsIG",
+        socialTwitter: "ayataeats",
+        aboutMessage: "Hello I am Ayata! Thank you for looking at my page with multiple things of interest on it. Please enjoy your stay.",
 
-    // });
+    });
 
-    const profileData = props.profile;
-    console.log(profileData);
-
-    const emailHref = "mailto:" + profileData.email
+    // console.log(profileData);
 
     const handleClick = (event) => {
         navigateTo("/profile/edit");
@@ -31,9 +30,35 @@ export function ProfilePage(props) {
         signOut(getAuth());
     }
 
+    useEffect(() => {
+
+        const db = getDatabase(); //"the database"
+        const allMessageRef = ref(db, "userData");
+
+        //when db value changes
+        const offFunction = onValue(allMessageRef, (snapshot) => {
+            const valueObj = snapshot.val();
+            //convert object into array
+            setProfileData(valueObj["mYo7YZyWDQbuuTeMDXRCELBXAJ32"])
+            console.log(profileData);
+
+        })
+
+        function cleanup() {
+            //   console.log("component is being removed");
+            //when the component goes away, we turn off the listener
+            offFunction();
+        }
+        return cleanup; //return instructions on how to turn off lights
+    }, [])
+
     if (!currentUser) {
         return <Navigate to="/" />
     }
+
+    // const emailHref = "mailto:" + profileData.email
+    const emailHref = "mailto:"
+
 
     return (
         <div className="container mt-5 p-5">
@@ -95,7 +120,7 @@ export function ProfilePage(props) {
 
                     </div>
 
-                    
+
 
                 </div>
                 <button type="button" className="btn btn-signout btn-danger" onClick={handleSignOut}>Sign Out</button>
