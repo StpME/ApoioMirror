@@ -465,25 +465,10 @@ button {
   }
 
   @media (max-width: 1200px) {
-
-    .result-card-img {
-      object-fit: cover;
-      width: 10rem;
-      height: 10rem;
-    }
-
     .result-item-card .card-text {
       display: none;
     }
   }
-
-  @media (min-width: 1200px) {
-    /* .result-item-card {
-      max-height: 15rem;
-    } */
-  }
-
-  
 
   @media (max-width: 576px) {
     .card#list_card {

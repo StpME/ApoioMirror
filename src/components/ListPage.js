@@ -52,10 +52,9 @@ export function ListPage(props) {
                             </li>
                         </div>*/}
                         <div id='list_header' className="row pt-4 mt-2">
-                            <strong><header className="title">Favorites</header></strong>
+                            <strong><header className="title">My Favorites</header></strong>
                             
                         </div>
-                        
                         <div className="row px-3">
                             {storeTypes}
                         </div>
