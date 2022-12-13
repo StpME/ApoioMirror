@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { getDatabase, ref, set as firebaseSet, onValue, set } from 'firebase/database';
+import { getDatabase, ref, set as firebaseSet, onValue } from 'firebase/database';
 
 export function ItemPage(props) {
   const store = props.currentStore;
@@ -34,13 +34,22 @@ export function ItemPage(props) {
 
     let aggregatedRatingVariable = 0;
     let numberOfRatings = 0;
-
+    let currentUserRating = 0;
+    let currentUserCount = 0;
     
     const aggregateRating = ref(db, "businessData/" + index + "/aggregateRating");
     const numRatings = ref(db, "businessData/" + index + "/numRatings");
     // const userRatingData = ref(db, "userRatingData/");
     const userCheck = ref(db, "userRatingData/" + props.userInfo.userId + "/" + index);
-    
+    const userRatingData = ref(db, "userRatingData/" + props.userInfo.userId + "/" + index);
+
+    onValue(userRatingData, (snapshot) => {
+      const data = snapshot.val();
+      if (data !== null) {
+        currentUserRating = data;
+        currentUserCount = 1;
+      }
+    });
 
     onValue(aggregateRating, (snapshot) => {
       const data = snapshot.val();
@@ -55,10 +64,11 @@ export function ItemPage(props) {
       setCurrNumRating(data);
       numberOfRatings = data;
     });
-    
+    console.log("current Rating " + currentUserRating);
+    console.log("current count " + currentUserCount);
 
-    firebaseSet(aggregateRating, aggregatedRatingVariable + starCount);
-    firebaseSet(numRatings, numberOfRatings + 1);
+    firebaseSet(aggregateRating, aggregatedRatingVariable + starCount - currentUserRating);
+    firebaseSet(numRatings, numberOfRatings + 1 - currentUserCount);
     firebaseSet(userCheck, starCount);
 
   }

@@ -80,13 +80,13 @@ export function ProfilePage(props) {
 
                         <div className="d-flex row justify-content-center mt-2">
                             <div className="col-lg-2">
-                                <a href="https://www.instagram.com/accounts/login/" target="blank" className="d-flex justify-content-center text-decoration-none">
+                                <a href={"https://www.instagram.com/"+profileData.socialInsta} target="blank" className="d-flex justify-content-center text-decoration-none">
                                     <i id="social-links" className="fa fa-instagram" aria-label="instagram"></i>
                                     <p className='ms-2'>{profileData.socialInsta}</p>
                                 </a>
                             </div>
                             <div className="col-lg-2">
-                                <a href="https://twitter.com/i/flow/login" target="blank" className="d-flex justify-content-center text-decoration-none">
+                                <a href={"https://twitter.com/"+profileData.socialTwitter} target="blank" className="d-flex justify-content-center text-decoration-none">
                                     <i id="social-links" className="fa fa-twitter" aria-label="twitter"></i>
                                     <p className='ms-2'>{profileData.socialTwitter}</p>
                                 </a>
