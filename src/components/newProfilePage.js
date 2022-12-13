@@ -6,6 +6,7 @@ import { getDatabase, ref, set as firebaseSet, onValue, push as firebasePush } f
 
 export function ProfilePage(props) {
     const currentUser = props.currentUser;
+    const handleSignOut = props.signOutCallback;
     
 
     const navigateTo = useNavigate();
@@ -15,11 +16,6 @@ export function ProfilePage(props) {
 
     const handleClick = (event) => {
         navigateTo("/profile/edit");
-    }
-
-    const handleSignOut = (event) => {
-        console.log("Signing Out");
-        signOut(getAuth());
     }
 
     useEffect(() => {

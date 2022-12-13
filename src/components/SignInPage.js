@@ -34,7 +34,7 @@ export function SignInPage(props) {
 
   const uiConfigObj = {
     signInOptions: [
-      { provider: EmailAuthProvider.PROVIDER_ID, requireDisplayName: true }
+      { provider: EmailAuthProvider.PROVIDER_ID, requireDisplayName: false }
     ],
     signInFlow: 'popup',
     callbacks: {

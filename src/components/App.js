@@ -5,7 +5,7 @@ import { ListPage } from './ListPage.js';
 import ResultPage from './ResultPage.js';
 import Home from './Home.js';
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import { getDatabase, ref as dbRef, set, onValue, child, get } from 'firebase/database';
 import { CreateNewItem } from './CreateNewItem.js';
 import { ProfilePage } from './newProfilePage.js';
@@ -15,6 +15,18 @@ import { SignInPage } from './SignInPage.js';
 import { useAuthState } from 'react-firebase-hooks/auth';
 // import { ProfilePage } from './ProfilePage.js';
 
+const DEFAULT_USER = {
+    name: "",
+    location: "",
+    title: "",
+    email: "",
+    socialInsta: "",
+    socialTwitter: "",
+    aboutMessage: "",
+    profileImage: "/pics/placeholder.jpg",
+    uid: null,
+    favs: []
+};
 
 function App(props) {
     //set stores to whatever the user passes to add to list
@@ -23,18 +35,7 @@ function App(props) {
     const [storeState, setStoreState] = useState(stores);
     const [currentUser, setCurrentUser] = useState(null);
     const [currentStore, setCurrentStore] = useState(null);
-    const [profileData, setProfileData] = useState({
-        name: "",
-        location: "",
-        title: "",
-        email: "",
-        socialInsta: "",
-        socialTwitter: "",
-        aboutMessage: "",
-        profileImage: "/pics/placeholder.jpg",
-        uid: null,
-        favs: []
-    });
+    const [profileData, setProfileData] = useState(DEFAULT_USER);
     const [location, setLocation] = useState("");
     const [queryResults, setQueryResults] = useState(stores);
     const [typeStore, setTypeStore] = useState("");
@@ -134,7 +135,13 @@ function App(props) {
     }
 
     const auth = getAuth();
-    const [user, loading, error] = useAuthState(auth);
+    // const [user, loading, error] = useAuthState(auth);
+
+    const handleSignOut = (event) => {
+        console.log("Signing Out");
+        signOut(getAuth());
+        setProfileData(DEFAULT_USER);
+    }
 
     // logging in
     useEffect(() => {
@@ -192,7 +199,7 @@ function App(props) {
             <Routes>
                 <Route index element={<Home typeStoreCallback={typeStoreForResult} />} />
                 <Route path="/favorites" element={<ListPage currentUser={currentUser} stores={storeState} types={unique} currentStoreCallback={setResultPageLink} />} />
-                <Route path="/profile" element={<ProfilePage profile={profileData} currentUser={currentUser} />} />
+                <Route path="/profile" element={<ProfilePage signOutCallback={handleSignOut} profile={profileData} currentUser={currentUser} />} />
                 <Route path="/profile/edit" element={<EditProfile profile={profileData} currentUser={currentUser} profileCallback={changeProfileData} />} />
 
                 <Route path="/results" element={<ResultPage stores={queryResults} storeCallback={favList} currentStoreCallback={setResultPageLink} locationPath={location} typeStore={typeStore} />} />
