@@ -23,6 +23,7 @@ export function ResultPane(props) {
 
 function ResultItem(props) {
     const [isFavorited, setisFavorited] = useState(false);
+    const [favPlaceholder, setFavPlaceholder] = useState(false);
     const { placeName, location, description, placeThumbnail } = props.resultData;
 
 
@@ -53,10 +54,10 @@ function ResultItem(props) {
 
     }
 
-    let favoritedText = "Add to Lists!";
+    let favoritedText = "Add to Favorites!";
     let favoritedStyle = "btn btn-outline-danger";
-    if (isFavorited || (props.resultData.favorited === true)) {
-        favoritedText = "Remove from Lists!";
+    if (isFavorited || (ifFavorited === true)) {
+        favoritedText = "Remove from Favorites!";
         favoritedStyle = "btn btn-danger text-white"
     }
 
