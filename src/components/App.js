@@ -34,7 +34,6 @@ function App(props) {
         profileImage: "/pics/brows.png",
         uid: null
     });
-    // const [profileData, setProfileData] = useState({
     //     name: "Ayata Bernhardt",
     //     location: "Bellevue, Washington",
     //     occupation: "Student at UW",
@@ -43,7 +42,6 @@ function App(props) {
     //     socialTwitter: "ayataeats",
     //     aboutMessage: "Hello I am Ayata! Thank you for looking at my page with multiple things of interest on it. Please enjoy your stay.",
     //     profileImage: "/pics/brows.png"
-
     // });
     const [location, setLocation] = useState("");
     const [queryResults, setQueryResults] = useState(stores);
