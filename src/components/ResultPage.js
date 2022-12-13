@@ -156,7 +156,7 @@ export default function ResultPage(props) {
                         </div> */}
                     </div>
                     <div className="col-md-8 col-lg-8 col-sm-12">
-                        <ResultPane storeCallback={props.storeCallback} favCallback={props.favCallback} currentStoreCallback={props.currentStoreCallback} stores={storesVisible} />
+                        <ResultPane currentUser={props.currentUser} storeCallback={props.storeCallback} favCallback={props.favCallback} currentStoreCallback={props.currentStoreCallback} stores={storesVisible} />
                     </div>
                 </div>
             </div>
