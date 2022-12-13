@@ -38,11 +38,6 @@ export function ItemPage(props) {
           </div>
         );
       };
-<<<<<<< HEAD
-
-      
-=======
->>>>>>> 6823ee4320aa4a331e1b4303b219d198e9d8bfba
     return (
         <div className="container">
             <div className="card m-5 pb-4">
@@ -58,7 +53,7 @@ export function ItemPage(props) {
                     
                     <h1 className="pt-4">Location via Google Maps</h1>
                     
-                    <iframe title="location" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2691.5393814631484!2d-122.17258248452757!3d47.57674987918264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54906eaaac5fc89f%3A0xc19dbcdad1040ad3!2sKatsu%20Burger!5e0!3m2!1sen!2sus!4v1668031908779!5m2!1sen!2sus" className="ps-4" width="400" height="250" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade">
+                    <iframe title="location" src={store.mapEmbed} className="ps-4" width="400" height="250" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade">
                     </iframe>
                 </div>
             </div>
