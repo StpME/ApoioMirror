@@ -37,9 +37,6 @@ export function ListPage(props) {
         
     });
 
-    
-
-
     return (
         <section className="col p-5">
             <div className="col-lg-12 d-block">

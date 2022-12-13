@@ -12,6 +12,7 @@ import { ProfilePage } from './newProfilePage.js';
 import { EditProfile } from './EditProfile.js'
 import { ItemPage } from './ItemPage.js'
 import { SignInPage } from './SignInPage.js';
+import { useAuthState } from 'react-firebase-hooks/auth';
 // import { ProfilePage } from './ProfilePage.js';
 
 
@@ -21,7 +22,6 @@ function App(props) {
     //const filtersList = ["LGBTQ+", "Minority-owned", "Female-owned"];
     const [storeState, setStoreState] = useState(stores);
     const [currentUser, setCurrentUser] = useState(null);
-    const [authStateDetermined, setAuthStateDetermined] = useState(false);
     const [currentStore, setCurrentStore] = useState(null);
     const [profileData, setProfileData] = useState({
         name: "Person Person",
@@ -34,15 +34,6 @@ function App(props) {
         profileImage: "/pics/brows.png",
         uid: null
     });
-    //     name: "Ayata Bernhardt",
-    //     location: "Bellevue, Washington",
-    //     occupation: "Student at UW",
-    //     email: "help@uw.edu",
-    //     socialInsta: "ayataeatsIG",
-    //     socialTwitter: "ayataeats",
-    //     aboutMessage: "Hello I am Ayata! Thank you for looking at my page with multiple things of interest on it. Please enjoy your stay.",
-    //     profileImage: "/pics/brows.png"
-    // });
     const [location, setLocation] = useState("");
     const [queryResults, setQueryResults] = useState(stores);
     const [typeStore, setTypeStore] = useState("");
@@ -62,7 +53,7 @@ function App(props) {
     const db = getDatabase();
     const objectData = dbRef(db, "businessData");
     const objectInformation = onValue(objectData, (snapshot) => {
-        console.log(snapshot.val());
+        // console.log(snapshot.val());
     });
     // console.log(objectData);
     // objectInformation();
@@ -137,19 +128,19 @@ function App(props) {
 
     }
 
-    // const navigateTo = useNavigate();
+    let current = null
 
+    // logging in
     useEffect(() => {
-        //log in a default user
         const auth = getAuth();
+
         onAuthStateChanged(auth, (firebaseUser) => {
             if (firebaseUser) {
                 console.log("logged in as", firebaseUser.displayName);
                 firebaseUser.userId = firebaseUser.uid
                 firebaseUser.name = firebaseUser.displayName;
                 setCurrentUser(firebaseUser);
-                console.log(firebaseUser);
-                console.log(currentUser);
+                // console.log(currentUser);
             } else {
                 console.log("logged out");
                 setCurrentUser(null);
@@ -173,7 +164,7 @@ function App(props) {
                 businessObj.key = keyString;
                 return businessObj;
             })
-            console.log(objArray);
+            // console.log(objArray);
         })
 
         function cleanup() {

@@ -12,7 +12,7 @@ export function EditProfile(props) {
 
     const handleProfileData = (event) => {
         setProfileData({ ...profileData, [event.target.name]: event.target.value });
-        console.log(profileData);
+        // console.log(profileData);
         // firebasePush(userDataRef, profileData);
     }
 
