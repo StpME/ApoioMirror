@@ -99,6 +99,8 @@ export function ItemPage(props) {
   );
 }
 
+// Basic Star Rating component from:
+// https://dev.to/michaelburrows/create-a-custom-react-star-rating-component-5o6
 function StarRating(props) {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
